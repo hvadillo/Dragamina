@@ -1,5 +1,5 @@
 package org.si.dragamina;
 
-public class Teklatua {
+public class GelaMina {
 
 }
