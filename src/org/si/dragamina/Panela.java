@@ -7,14 +7,14 @@ import java.awt.event.ActionListener;
 
 public class Panela{
 	
-	private Panela nPanela = null;
+	private static Panela nPanela = null;
 	private MatrizeGelaxka matrizea;
 	
 	private Panela(){
 		matrizea = new MatrizeGelaxka();
 	}
 	
-	public Panela getPanela(){
+	public static Panela getPanela(){
 		if(nPanela == null){
 			nPanela = new Panela();
 		}
@@ -23,6 +23,12 @@ public class Panela{
 	
 	public void jokatu(){
 		
+	}
+	
+	private int zailtasuna(){
+		int za = 1;
+		
+		return za;
 	}
 	
 	private void panelHutzaEraiki(){

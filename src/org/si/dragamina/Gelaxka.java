@@ -11,5 +11,4 @@ public abstract class Gelaxka {
 	public void gelaIreki(){
 		
 	}
-	
 }

@@ -36,14 +36,14 @@ public class Leihoa extends JFrame {
 	 * Create the frame.
 	 */
 	public Leihoa() {
-		getContentPane().setLayout(new GridLayout(10,10));
+		int x=12;int y=25;
+		getContentPane().setLayout(new GridLayout(x, y));
 		
-		JButton b1 = new JButton();
-		Dimension d = new Dimension(100,100);
-		b1.setSize(d);
-		getContentPane().add(b1);
-		
-		
+		int size = x*y;
+		for(int i=0; i<size; i++){
+			JButton b1 = new JButton();
+			getContentPane().add(b1);
+		}
 	}
 
 }
