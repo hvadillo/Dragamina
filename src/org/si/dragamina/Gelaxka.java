@@ -1,5 +1,5 @@
 package org.si.dragamina;
 
-public class Gelaxka {
+public abstract class Gelaxka {
 
 }

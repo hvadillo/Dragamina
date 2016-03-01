@@ -7,17 +7,16 @@ import java.awt.event.ActionListener;
 
 public class Panela{
 	
-	public void setBoard(){
-		JFrame frame = new JFrame();
-	    frame.add(addCells());
+	private Panela nPanela = null;
 	
-	    frame.pack();
-	    frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-	    frame.setVisible(true);
+	private Panela(){
+		
 	}
 	
-		public JPanel addCells(){
-	    JPanel panel = new JPanel(new GridLayout(10,10));
-	    return panel;
+	public Panela getPanela(){
+		if(nPanela == null){
+			nPanela = new Panela();
+		}
+		return nPanela;
 	}
 }

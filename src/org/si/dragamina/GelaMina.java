@@ -1,5 +1,9 @@
 package org.si.dragamina;
 
-public class GelaMina {
+public class GelaMina extends Gelaxka {
 
+	
+	public GelaMina(){
+		super();
+	}
 }
