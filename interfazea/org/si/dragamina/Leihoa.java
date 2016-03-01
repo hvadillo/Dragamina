@@ -1,6 +1,7 @@
 package org.si.dragamina;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -12,8 +13,6 @@ import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 
 public class Leihoa extends JFrame {
-
-	public JButton botonD = new JButton();
 	
 	
 	/**
@@ -37,10 +36,14 @@ public class Leihoa extends JFrame {
 	 * Create the frame.
 	 */
 	public Leihoa() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		botonD.setBounds(5,5,5,5);;
-		this.getContentPane().add(botonD, BorderLayout.EAST);
+		getContentPane().setLayout(new GridLayout(10,10));
+		
+		JButton b1 = new JButton();
+		Dimension d = new Dimension(100,100);
+		b1.setSize(d);
+		getContentPane().add(b1);
+		
+		
 	}
 
 }
