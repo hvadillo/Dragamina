@@ -2,8 +2,8 @@ package org.si.dragamina;
 
 public class GelaHutsa extends Gelaxka {
 
-	public GelaHutsa(){
-		super();
+	public GelaHutsa(int[][] pPosizioa){
+		super(pPosizioa);
 	}
 	
 }
