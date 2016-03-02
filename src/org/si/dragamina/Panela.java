@@ -41,6 +41,6 @@ public class Panela{
 	}
 	
 	public void ireki(){
-	
+		
 	}
 }
