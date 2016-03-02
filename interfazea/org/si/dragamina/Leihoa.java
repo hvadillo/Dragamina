@@ -1,18 +1,19 @@
 package org.si.dragamina;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
+import java.awt.Image;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.net.URL;
+import javax.swing.*;
+import javax.imageio.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import javax.swing.JButton;
 
 public class Leihoa extends JFrame {
@@ -37,6 +38,7 @@ public class Leihoa extends JFrame {
 	 * Create the frame.
 	 */
 	public Leihoa() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 330, 276);
 		
@@ -73,7 +75,23 @@ public class Leihoa extends JFrame {
 			b1.addActionListener(new ActionListener()	{
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					b1.setText("1");
+					try
+			        {
+						ImageIcon image = new ImageIcon(ImageIO.read(
+			                    new URL("https://raw.githubusercontent.com/mercient/Minesweeper/master/1.png")));  	
+						Image img = image.getImage();
+						Image newimg = img.getScaledInstance( 33, 33,  java.awt.Image.SCALE_SMOOTH ) ;  
+						image = new ImageIcon( newimg );
+						b1.setIcon(image);
+			        }
+			        catch(MalformedURLException mue)
+			        {
+			            mue.printStackTrace();
+			        }
+			        catch(IOException ioe)
+			        {
+			            ioe.printStackTrace();
+			        }       
 					Panela.getPanela().ireki();
 				}
 			});
