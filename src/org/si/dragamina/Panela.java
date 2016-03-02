@@ -22,7 +22,7 @@ public class Panela{
 	}
 	
 	public void jokatu(){
-		
+		panelHutzaEraiki();
 	}
 	
 	private int zailtasuna(){
@@ -32,18 +32,15 @@ public class Panela{
 	}
 	
 	private void panelHutzaEraiki(){
+		int z = zailtasuna();
+		panelaEraiki(z);
+	}
+	
+	private void panelaEraiki(int pZail){
 		
 	}
 	
-	private void panelaEraiki(){
-		
-	}
+	public void ireki(){
 	
-	private void ireki(){
-		
-	}
-	
-	private void actionPerformed(ActionEvent e){
-		
 	}
 }
