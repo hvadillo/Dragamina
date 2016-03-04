@@ -4,7 +4,6 @@ package org.si.dragamina;
 public abstract class Main {
 
 	public static void main(String[] args) {
-		//Panela.getPanela().jokatu();
-		Leihoa l = new Leihoa();
+		Panela.getPanela();
 	}
 }

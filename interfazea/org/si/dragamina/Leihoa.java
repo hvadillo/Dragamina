@@ -28,7 +28,6 @@ public class Leihoa extends JFrame {
 	}*/
 	
 	public Leihoa() {
-		MatrizeGelaxka m = new MatrizeGelaxka(1);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 330, 276);
@@ -88,13 +87,10 @@ public class Leihoa extends JFrame {
 			b1.addActionListener(new ActionListener()	{
 				@Override
 				public void actionPerformed(ActionEvent e) {
-						Random rand = new Random();
-						int xPos = rand.nextInt(7);
-						int yPos = rand.nextInt(10);
-						String iIzen = m.gelaIreki(xPos, yPos);
-						ImageIcon image = createImageIcon(iIzen);
+						//String iIzen = m.gelaIreki(xPos, yPos);
+						ImageIcon image = createImageIcon("3.png");
 						b1.setIcon(image);
-						//Panela.getPanela().ireki();
+					
 				}
 			});
 			kasilak[i] = b1;

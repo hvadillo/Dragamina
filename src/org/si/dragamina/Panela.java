@@ -6,7 +6,8 @@ public class Panela{
 	private MatrizeGelaxka matrizea;
 	
 	private Panela(){
-		matrizea = new MatrizeGelaxka(1);
+		Leihoa.getLeihoa().setVisible(true);
+		//matrizea = new MatrizeGelaxka(1);
 	}
 	
 	public static Panela getPanela(){

@@ -2,8 +2,6 @@ package org.si.dragamina;
 
 import java.util.Random;
 
-import javafx.scene.layout.Pane;
-
 public class MatrizeGelaxka {
 
 	private Gelaxka[][] gelaxkak;
@@ -14,10 +12,10 @@ public class MatrizeGelaxka {
 	}
 	
 	private void gelaxkaHutzakSortu(int pZ){
-		//int[] dim = Panela.getPanela().dimentzioakKalkulatu(pZ);
+		int[] dim = Panela.getPanela().dimentzioakKalkulatu(pZ);
 		int x = 0, y = 0;
-		while(y<=7/*dim[1]*/){
-			while(x>10/*dim[0]*/){
+		while(y<=dim[1]){
+			while(x>dim[0]){
 				if(gelaxkak[x][y] ==null){
 					gelaxkak[x][y] = new GelaHutsa(x,y);
 				}
@@ -26,9 +24,9 @@ public class MatrizeGelaxka {
 	}
 	
 	public void matrizeaSortu(int pZailt){
-		//int[] dim = Panela.getPanela().dimentzioakKalkulatu(pZailt);
-		int minaKop = pZailt * 7;//dim[0];
-		minakSortu(minaKop, 7,10/*dim[0], dim[1]*/);
+		int[] dim = Panela.getPanela().dimentzioakKalkulatu(pZailt);
+		int minaKop = pZailt * dim[0];
+		minakSortu(minaKop,dim[0], dim[1]);
 	}
 	
 	private void minakSortu(int pMinaKop, int pXMax, int pYMax){

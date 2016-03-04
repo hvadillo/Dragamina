@@ -1,13 +1,5 @@
 package org.si.dragamina;
 
-import java.awt.Image;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-
 public class GelaHutsa extends Gelaxka {
 
 	public GelaHutsa(int pX, int pY){
