@@ -4,18 +4,26 @@ import javax.swing.*;
 
 public abstract class Gelaxka {
 
-	private int[][] posizioa;
-	protected ImageIcon irudia;
+	protected int x;
+	protected int y;
+	protected String irudiIzena;
+	protected boolean zabaldua;
 	
-	public Gelaxka(int[][] pPosizioa){
-		posizioa = pPosizioa;
+	public Gelaxka(int pX, int pY){
+		x = pX;
+		y = pY;
+		zabaldua = false;
 	}
 	
 	protected abstract void gelaIreki();{
 		
 	}
 	
-	public ImageIcon getIrudia(){
-		return irudia;
+	public abstract void eguneratu();{
+		
+	}
+	
+	public String getIrudia(){
+		return irudiIzena;
 	}
 }

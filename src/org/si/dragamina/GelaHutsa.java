@@ -10,28 +10,23 @@ import javax.swing.ImageIcon;
 
 public class GelaHutsa extends Gelaxka {
 
-	public GelaHutsa(int[][] pPosizioa){
-		super(pPosizioa);
-		try
-        {
-			irudia = new ImageIcon(ImageIO.read(
-	                new URL("https://raw.githubusercontent.com/mercient/Minesweeper/master/empty.png")));  
-			Image img = irudia.getImage();
-			Image newimg = img.getScaledInstance( 33, 33,  java.awt.Image.SCALE_SMOOTH ) ;  
-			irudia = new ImageIcon( newimg );
-        }
-        catch(MalformedURLException mue)
-        {
-            mue.printStackTrace();
-        }
-        catch(IOException ioe)
-        {
-            ioe.printStackTrace();
-        }       
+	public GelaHutsa(int pX, int pY){
+		super(pX,pY);
+		irudiIzena = "0.png";
 	}
 
 	@Override
 	protected void gelaIreki() {
+		gelaHutsakIreki();
+		zabaldua = true;
+	}
+	
+	private void gelaHutsakIreki(){
+		
+	}
+
+	@Override
+	public void eguneratu() {
 		// TODO Auto-generated method stub
 		
 	}

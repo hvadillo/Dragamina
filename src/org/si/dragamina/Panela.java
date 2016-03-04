@@ -1,17 +1,12 @@
 package org.si.dragamina;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 public class Panela{
 	
 	private static Panela nPanela = null;
 	private MatrizeGelaxka matrizea;
 	
 	private Panela(){
-		matrizea = new MatrizeGelaxka();
+		matrizea = new MatrizeGelaxka(1);
 	}
 	
 	public static Panela getPanela(){
@@ -23,24 +18,34 @@ public class Panela{
 	
 	public void jokatu(){
 		panelHutzaEraiki();
-	}
-	
-	private int zailtasuna(){
-		int za = 1;
-		
-		return za;
+		panelaEraiki(1);
 	}
 	
 	private void panelHutzaEraiki(){
-		int z = zailtasuna();
-		panelaEraiki(z);
+		Leihoa.getLeihoa().setVisible(true);
 	}
 	
-	private void panelaEraiki(int pZail){
-		
+	public void panelaEraiki(int pZail){
+		matrizea = new MatrizeGelaxka(pZail);
 	}
 	
-	public void ireki(){
-		
+	public int[] dimentzioakKalkulatu(int pZ){
+		int[] dim = new int[2];
+		switch (pZ) {
+			case 1: dim[0] = 7;
+					dim[1] = 10;
+					break;
+			case 2: dim[0] = 10;
+					dim[1] = 15;
+					break;
+			case 3: dim[0] = 12;
+					dim[1] = 25;
+					break;
+		}
+		return dim;
+	}
+	
+	public String ireki(int pX, int pY){
+		return matrizea.gelaIreki(pX, pY);
 	}
 }
