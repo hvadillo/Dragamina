@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,9 +25,10 @@ public class Leihoa extends JFrame {
 	private int zail;
 	
 	public Leihoa() {
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 200, 340, 299);
+		setBounds(0, 0, 340, 299);
+		setLocationRelativeTo(null); 
 		
 		zail = 1;
 		
@@ -102,7 +104,7 @@ public class Leihoa extends JFrame {
 			}
 		});
 		menuBar.add(smileB);
-		
+
 		kasilakSortu(7,10);
 	}
 	
@@ -120,12 +122,13 @@ public class Leihoa extends JFrame {
 	public void leihoaAldatu(int pErre, int pZut){
 		kasilak = null;
 		switch (zail){
-			case 1:	setBounds(300, 200, 340, 299);
+			case 1:	setBounds(0, 0, 340, 299);
 					break;
-			case 2:	setBounds(300, 200, 510, 408);
+			case 2:	setBounds(0, 0, 510, 408);
 					break;
-			case 3:	setBounds(300, 200, 825, 476);
+			case 3:	setBounds(0, 0, 825, 476);
 		}
+		setLocationRelativeTo(null); 
 		kasilakSortu(pErre,pZut);
 	}
 	
