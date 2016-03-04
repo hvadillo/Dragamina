@@ -16,7 +16,7 @@ import javax.swing.JButton;
 
 public class Leihoa extends JFrame {
 
-	private static Leihoa nLeihoa=null;
+	private static Leihoa nLeihoa;
 	private JMenuBar menuBar;
 	private JMenu mnJokoa, mnLaguntza;
 	private JMenuItem mntmErraza, mntmNormala, mntmZaila, mntmArgibidea;
@@ -44,12 +44,30 @@ public class Leihoa extends JFrame {
 		menuBar.add(mnJokoa);
 		
 		mntmErraza = new JMenuItem("Erraza");
+		mntmErraza.addActionListener(new ActionListener()	{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					Panela.getPanela().panelaEraiki(1);
+			}
+		});
 		mnJokoa.add(mntmErraza);
 		
 		mntmNormala = new JMenuItem("Normala");
+		mntmNormala.addActionListener(new ActionListener()	{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					Panela.getPanela().panelaEraiki(2);
+			}
+		});
 		mnJokoa.add(mntmNormala);
 		
 		mntmZaila = new JMenuItem("Zaila");
+		mntmZaila.addActionListener(new ActionListener()	{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					Panela.getPanela().panelaEraiki(3);
+			}
+		});
 		mnJokoa.add(mntmZaila);
 		
 		mnLaguntza = new JMenu("Laguntza"){
@@ -61,6 +79,12 @@ public class Leihoa extends JFrame {
 		menuBar.add(mnLaguntza);
 		
 		mntmArgibidea = new JMenuItem("Argibidea");
+		/*mntmArgibidea.addActionListener(new ActionListener()	{
+			@Override
+			public void actionPerformed(ActionEvent e) {
+					//mezu bat bota
+			}
+		});*/
 		mnLaguntza.add(mntmArgibidea);
 		
 		smileB = new JButton(){
@@ -79,7 +103,7 @@ public class Leihoa extends JFrame {
 		menuBar.add(smileB);
 		
 		getContentPane().setLayout(new GridLayout(7, 10, 0, 0));
-		int kasilaKop=70;
+		int kasilaKop = 70;
 		kasilak = new JButton[kasilaKop+1];
 		for(int i = kasilaKop; i > 0; i--){
 			JButton b1 = new JButton();
@@ -99,14 +123,40 @@ public class Leihoa extends JFrame {
 	}
 	
 	public static Leihoa getLeihoa(){
-		if(nLeihoa==null){
+		if(nLeihoa == null){
 			try {
 				nLeihoa = new Leihoa();			
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		}	
 		return nLeihoa;
+	}
+	
+	public void leihoaAldatu(int pErre, int pZut){
+		kasilak = null;
+		int zabal, alt;
+		zabal = 33*pZut;
+		alt = 33*pErre;
+		setBounds(100, 100, zabal, alt);
+		getContentPane().setLayout(new GridLayout(pErre, pZut, 0, 0));
+		int kasilaKop = pErre*pZut;
+		kasilak = new JButton[kasilaKop+1];
+		for(int i = kasilaKop; i > 0; i--){
+			JButton b1 = new JButton();
+			b1.setIcon(createImageIcon("close.png"));
+			b1.addActionListener(new ActionListener()	{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+						//String iIzen = m.gelaIreki(xPos, yPos);
+						ImageIcon image = createImageIcon("3.png");
+						b1.setIcon(image);
+					
+				}
+			});
+			kasilak[i] = b1;
+			getContentPane().add(kasilak[i]);
+		}
 	}
 	
 	private void kailakSortu(){

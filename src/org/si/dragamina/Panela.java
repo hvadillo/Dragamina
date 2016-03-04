@@ -23,11 +23,16 @@ public class Panela{
 	}
 	
 	private void panelHutzaEraiki(){
-		Leihoa.getLeihoa().setVisible(true);
+		//Leihoa.getLeihoa().setVisible(true);
 	}
 	
 	public void panelaEraiki(int pZail){
-		matrizea = new MatrizeGelaxka(pZail);
+		int [] dim = dimentzioakKalkulatu(pZail);
+		Leihoa leihoa = Leihoa.getLeihoa();
+		leihoa.setVisible(false);
+		leihoa.leihoaAldatu(dim[0], dim[1]);
+		leihoa.setVisible(true);
+		//matrizea = new MatrizeGelaxka(pZail);
 	}
 	
 	public int[] dimentzioakKalkulatu(int pZ){
