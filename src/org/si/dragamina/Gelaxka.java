@@ -19,11 +19,11 @@ public abstract class Gelaxka {
 		
 	}
 	
-	public abstract void eguneratu();{
+	protected abstract void eguneratu();{
 		
 	}
 	
-	public String getIrudia(){
+	protected String getIrudia(){
 		return irudiIzena;
 	}
 }

@@ -8,7 +8,6 @@ public class MatrizeGelaxka {
 	
 	public MatrizeGelaxka(int pZailt){
 		matrizeaSortu(pZailt);
-		gelaxkaHutzakSortu(pZailt);
 	}
 	
 	private void gelaxkaHutzakSortu(int pZ){
@@ -27,6 +26,7 @@ public class MatrizeGelaxka {
 		int[] dim = Panela.getPanela().dimentzioakKalkulatu(pZailt);
 		int minaKop = pZailt * dim[0];
 		minakSortu(minaKop,dim[0], dim[1]);
+		gelaxkaHutzakSortu(pZailt);
 	}
 	
 	private void minakSortu(int pMinaKop, int pXMax, int pYMax){
@@ -52,7 +52,7 @@ public class MatrizeGelaxka {
 		}
 	}
 	
-	public boolean kasilaZabalduak(int pX, int pY){
+	public boolean zabalduDa(int pX, int pY){
 		return gelaxkak[pX][pY].zabaldua;
 	}
 	
@@ -61,6 +61,7 @@ public class MatrizeGelaxka {
 	}
 	
 	public String gelaIreki(int pX, int pY){
+		gelaxkak[pX][pY].gelaIreki();
 		return gelaxkak[pX][pY].irudiIzena;
 	}
 }
