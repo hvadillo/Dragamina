@@ -9,28 +9,26 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
-import java.util.Random;
 
 import javax.swing.*;
 import javax.swing.JButton;
 
 public class Leihoa extends JFrame {
 
-	private static Leihoa nLeihoa;
+	private static Leihoa nLeihoa = null;
 	private JMenuBar menuBar;
 	private JMenu mnJokoa, mnLaguntza;
 	private JMenuItem mntmErraza, mntmNormala, mntmZaila, mntmArgibidea;
 	private JButton smileB;
 	private JButton[] kasilak ;
-
-	/*public static void main(String[] args) {
-		
-	}*/
+	private int zail;
 	
 	public Leihoa() {
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 330, 276);
+		setBounds(200, 200, 340, 299);
+		
+		zail = 1;
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -47,7 +45,8 @@ public class Leihoa extends JFrame {
 		mntmErraza.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					Panela.getPanela().panelaEraiki(1);
+					zail = 1;
+					Panela.getPanela().panelaEraiki(zail);
 			}
 		});
 		mnJokoa.add(mntmErraza);
@@ -56,7 +55,8 @@ public class Leihoa extends JFrame {
 		mntmNormala.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					Panela.getPanela().panelaEraiki(2);
+					zail = 2;
+					Panela.getPanela().panelaEraiki(zail);
 			}
 		});
 		mnJokoa.add(mntmNormala);
@@ -65,7 +65,8 @@ public class Leihoa extends JFrame {
 		mntmZaila.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					Panela.getPanela().panelaEraiki(3);
+					zail = 3;
+					Panela.getPanela().panelaEraiki(zail);
 			}
 		});
 		mnJokoa.add(mntmZaila);
@@ -97,33 +98,12 @@ public class Leihoa extends JFrame {
 		smileB.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					Panela.getPanela().panelaEraiki(1);
+					Panela.getPanela().panelaEraiki(zail);
 			}
 		});
 		menuBar.add(smileB);
 		
-		getContentPane().setLayout(new GridLayout(7, 10, 0, 0));
-		kasilak = new JButton[pKop+1];
-		for(int i = pKop; i > 0; i--){
-		int kasilaKop = 70;
-		int kasilaKop = 70;
-		int kasilaKop = 70;
-		kasilak = new JButton[kasilaKop+1];
-		for(int i = kasilaKop; i > 0; i--){
-			JButton b1 = new JButton();
-			b1.setIcon(createImageIcon("close.png"));
-			b1.addActionListener(new ActionListener()	{
-				@Override
-				public void actionPerformed(ActionEvent e) {
-						//String iIzen = m.gelaIreki(xPos, yPos);
-						ImageIcon image = createImageIcon("3.png");
-						b1.setIcon(image);
-					
-				}
-			});
-			kasilak[i] = b1;
-			getContentPane().add(kasilak[i]);
-		}
+		kasilakSortu(7,10);
 	}
 	
 	public static Leihoa getLeihoa(){
@@ -139,14 +119,22 @@ public class Leihoa extends JFrame {
 	
 	public void leihoaAldatu(int pErre, int pZut){
 		kasilak = null;
-		int zabal, alt;
-		zabal = 33*pZut;
-		alt = 33*pErre;
-		setBounds(100, 100, zabal, alt);
+		switch (zail){
+			case 1:	setBounds(300, 200, 340, 299);
+					break;
+			case 2:	setBounds(300, 200, 510, 408);
+					break;
+			case 3:	setBounds(300, 200, 825, 476);
+		}
+		kasilakSortu(pErre,pZut);
+	}
+	
+	private void kasilakSortu(int pErre, int pZut){
+		getContentPane().removeAll();
 		getContentPane().setLayout(new GridLayout(pErre, pZut, 0, 0));
 		int kasilaKop = pErre*pZut;
-		kasilak = new JButton[kasilaKop+1];
-		for(int i = kasilaKop; i > 0; i--){
+		kasilak = new JButton[kasilaKop];
+		for(int i = 0; i < kasilaKop; i++){
 			JButton b1 = new JButton();
 			b1.setIcon(createImageIcon("close.png"));
 			b1.addActionListener(new ActionListener()	{
@@ -161,10 +149,6 @@ public class Leihoa extends JFrame {
 			kasilak[i] = b1;
 			getContentPane().add(kasilak[i]);
 		}
-	}
-	
-	private void kailakSortu(){
-		
 	}
 	
 	private ImageIcon createImageIcon(String pHelbideIzena){
