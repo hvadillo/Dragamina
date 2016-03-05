@@ -7,6 +7,9 @@ public class Panela{
 	
 	private Panela(){
 		Leihoa.getLeihoa().setVisible(true);
+		//int[] dim = dimentzioakKalkulatu(1);
+		//Leihoa.getLeihoa().leihoaAldatu(dim[0], dim[1]);
+		//matrizea = new MatrizeGelaxka(1);
 	}
 	
 	public static Panela getPanela(){
@@ -17,16 +20,11 @@ public class Panela{
 	}
 	
 	public void jokatu(int pZail){
-
-	}
-	
-	private void panelHutzaEraiki(){
-		//Leihoa.getLeihoa().setVisible(true);
+		Leihoa.getLeihoa().setVisible(true);
 	}
 	
 	public void panelaEraiki(int pZail){
 		int[] dim = dimentzioakKalkulatu(pZail);
-		Leihoa.getLeihoa().setVisible(false);
 		Leihoa.getLeihoa().leihoaAldatu(dim[0], dim[1]);
 		Leihoa.getLeihoa().setVisible(true);
 		//matrizea = new MatrizeGelaxka(pZail);

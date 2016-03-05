@@ -4,6 +4,6 @@ package org.si.dragamina;
 public abstract class Main {
 
 	public static void main(String[] args) {
-		Panela.getPanela().jokatu(1);
+		Panela.getPanela().jokatu(1);;
 	}
 }

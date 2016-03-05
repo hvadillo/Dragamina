@@ -8,6 +8,7 @@ public class MatrizeGelaxka {
 	
 	public MatrizeGelaxka(int pZailt){
 		matrizeaSortu(pZailt);
+		System.out.println(gelaxkak[0][0].irudiIzena);
 	}
 	
 	private void gelaxkaHutzakSortu(int pZ){
@@ -30,13 +31,11 @@ public class MatrizeGelaxka {
 	}
 	
 	private void minakSortu(int pMinaKop, int pXMax, int pYMax){
-		int xPos, yPos, maxX, maxY;
-		maxX = pXMax;
-		maxY = pYMax;
+		int xPos, yPos;
 		while(pMinaKop>0){
 			Random rand = new Random();
-			xPos = rand.nextInt(7);
-			yPos = rand.nextInt(10);
+			xPos = rand.nextInt(pXMax);
+			yPos = rand.nextInt(pYMax);
 			gelaxkak[xPos][yPos] = new GelaMina(xPos,yPos);
 			zenbakiaEguneratu(xPos,yPos);
 			pMinaKop = pMinaKop - 1;

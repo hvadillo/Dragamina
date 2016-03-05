@@ -13,6 +13,7 @@ import java.net.URL;
 
 import javax.swing.*;
 import javax.swing.JButton;
+import java.awt.Point;
 
 public class Leihoa extends JFrame {
 
@@ -27,7 +28,7 @@ public class Leihoa extends JFrame {
 	public Leihoa() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(0, 0, 340, 299);
+		setSize(340, 299);
 		setLocationRelativeTo(null); 
 		
 		zail = 1;
@@ -122,11 +123,11 @@ public class Leihoa extends JFrame {
 	public void leihoaAldatu(int pErre, int pZut){
 		kasilak = null;
 		switch (zail){
-			case 1:	setBounds(0, 0, 340, 299);
+			case 1:	setSize(340, 299);
 					break;
-			case 2:	setBounds(0, 0, 510, 408);
+			case 2:	setSize(510, 408);
 					break;
-			case 3:	setBounds(0, 0, 825, 476);
+			case 3:	setSize(825, 476);
 		}
 		setLocationRelativeTo(null); 
 		kasilakSortu(pErre,pZut);
@@ -143,10 +144,12 @@ public class Leihoa extends JFrame {
 			b1.addActionListener(new ActionListener()	{
 				@Override
 				public void actionPerformed(ActionEvent e) {
-						//String iIzen = m.gelaIreki(xPos, yPos);
-						ImageIcon image = createImageIcon("3.png");
+						//String iIzen = Panela.getPanela().ireki(3, 6);
+						ImageIcon image = createImageIcon("open.png");
 						b1.setIcon(image);
-					
+						for( ActionListener al : b1.getActionListeners() ) {	//Action listener erabili ondoren borratu egingo du
+							b1.removeActionListener( al );
+						}
 				}
 			});
 			kasilak[i] = b1;
@@ -163,4 +166,3 @@ public class Leihoa extends JFrame {
 		return image;
 	}
 }
-
