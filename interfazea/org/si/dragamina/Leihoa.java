@@ -24,12 +24,13 @@ public class Leihoa extends JFrame {
 	private JButton smileB;
 	private JButton[] kasilak ;
 	private int zail;
+	private JPanel panel;
 	
 	public Leihoa() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(340, 299);
-		setLocationRelativeTo(null); 
+		//setSize(340, 299);
+		//setLocationRelativeTo(null); 
 		
 		zail = 1;
 		
@@ -38,7 +39,7 @@ public class Leihoa extends JFrame {
 		
 		mnJokoa = new JMenu("Jokoa"){
 	        {
-	            setSize(55, 20);
+	            setSize(55, 33);
 	            setMaximumSize(getSize());
 	        }
 	    };
@@ -48,8 +49,14 @@ public class Leihoa extends JFrame {
 		mntmErraza.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(zail!=1){	
 					zail = 1;
 					Panela.getPanela().panelaEraiki(zail);
+				}
+				else{
+					Panela.getPanela().matrizeaAldatu();
+					kasilakItxi();
+				}
 			}
 		});
 		mnJokoa.add(mntmErraza);
@@ -58,8 +65,14 @@ public class Leihoa extends JFrame {
 		mntmNormala.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(zail!=2){	
 					zail = 2;
 					Panela.getPanela().panelaEraiki(zail);
+				}
+				else{
+					Panela.getPanela().matrizeaAldatu();
+					kasilakItxi();
+				}
 			}
 		});
 		mnJokoa.add(mntmNormala);
@@ -68,27 +81,33 @@ public class Leihoa extends JFrame {
 		mntmZaila.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if(zail!=3){	
 					zail = 3;
 					Panela.getPanela().panelaEraiki(zail);
+				}
+				else{
+					Panela.getPanela().matrizeaAldatu();
+					kasilakItxi();
+				}
 			}
 		});
 		mnJokoa.add(mntmZaila);
 		
 		mnLaguntza = new JMenu("Laguntza"){
 	        {
-	            setSize(77, 20);
+	            setSize(77, 33);
 	            setMaximumSize(getSize());
 	        }
 	    };
 		menuBar.add(mnLaguntza);
 		
 		mntmArgibidea = new JMenuItem("Argibidea");
-		/*mntmArgibidea.addActionListener(new ActionListener()	{
+		mntmArgibidea.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					//mezu bat bota
 			}
-		});*/
+		});
 		mnLaguntza.add(mntmArgibidea);
 		
 		smileB = new JButton(){
@@ -101,12 +120,11 @@ public class Leihoa extends JFrame {
 		smileB.addActionListener(new ActionListener()	{
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					Panela.getPanela().panelaEraiki(zail);
+					Panela.getPanela().matrizeaAldatu();
+					kasilakItxi();
 			}
 		});
 		menuBar.add(smileB);
-
-		kasilakSortu(7,10);
 	}
 	
 	public static Leihoa getLeihoa(){
@@ -136,6 +154,7 @@ public class Leihoa extends JFrame {
 	private void kasilakSortu(int pErre, int pZut){
 		getContentPane().removeAll();
 		getContentPane().setLayout(new GridLayout(pErre, pZut, 0, 0));
+	
 		int kasilaKop = pErre*pZut;
 		kasilak = new JButton[kasilaKop];
 		for(int i = 0; i < kasilaKop; i++){
@@ -144,7 +163,6 @@ public class Leihoa extends JFrame {
 			b1.addActionListener(new ActionListener()	{
 				@Override
 				public void actionPerformed(ActionEvent e) {
-						//String iIzen = Panela.getPanela().ireki(3, 6);
 						ImageIcon image = createImageIcon("open.png");
 						b1.setIcon(image);
 						for( ActionListener al : b1.getActionListeners() ) {	//Action listener erabili ondoren borratu egingo du
@@ -154,6 +172,24 @@ public class Leihoa extends JFrame {
 			});
 			kasilak[i] = b1;
 			getContentPane().add(kasilak[i]);
+		}
+	}
+	
+	private void kasilakItxi(){
+		ImageIcon image = createImageIcon("close.png");
+		for(int i=0; i<kasilak.length; i++){
+			JButton b1 = kasilak[i];
+			b1.setIcon(image);
+			b1.addActionListener(new ActionListener()	{
+				@Override
+				public void actionPerformed(ActionEvent e) {
+						ImageIcon image = createImageIcon("open.png");
+						b1.setIcon(image);
+						for( ActionListener al : b1.getActionListeners() ) {	//Action listener erabili ondoren borratu egingo du
+							b1.removeActionListener( al );
+						}
+				}
+			});
 		}
 	}
 	
