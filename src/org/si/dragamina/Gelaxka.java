@@ -1,13 +1,11 @@
 package org.si.dragamina;
 
-import javax.swing.*;
-
 public abstract class Gelaxka {
 
 	protected int x;
 	protected int y;
-	protected String irudiIzena;
 	protected boolean zabaldua;
+	protected String mota;
 	
 	public Gelaxka(int pX, int pY){
 		x = pX;
@@ -21,9 +19,5 @@ public abstract class Gelaxka {
 	
 	protected abstract void eguneratu();{
 		
-	}
-	
-	protected String getIrudia(){
-		return irudiIzena;
 	}
 }

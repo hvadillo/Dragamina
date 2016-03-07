@@ -1,30 +1,40 @@
 package org.si.dragamina;
 
-import java.awt.Image;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.URL;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 
-public class Leihoa extends JFrame {
+public class Leihoa extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
 	private Menua mnMenua = new Menua();
-	private Smiley smileB = new Smiley();
-	private JButton[] kasilak ;
+	private Smiley smileB = Smiley.getSmiley();
 	private int zail = 0;
-	private JPanel gPanela, bPanela;
+	private JPanel gPanela;
+	private BotoienPanela botoiak = new BotoienPanela();
 	
 	public Leihoa() {
 		setTitle("DRAGAMINA");
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setIconImage(Irudiak.ikonoa);
+		
+		this.addWindowListener(new WindowAdapter() {
+			  public void windowClosing(WindowEvent e) {
+			    int confirmed = JOptionPane.showConfirmDialog(null, 
+			        "Are you sure you want to exit the program?", "DRAGAMINA ITXI",
+			        JOptionPane.YES_NO_OPTION);
+
+			    if (confirmed == JOptionPane.YES_OPTION) {
+			      dispose();
+			    }
+			  }
+			});
 		
 		setJMenuBar(mnMenua);											//Menua
 		
@@ -33,13 +43,7 @@ public class Leihoa extends JFrame {
 		getContentPane().add(gPanela, BorderLayout.NORTH);
 		gPanela.add(smileB, BorderLayout.CENTER);
 		
-		bPanela = new JPanel();											//Botoientzako panela
-		bPanela.setBackground(new Color(250, 250, 250));
-		getContentPane().add(bPanela, BorderLayout.CENTER);
-		
-		JPanel bAzpiPanela = new JPanel();								//botoien eta smiley-aren arteko tartea
-		bAzpiPanela.setBackground(new Color(250, 250, 250));
-		bPanela.add(bAzpiPanela, BorderLayout.NORTH);
+		getContentPane().add(botoiak, BorderLayout.CENTER);
 	}
 	
 	public static Leihoa getLeihoa(){
@@ -54,7 +58,6 @@ public class Leihoa extends JFrame {
 	}
 	
 	public void leihoaAldatu(int pErre, int pZut){
-		kasilak = null;
 		switch (zail){
 			case 1:	setSize(330, 317);
 					break;
@@ -63,47 +66,19 @@ public class Leihoa extends JFrame {
 			case 3:	setSize(825, 470);
 		}
 		setLocationRelativeTo(null); 
-		kasilakSortu(pErre,pZut);
-	}
-	
-	private void kasilakSortu(int pErre, int pZut){
-		bPanela.removeAll();													//Botoien paneleko elemetu guztiak ezabatu
-		bPanela.setLayout(new GridLayout(pErre, pZut, 0, 0));
-	
-		int kasilaKop = pErre*pZut;
-		kasilak = new JButton[kasilaKop];
-		for(int i = 0; i < kasilaKop; i++){
-			JButton b1 = new JButton();
-			b1.setIcon(Irudiak.bloke[0]);
-			b1.addActionListener(new ActionListener()	{
-				@Override
-				public void actionPerformed(ActionEvent e) {
-						b1.setIcon(Irudiak.bloke[1]);
-						for( ActionListener al : b1.getActionListeners() ) {	//Action listener erabili ondoren borratu egingo du
-							b1.removeActionListener( al );
-							smileB.aldatu();
-						}
-				}
-			});
-			kasilak[i] = b1;
-			bPanela.add(kasilak[i]);
-		}
+		botoiak.kasilakSortu(pZut, pErre);
 	}
 	
 	public void kasilakItxi(){
-		for(int i=0; i<kasilak.length; i++){
-			JButton b1 = kasilak[i];
-			b1.setIcon(Irudiak.bloke[0]);
-			b1.addActionListener(new ActionListener()	{
-				@Override
-				public void actionPerformed(ActionEvent e) {
-						b1.setIcon(Irudiak.bloke[1]);
-						for( ActionListener al : b1.getActionListeners() ) {	//Action listener erabili ondoren borratu egingo du
-							b1.removeActionListener( al );
-						}
-				}
-			});
-		}
+		botoiak.botoiakItxi();
+	}
+	
+	public void zenbakiaPantailaratu(int pZenb, int pZut, int pErr){
+		botoiak.zenbakiaErakutzi(pZenb, pZut, pErr);
+	}
+	
+	public void hutsaPantailaratu(int zut, int err){
+		botoiak.hutsaErakutzi(zut, err);
 	}
 	
 	public int getZailtasuna(){
@@ -113,13 +88,8 @@ public class Leihoa extends JFrame {
 	public void setZailtasuna(int pZail){
 		zail = pZail;
 	}
-	
-	private ImageIcon createImageIcon(String pHelbideIzena){
-		URL r = Leihoa.class.getResource(pHelbideIzena);
-		ImageIcon image = new ImageIcon(r);  	
-		Image img = image.getImage();
-		Image newimg = img.getScaledInstance( 33, 33,  java.awt.Image.SCALE_SMOOTH ) ;  
-		image = new ImageIcon( newimg );
-		return image;
+
+	public void minaErakutzi(int x, int y) {
+		botoiak.minaErakutzi(x, y);
 	}
 }

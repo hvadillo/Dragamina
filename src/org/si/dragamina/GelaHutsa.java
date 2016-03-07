@@ -4,17 +4,27 @@ public class GelaHutsa extends Gelaxka {
 
 	public GelaHutsa(int pX, int pY){
 		super(pX,pY);
-		irudiIzena = "0.png";
+		mota = "hutsa";
 	}
 
 	@Override
 	protected void gelaIreki() {
-		gelaHutsakIreki();
-		zabaldua = true;
+		if(!zabaldua){
+			zabaldua = true;
+			gelaHutsakIreki();
+		}
 	}
 	
 	private void gelaHutsakIreki(){
-		
+		Leihoa.getLeihoa().hutsaPantailaratu(x, y);
+		Panela.getPanela().ireki(x, y-1);
+		Panela.getPanela().ireki(x, y+1);
+		Panela.getPanela().ireki(x+1, y-1);
+		Panela.getPanela().ireki(x+1, y+1);
+		Panela.getPanela().ireki(x-1, y-1);
+		Panela.getPanela().ireki(x-1, y+1);
+		Panela.getPanela().ireki(x+1, y);
+		Panela.getPanela().ireki(x-1, y);
 	}
 
 	@Override

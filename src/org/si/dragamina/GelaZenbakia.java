@@ -6,42 +6,24 @@ public class GelaZenbakia extends Gelaxka{
 	
 	public GelaZenbakia(int pX, int pY){
 		super(pX, pY);
-	}
-	
-	private void setIrudiIzena(){
-		switch (minaInguruan) {
-			case 1:	irudiIzena = "1.png";
-					break;
-			case 2:	irudiIzena = "2.png";
-					break;
-			case 3:	irudiIzena = "3.png";
-					break;
-			case 4:	irudiIzena = "4.png";
-					break;
-			case 5:	irudiIzena = "5.png";
-					break;
-			case 6:	irudiIzena = "6.png";
-					break;
-			case 7:	irudiIzena = "7.png";
-					break;
-			case 8:	irudiIzena = "8.png";
-					break;
-		}
+		minaInguruan = 1;
+		mota = "zenbakia";
 	}
 	
 	@Override
 	protected void gelaIreki() {
-		zenbakiaErakutzi();
-		zabaldua = true;
+		if(!zabaldua){
+			zabaldua = true;
+			zenbakiaErakutzi();
+		}
 	}
 	
 	private void zenbakiaErakutzi(){
-		
+		Leihoa.getLeihoa().zenbakiaPantailaratu(minaInguruan, x, y);
 	}
 
 	@Override
 	public void eguneratu() {
 		minaInguruan = minaInguruan + 1;
-		setIrudiIzena();
 	}
 }

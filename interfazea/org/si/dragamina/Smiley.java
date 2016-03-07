@@ -7,10 +7,11 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public class Smiley extends JButton{
-
-	private Smiley nSmiley;
 	
-	public Smiley(){
+	private static final long serialVersionUID = 1L;
+	private static Smiley nSmiley;
+	
+	private Smiley(){
 		setBorder(BorderFactory.createEmptyBorder());
 		setContentAreaFilled(false);
 		setSize(33, 33);
@@ -23,13 +24,10 @@ public class Smiley extends JButton{
 		});
 	}
 	
-	public void aldatu(){
-		if(getIcon() == Irudiak.smiley[1]){
-			setIcon(Irudiak.smiley[0]);
+	public static Smiley getSmiley(){
+		if(nSmiley==null){
+			nSmiley = new Smiley();
 		}
-		else{
-			setIcon(Irudiak.smiley[1]);
-		}
-		
+		return nSmiley;
 	}
 }

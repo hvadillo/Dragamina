@@ -7,7 +7,6 @@ public class Panela{
 	
 	private Panela(){
 		Irudiak.kargatu();
-		panelaEraiki(1);
 	}
 	
 	public static Panela getPanela(){
@@ -22,12 +21,12 @@ public class Panela{
 		int[] dim = dimentzioakKalkulatu(pZail);
 		Leihoa.getLeihoa().leihoaAldatu(dim[0], dim[1]);
 		Leihoa.getLeihoa().setVisible(true);
-		//matrizea = new MatrizeGelaxka(pZail);
+		matrizea = new MatrizeGelaxka(pZail);
 	}
 	
 	public void matrizeaEguneratu(){
-		//matrizea = new MatrizeGelaxka(Leihoa.getLeihoa().zailtasuna());
 		Leihoa.getLeihoa().kasilakItxi();
+		matrizea = new MatrizeGelaxka(Leihoa.getLeihoa().getZailtasuna());
 	}
 	
 	public int[] dimentzioakKalkulatu(int pZ){
@@ -46,7 +45,7 @@ public class Panela{
 		return dim;
 	}
 	
-	public String ireki(int pX, int pY){
-		return matrizea.gelaIreki(pX, pY);
+	public void ireki(int pX, int pY){
+		matrizea.gelaIreki(pX, pY);
 	}
 }

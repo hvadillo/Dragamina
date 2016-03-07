@@ -5,62 +5,87 @@ import java.util.Random;
 public class MatrizeGelaxka {
 
 	private Gelaxka[][] gelaxkak;
+	private int zut;
+	private int err;
 	
 	public MatrizeGelaxka(int pZailt){
+		int[] d = Panela.getPanela().dimentzioakKalkulatu(pZailt);
+		zut = d[1];
+		err = d[0];
+		gelaxkak = new Gelaxka[zut][err];
 		matrizeaSortu(pZailt);
-		System.out.println(gelaxkak[0][0].irudiIzena);
+	}
+	
+	public void matrizeaSortu(int pZailt){
+		int minaKop = pZailt * zut;
+		minakSortu(minaKop);
+		gelaxkaHutzakSortu(pZailt);
 	}
 	
 	private void gelaxkaHutzakSortu(int pZ){
-		int[] dim = Panela.getPanela().dimentzioakKalkulatu(pZ);
-		int x = 0, y = 0;
-		while(y<=dim[1]){
-			while(x>dim[0]){
-				if(gelaxkak[x][y] ==null){
+		for(int y=0; y<err; y++){
+			for(int x=0; x<zut; x++){
+				if(gelaxkak[x][y] == null){
 					gelaxkak[x][y] = new GelaHutsa(x,y);
 				}
 			}
 		}
 	}
 	
-	public void matrizeaSortu(int pZailt){
-		int[] dim = Panela.getPanela().dimentzioakKalkulatu(pZailt);
-		int minaKop = pZailt * dim[0];
-		minakSortu(minaKop,dim[0], dim[1]);
-		gelaxkaHutzakSortu(pZailt);
-	}
-	
-	private void minakSortu(int pMinaKop, int pXMax, int pYMax){
+	private void minakSortu(int pMinaKop){
 		int xPos, yPos;
 		while(pMinaKop>0){
 			Random rand = new Random();
-			xPos = rand.nextInt(pXMax);
-			yPos = rand.nextInt(pYMax);
-			gelaxkak[xPos][yPos] = new GelaMina(xPos,yPos);
-			zenbakiaEguneratu(xPos,yPos);
-			pMinaKop = pMinaKop - 1;
+			xPos = rand.nextInt(zut);
+			yPos = rand.nextInt(err);
+			if(gelaxkak[xPos][yPos]==null){
+				gelaxkak[xPos][yPos] = new GelaMina(xPos,yPos);
+				kasilakEguneratu(xPos,yPos);
+				pMinaKop = pMinaKop - 1;
+			}
 		}
 	}
 	
-	private void zenbakiaEguneratu(int pX, int pY){
-		if(gelaxkak[pX][pY]==null){
-			gelaxkak[pX][pY] = new GelaZenbakia(pX, pY);
-		}
-		else if(!gelaxkak[pX][pY].irudiIzena.equals("mine.png")){
-			gelaxkak[pX][pY].eguneratu();
+	private void kasilakEguneratu(int pX, int pY){
+		eguneratu(pX+1,pY);
+		eguneratu(pX,pY+1);
+		eguneratu(pX+1,pY+1);
+		eguneratu(pX-1,pY);
+		eguneratu(pX,pY-1);
+		eguneratu(pX-1,pY);
+		eguneratu(pX+1,pY-1);
+		eguneratu(pX-1,pY+1);
+	}
+	
+	private void eguneratu(int pZut, int pErr){
+		if(matrizeBarruan(pZut, pErr)){
+			if(gelaxkak[pZut][pErr]==null){
+				gelaxkak[pZut][pErr] = new GelaZenbakia(pZut, pErr);
+			}
+			else if(gelaxkak[pZut][pErr].mota == "zenbakia"){
+				gelaxkak[pZut][pErr].eguneratu();
+			}
 		}
 	}
 	
-	public boolean zabalduDa(int pX, int pY){
-		return gelaxkak[pX][pY].zabaldua;
+	private boolean matrizeBarruan(int pZut, int pErr){
+		boolean barruan = false;
+		if(pZut<zut && pZut>=0){
+			if(pErr<err && pErr>=0){
+				barruan = true;
+			}
+		}
+		return barruan;
 	}
 	
 	public void minakErakutzi(){
 		
 	}
 	
-	public String gelaIreki(int pX, int pY){
-		gelaxkak[pX][pY].gelaIreki();
-		return gelaxkak[pX][pY].irudiIzena;
+	public void gelaIreki(int pX, int pY){
+		if(matrizeBarruan(pX,pY)){
+			System.out.println(pX + " " + pY);
+			gelaxkak[pX][pY].gelaIreki();
+		}
 	}
 }

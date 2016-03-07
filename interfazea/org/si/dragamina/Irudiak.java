@@ -36,8 +36,8 @@ public class Irudiak {
 	private static void smileyKargatu(){
 		smiley[0] = createImageIcon("smile.png");
 		smiley[1] = createImageIcon("win.png");
-		//smiley[2] = createImageIcon("loose.png");
-		//smiley[3] = createImageIcon("click.png");
+		smiley[2] = createImageIcon("loose.png");
+		smiley[3] = createImageIcon("click.png");
 	}
 	
 	private static void blokeakKargatu(){
@@ -46,7 +46,7 @@ public class Irudiak {
 	}
 	
 	private static void minaKargatu(){
-		mina = createImageIcon("mine.png");
+		//mina = createImageIcon("mine.png");
 	}
 	
 	private static void ikonoaKargatu(){

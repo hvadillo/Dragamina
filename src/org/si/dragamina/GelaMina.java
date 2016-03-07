@@ -4,13 +4,15 @@ public class GelaMina extends Gelaxka {
 	
 	public GelaMina(int x, int y){
 		super(x,y);
-		irudiIzena = "mina.png";
+		mota = "mina";
+		Leihoa.getLeihoa().minaErakutzi(x,y);
 	}
 
 	@Override
 	protected void gelaIreki() {
 		estanda();
 		zabaldua = true;
+		
 	}
 	
 	private void estanda(){
@@ -19,7 +21,6 @@ public class GelaMina extends Gelaxka {
 
 	@Override
 	public void eguneratu() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 }
