@@ -11,12 +11,14 @@ public class Irudiak {
 	public static ImageIcon[] smiley = new ImageIcon[4];
 	public static ImageIcon[] bloke = new ImageIcon[2];
 	public static ImageIcon mina = new ImageIcon();
+	public static Image ikonoa; 
 	
 	public static void kargatu(){
 		zenbakiakKargatu();
 		smileyKargatu();
 		blokeakKargatu();
 		minaKargatu();
+		ikonoaKargatu();
 	}
 	
 	private static void zenbakiakKargatu(){
@@ -45,6 +47,12 @@ public class Irudiak {
 	
 	private static void minaKargatu(){
 		mina = createImageIcon("mine.png");
+	}
+	
+	private static void ikonoaKargatu(){
+		URL r = Irudiak.class.getResource("icon.png");
+		ImageIcon image = new ImageIcon(r);  	
+		ikonoa = image.getImage(); 
 	}
 
 	private static ImageIcon createImageIcon(String pHelbideIzena){

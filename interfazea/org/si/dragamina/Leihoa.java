@@ -24,7 +24,7 @@ public class Leihoa extends JFrame {
 		setTitle("DRAGAMINA");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setIconImage(Irudiak.smiley[0].getImage());
+		setIconImage(Irudiak.ikonoa);
 		
 		setJMenuBar(mnMenua);											//Menua
 		
