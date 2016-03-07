@@ -2,10 +2,11 @@ package org.si.dragamina;
 
 public class Panela{
 	
-	private static Panela nPanela = null;
+	private static Panela nPanela;
 	private MatrizeGelaxka matrizea;
 	
 	private Panela(){
+		Irudiak.kargatu();
 		panelaEraiki(1);
 	}
 	
@@ -17,14 +18,16 @@ public class Panela{
 	}
 	
 	public void panelaEraiki(int pZail){
+		Leihoa.getLeihoa().setZailtasuna(pZail);
 		int[] dim = dimentzioakKalkulatu(pZail);
 		Leihoa.getLeihoa().leihoaAldatu(dim[0], dim[1]);
 		Leihoa.getLeihoa().setVisible(true);
 		//matrizea = new MatrizeGelaxka(pZail);
 	}
 	
-	public void matrizeaAldatu(){
-		//matrizea = new MatrizeGelaxka(pZail);
+	public void matrizeaEguneratu(){
+		//matrizea = new MatrizeGelaxka(Leihoa.getLeihoa().zailtasuna());
+		Leihoa.getLeihoa().kasilakItxi();
 	}
 	
 	public int[] dimentzioakKalkulatu(int pZ){
