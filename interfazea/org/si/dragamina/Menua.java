@@ -6,10 +6,10 @@ import javax.swing.Box;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 
 public class Menua extends JMenuBar implements ActionListener{
 
+	private static final long serialVersionUID = 1L;
 	private JMenu mnMenua, mnLaguntza;
 	private JMenuItem mntmErraza, mntmNormala, mntmZaila, mntmIrten;
 	private JMenuItem mntmArgibidea, mntmAboutThis;
