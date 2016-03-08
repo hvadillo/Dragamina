@@ -1,4 +1,8 @@
-package org.si.dragamina;
+package org.si.dragamina.logic;
+
+import org.si.dragamina.interf.Irudiak;
+import org.si.dragamina.interf.Leihoa;
+import org.si.dragamina.interf.Smiley;
 
 public class Panela{
 	
@@ -17,21 +21,22 @@ public class Panela{
 	}
 	
 	public void panelaEraiki(int pZail){
-		Leihoa.getLeihoa().setZailtasuna(pZail);
+		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 		int[] dim = dimentzioakKalkulatu(pZail);
-		Leihoa.getLeihoa().leihoaAldatu(dim[0], dim[1]);
-		Leihoa.getLeihoa().setVisible(true);
+		Leihoa.getLeihoa().leihoaAldatu(pZail, dim[0], dim[1]);
 		matrizea = new MatrizeGelaxka(pZail, dim[0],dim[1]);
+		Leihoa.getLeihoa().setVisible(true);
 	}
 	
 	public void matrizeaEguneratu(){
+		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 		Leihoa.getLeihoa().kasilakItxi();
 		int zail = Leihoa.getLeihoa().getZailtasuna();
 		int[] dim = dimentzioakKalkulatu(zail);
 		matrizea = new MatrizeGelaxka(zail,dim[0],dim[1]);
 	}
 	
-	public int[] dimentzioakKalkulatu(int pZ){
+	private int[] dimentzioakKalkulatu(int pZ){
 		int[] dim = new int[2];
 		switch (pZ) {
 			case 1: dim[0] = 7;
@@ -52,8 +57,8 @@ public class Panela{
 	}
 	
 	public void partidaGaldu(){
-		matrizea.minakErakutzi();
 		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);
+		matrizea.minakErakutzi();
 		Leihoa.getLeihoa().galdu();
 	}
 }

@@ -1,4 +1,4 @@
-package org.si.dragamina;
+package org.si.dragamina.logic;
 
 public abstract class Gelaxka {
 

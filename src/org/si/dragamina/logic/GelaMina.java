@@ -1,4 +1,6 @@
-package org.si.dragamina;
+package org.si.dragamina.logic;
+
+import org.si.dragamina.interf.Leihoa;
 
 public class GelaMina extends Gelaxka {
 	
@@ -9,20 +11,13 @@ public class GelaMina extends Gelaxka {
 
 	@Override
 	protected void gelaIreki() {
+		Leihoa.getLeihoa().minaErakutzi(x, y);
 		if(!zabaldua){
-			estanda();
 			zabaldua = true;
 			Panela.getPanela().partidaGaldu();
 		}
-		estanda();
-	}
-	
-	private void estanda(){
-		Leihoa.getLeihoa().minaErakutzi(x, y);
 	}
 
 	@Override
-	public void eguneratu() {
-		// TODO Auto-generated method stub	
-	}
+	public void eguneratu() {}			//GelaZenbakian bakarrik erabiliko da
 }

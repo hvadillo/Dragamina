@@ -1,4 +1,4 @@
-package org.si.dragamina;
+package org.si.dragamina.interf;
 
 import java.awt.Image;
 import java.net.URL;
@@ -10,14 +10,12 @@ public class Irudiak {
 	public static ImageIcon[] zenbakiak = new ImageIcon[9];
 	public static ImageIcon[] smiley = new ImageIcon[4];
 	public static ImageIcon[] bloke = new ImageIcon[5];
-	public static ImageIcon mina = new ImageIcon();
 	public static Image ikonoa; 
 	
 	public static void kargatu(){
 		zenbakiakKargatu();
 		smileyKargatu();
 		blokeakKargatu();
-		minaKargatu();
 		ikonoaKargatu();
 	}
 	
@@ -46,10 +44,6 @@ public class Irudiak {
 		bloke[2] = createImageIcon("mine.png");
 		bloke[3] = createImageIcon("flag.png");
 		bloke[4] = createImageIcon("think.png");
-	}
-	
-	private static void minaKargatu(){
-		//mina = createImageIcon("mine.png");
 	}
 	
 	private static void ikonoaKargatu(){

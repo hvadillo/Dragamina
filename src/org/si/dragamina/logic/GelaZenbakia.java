@@ -1,4 +1,6 @@
-package org.si.dragamina;
+package org.si.dragamina.logic;
+
+import org.si.dragamina.interf.Leihoa;
 
 public class GelaZenbakia extends Gelaxka{
 

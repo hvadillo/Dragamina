@@ -1,4 +1,4 @@
-package org.si.dragamina;
+package org.si.dragamina.interf;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -13,7 +13,6 @@ public class Leihoa extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
 	private Menua mnMenua = new Menua();
-	private Smiley smileB = Smiley.getSmiley();
 	private int zail = 0;
 	private JPanel gPanela;
 	private BotoienPanela botoiak = new BotoienPanela();
@@ -24,7 +23,7 @@ public class Leihoa extends JFrame{
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setIconImage(Irudiak.ikonoa);
 		
-		this.addWindowListener(new WindowAdapter() {
+		this.addWindowListener(new WindowAdapter() {					//Leihoa ixtean aterako den mezua
 			  public void windowClosing(WindowEvent e) {
 			    int confirmed = JOptionPane.showConfirmDialog(null, 
 			        "Are you sure you want to exit the program?", "DRAGAMINA ITXI",
@@ -41,7 +40,7 @@ public class Leihoa extends JFrame{
 		gPanela = new JPanel();											//Smiley-rako panela
 		gPanela.setBackground(new Color(250, 250, 250));
 		getContentPane().add(gPanela, BorderLayout.NORTH);
-		gPanela.add(smileB, BorderLayout.CENTER);
+		gPanela.add(Smiley.getSmiley(), BorderLayout.CENTER);
 		
 		getContentPane().add(botoiak, BorderLayout.CENTER);
 	}
@@ -57,7 +56,8 @@ public class Leihoa extends JFrame{
 		return nLeihoa;
 	}
 	
-	public void leihoaAldatu(int pErre, int pZut){
+	public void leihoaAldatu(int pZail, int pErre, int pZut){			//Leihoen tamaina zailtasunaren arabera
+		zail = pZail;
 		switch (zail){
 			case 1:	setSize(330, 317);
 					break;
@@ -83,10 +83,6 @@ public class Leihoa extends JFrame{
 	
 	public int getZailtasuna(){
 		return zail;
-	}
-	
-	public void setZailtasuna(int pZail){
-		zail = pZail;
 	}
 
 	public void minaErakutzi(int x, int y) {

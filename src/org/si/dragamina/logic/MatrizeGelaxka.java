@@ -1,4 +1,4 @@
-package org.si.dragamina;
+package org.si.dragamina.logic;
 
 import java.util.Random;
 import java.util.ArrayList;
@@ -22,16 +22,6 @@ public class MatrizeGelaxka {
 		int minaKop = pZailt * zut;
 		minakSortu(minaKop);
 		gelaxkaHutzakSortu();
-	}
-	
-	private void gelaxkaHutzakSortu(){
-		for(int y=0; y<err; y++){
-			for(int x=0; x<zut; x++){
-				if(gelaxkak[x][y] == null){
-					gelaxkak[x][y] = new GelaHutsa(x,y);
-				}
-			}
-		}
 	}
 	
 	private void minakSortu(int pMinaKop){
@@ -79,6 +69,16 @@ public class MatrizeGelaxka {
 			}
 		}
 		return barruan;
+	}
+	
+	private void gelaxkaHutzakSortu(){
+		for(int y=0; y<err; y++){
+			for(int x=0; x<zut; x++){
+				if(gelaxkak[x][y] == null){
+					gelaxkak[x][y] = new GelaHutsa(x,y);
+				}
+			}
+		}
 	}
 	
 	public void minakErakutzi(){

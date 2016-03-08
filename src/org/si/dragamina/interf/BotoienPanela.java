@@ -1,4 +1,4 @@
-package org.si.dragamina;
+package org.si.dragamina.interf;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

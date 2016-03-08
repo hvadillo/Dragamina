@@ -1,9 +1,11 @@
-package org.si.dragamina;
+package org.si.dragamina.interf;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
+
+import org.si.dragamina.logic.Panela;
 
 public class Kasila extends JButton implements MouseListener {
 
@@ -28,12 +30,6 @@ public class Kasila extends JButton implements MouseListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void mousePressed(MouseEvent e) {
 		Smiley.getSmiley().setIcon(Irudiak.smiley[3]);
 		
@@ -47,14 +43,11 @@ public class Kasila extends JButton implements MouseListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseClicked(MouseEvent e) {}		//Ez dugu behar
+	
+	@Override
+	public void mouseEntered(MouseEvent e) {}		//Ez dugu behar
 
 	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent e) {}		//Ez dugu behar
 }

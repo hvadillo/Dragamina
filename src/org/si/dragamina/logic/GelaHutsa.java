@@ -1,4 +1,6 @@
-package org.si.dragamina;
+package org.si.dragamina.logic;
+
+import org.si.dragamina.interf.Leihoa;
 
 public class GelaHutsa extends Gelaxka {
 
@@ -16,8 +18,8 @@ public class GelaHutsa extends Gelaxka {
 	}
 	
 	private void gelaHutsakIreki(){
-		Leihoa.getLeihoa().hutsaPantailaratu(x, y);
-		Panela.getPanela().ireki(x, y-1);
+		Leihoa.getLeihoa().hutsaPantailaratu(x, y);	//Gela hau bera zabaldu
+		Panela.getPanela().ireki(x, y-1);			//Ondoan dituen gela guztiak zabaldu		
 		Panela.getPanela().ireki(x, y+1);
 		Panela.getPanela().ireki(x+1, y-1);
 		Panela.getPanela().ireki(x+1, y+1);
@@ -28,8 +30,5 @@ public class GelaHutsa extends Gelaxka {
 	}
 
 	@Override
-	public void eguneratu() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void eguneratu() {}						//GelaZenbakian bakarrik erabiliko da
 }
