@@ -19,6 +19,7 @@ public class Smiley extends JButton{
 		setIcon(Irudiak.smiley[0]);
 		addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
+				setIcon(Irudiak.smiley[0]);
 		    	Panela.getPanela().matrizeaEguneratu();
 		    }
 		});

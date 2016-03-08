@@ -5,18 +5,20 @@ public class GelaMina extends Gelaxka {
 	public GelaMina(int x, int y){
 		super(x,y);
 		mota = "mina";
-		Leihoa.getLeihoa().minaErakutzi(x,y);
 	}
 
 	@Override
 	protected void gelaIreki() {
+		if(!zabaldua){
+			estanda();
+			zabaldua = true;
+			Panela.getPanela().partidaGaldu();
+		}
 		estanda();
-		zabaldua = true;
-		
 	}
 	
 	private void estanda(){
-		
+		Leihoa.getLeihoa().minaErakutzi(x, y);
 	}
 
 	@Override

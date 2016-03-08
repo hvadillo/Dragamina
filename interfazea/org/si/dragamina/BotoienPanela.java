@@ -49,6 +49,14 @@ public class BotoienPanela extends JPanel{
 	}
 	
 	public void minaErakutzi(int x, int y){
-		botoiak[x][y].setIcon(Irudiak.smiley[0]);
+		botoiak[x][y].setIcon(Irudiak.bloke[2]);
+	}
+	
+	public void galdu(){
+		for(int j=0; j<botoiak[0].length; j++){
+			for(int i=0; i<botoiak.length; i++){
+				botoiak[i][j].kenduMouseListener();
+			}
+		}
 	}
 }

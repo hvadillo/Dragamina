@@ -92,4 +92,8 @@ public class Leihoa extends JFrame{
 	public void minaErakutzi(int x, int y) {
 		botoiak.minaErakutzi(x, y);
 	}
+	
+	public void galdu(){
+		botoiak.galdu();
+	}
 }

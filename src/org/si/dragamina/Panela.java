@@ -21,12 +21,14 @@ public class Panela{
 		int[] dim = dimentzioakKalkulatu(pZail);
 		Leihoa.getLeihoa().leihoaAldatu(dim[0], dim[1]);
 		Leihoa.getLeihoa().setVisible(true);
-		matrizea = new MatrizeGelaxka(pZail);
+		matrizea = new MatrizeGelaxka(pZail, dim[0],dim[1]);
 	}
 	
 	public void matrizeaEguneratu(){
 		Leihoa.getLeihoa().kasilakItxi();
-		matrizea = new MatrizeGelaxka(Leihoa.getLeihoa().getZailtasuna());
+		int zail = Leihoa.getLeihoa().getZailtasuna();
+		int[] dim = dimentzioakKalkulatu(zail);
+		matrizea = new MatrizeGelaxka(zail,dim[0],dim[1]);
 	}
 	
 	public int[] dimentzioakKalkulatu(int pZ){
@@ -47,5 +49,11 @@ public class Panela{
 	
 	public void ireki(int pX, int pY){
 		matrizea.gelaIreki(pX, pY);
+	}
+	
+	public void partidaGaldu(){
+		matrizea.minakErakutzi();
+		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);
+		Leihoa.getLeihoa().galdu();
 	}
 }

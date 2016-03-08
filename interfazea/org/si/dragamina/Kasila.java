@@ -22,6 +22,10 @@ public class Kasila extends JButton implements MouseListener {
 		setIcon(Irudiak.bloke[0]);
 		addMouseListener(this);
 	}
+	
+	public void kenduMouseListener(){
+		removeMouseListener(this);
+	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -37,8 +41,8 @@ public class Kasila extends JButton implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		Panela.getPanela().ireki(zutabe, errenkada);
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);
+		Panela.getPanela().ireki(zutabe, errenkada);
 		removeMouseListener(this);
 	}
 
@@ -53,5 +57,4 @@ public class Kasila extends JButton implements MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
-	
 }

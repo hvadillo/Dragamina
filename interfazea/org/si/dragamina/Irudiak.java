@@ -9,7 +9,7 @@ public class Irudiak {
 
 	public static ImageIcon[] zenbakiak = new ImageIcon[9];
 	public static ImageIcon[] smiley = new ImageIcon[4];
-	public static ImageIcon[] bloke = new ImageIcon[2];
+	public static ImageIcon[] bloke = new ImageIcon[3];
 	public static ImageIcon mina = new ImageIcon();
 	public static Image ikonoa; 
 	
@@ -43,6 +43,7 @@ public class Irudiak {
 	private static void blokeakKargatu(){
 		bloke[0] = createImageIcon("close.png");
 		bloke[1] = createImageIcon("open.png");
+		bloke[2] = createImageIcon("mine.png");
 	}
 	
 	private static void minaKargatu(){

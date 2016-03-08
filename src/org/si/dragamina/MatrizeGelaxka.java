@@ -1,28 +1,30 @@
 package org.si.dragamina;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 public class MatrizeGelaxka {
 
 	private Gelaxka[][] gelaxkak;
+	private ArrayList<Gelaxka> minak;
 	private int zut;
 	private int err;
 	
-	public MatrizeGelaxka(int pZailt){
-		int[] d = Panela.getPanela().dimentzioakKalkulatu(pZailt);
-		zut = d[1];
-		err = d[0];
+	public MatrizeGelaxka(int pZailt, int pErr, int pZut){
+		zut = pZut;
+		err = pErr;
 		gelaxkak = new Gelaxka[zut][err];
+		minak = new ArrayList<Gelaxka>();
 		matrizeaSortu(pZailt);
 	}
 	
 	public void matrizeaSortu(int pZailt){
 		int minaKop = pZailt * zut;
 		minakSortu(minaKop);
-		gelaxkaHutzakSortu(pZailt);
+		gelaxkaHutzakSortu();
 	}
 	
-	private void gelaxkaHutzakSortu(int pZ){
+	private void gelaxkaHutzakSortu(){
 		for(int y=0; y<err; y++){
 			for(int x=0; x<zut; x++){
 				if(gelaxkak[x][y] == null){
@@ -38,8 +40,9 @@ public class MatrizeGelaxka {
 			Random rand = new Random();
 			xPos = rand.nextInt(zut);
 			yPos = rand.nextInt(err);
-			if(gelaxkak[xPos][yPos]==null){
+			if(gelaxkak[xPos][yPos]==null || gelaxkak[xPos][yPos].mota!="mina"){
 				gelaxkak[xPos][yPos] = new GelaMina(xPos,yPos);
+				minak.add(gelaxkak[xPos][yPos]);
 				kasilakEguneratu(xPos,yPos);
 				pMinaKop = pMinaKop - 1;
 			}
@@ -48,13 +51,13 @@ public class MatrizeGelaxka {
 	
 	private void kasilakEguneratu(int pX, int pY){
 		eguneratu(pX+1,pY);
-		eguneratu(pX,pY+1);
 		eguneratu(pX+1,pY+1);
-		eguneratu(pX-1,pY);
-		eguneratu(pX,pY-1);
-		eguneratu(pX-1,pY);
-		eguneratu(pX+1,pY-1);
+		eguneratu(pX,pY+1);
 		eguneratu(pX-1,pY+1);
+		eguneratu(pX-1,pY);
+		eguneratu(pX-1,pY-1);
+		eguneratu(pX,pY-1);
+		eguneratu(pX+1,pY-1);
 	}
 	
 	private void eguneratu(int pZut, int pErr){
@@ -79,12 +82,13 @@ public class MatrizeGelaxka {
 	}
 	
 	public void minakErakutzi(){
-		
+		for(int x=0; x<minak.size(); x++){
+			minak.get(x).gelaIreki();
+		}
 	}
 	
 	public void gelaIreki(int pX, int pY){
 		if(matrizeBarruan(pX,pY)){
-			System.out.println(pX + " " + pY);
 			gelaxkak[pX][pY].gelaIreki();
 		}
 	}
