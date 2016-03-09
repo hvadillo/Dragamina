@@ -17,6 +17,9 @@ public class GelaZenbakia extends Gelaxka{
 		if(!zabaldua){
 			zabaldua = true;
 			zenbakiaErakutzi();
+			/*if(Panela.getPanela().irabaziDu()){
+				Panela.getPanela().partidaIrabazi();
+			}*/
 		}
 	}
 	

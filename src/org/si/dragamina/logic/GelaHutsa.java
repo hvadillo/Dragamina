@@ -14,6 +14,9 @@ public class GelaHutsa extends Gelaxka {
 		if(!zabaldua){
 			zabaldua = true;
 			gelaHutsakIreki();
+			/*if(Panela.getPanela().irabaziDu()){
+				Panela.getPanela().partidaIrabazi();
+			}*/
 		}
 	}
 	

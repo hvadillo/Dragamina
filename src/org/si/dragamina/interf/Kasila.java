@@ -5,6 +5,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 
+import org.si.dragamina.logic.MatrizeGelaxka;
 import org.si.dragamina.logic.Panela;
 
 public class Kasila extends JButton implements MouseListener {

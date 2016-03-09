@@ -61,4 +61,19 @@ public class Panela{
 		matrizea.minakErakutzi();
 		Leihoa.getLeihoa().galdu();
 	}
+	
+	/*public boolean irabaziDu(){
+		boolean irabazi = false;
+		int kasilak = matrizea.getKasilak();
+		kasilak = kasilak - 1;
+		matrizea.setKasilak(kasilak);
+		if(kasilak==0){
+			irabazi = true;
+		}
+		return irabazi;
+	}
+	public void partidaIrabazi(){
+		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);
+		matrizea.minakErakutzi();
+	}*/
 }
