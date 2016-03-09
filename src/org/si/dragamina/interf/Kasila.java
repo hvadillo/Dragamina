@@ -32,7 +32,6 @@ public class Kasila extends JButton implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		Smiley.getSmiley().setIcon(Irudiak.smiley[3]);
-		
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public class Leihoa extends JFrame{
 			  public void windowClosing(WindowEvent e) {
 			    int confirmed = JOptionPane.showConfirmDialog(null, 
 			        "Are you sure you want to exit the program?", "DRAGAMINA ITXI",
-			        JOptionPane.YES_NO_OPTION);
+			        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Irudiak.smiley[4]);
 
 			    if (confirmed == JOptionPane.YES_OPTION) {
 			      dispose();

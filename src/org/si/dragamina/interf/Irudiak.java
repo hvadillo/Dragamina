@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Irudiak {
 
 	public static ImageIcon[] zenbakiak = new ImageIcon[9];
-	public static ImageIcon[] smiley = new ImageIcon[4];
+	public static ImageIcon[] smiley = new ImageIcon[5];
 	public static ImageIcon[] bloke = new ImageIcon[5];
 	public static Image ikonoa; 
 	
@@ -36,6 +36,7 @@ public class Irudiak {
 		smiley[1] = createImageIcon("win.png");
 		smiley[2] = createImageIcon("loose.png");
 		smiley[3] = createImageIcon("click.png");
+		smiley[4] = createImageIcon("cry.png");
 	}
 	
 	private static void blokeakKargatu(){
