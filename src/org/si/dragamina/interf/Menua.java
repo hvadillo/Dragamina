@@ -2,6 +2,7 @@ package org.si.dragamina.interf;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -64,19 +65,13 @@ public class Menua extends JMenuBar implements ActionListener{
 			else Panela.getPanela().panelaEraiki(3);
 		}
 		else if (e.getSource() == mntmIrten){
-			/*int confirmed = JOptionPane.showConfirmDialog(null, 
-			        "Are you sure you want to exit the program?", "DRAGAMINA ITXI",
-			        JOptionPane.YES_NO_OPTION);
-
-			    if (confirmed == JOptionPane.YES_OPTION) {
-			    	Leihoa.getLeihoa().dispose();
-			    }*/
+			Leihoa.getLeihoa().dispose();
 		}
 		else if(e.getSource() == mntmArgibidea){
 			
 		}
 		else if (e.getSource() == mntmAboutThis){
-			
+
 		}
 	}
 

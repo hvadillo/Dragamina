@@ -9,10 +9,13 @@ public class MatrizeGelaxka {
 	private ArrayList<Gelaxka> minak;
 	private int zut;
 	private int err;
+	//private int kasilak;
 	
 	public MatrizeGelaxka(int pZailt, int pErr, int pZut){
 		zut = pZut;
 		err = pErr;
+		//int minaKop = pZailt * zut;
+		//kasilak = (zut * err) - minaKop;
 		gelaxkak = new Gelaxka[zut][err];
 		minak = new ArrayList<Gelaxka>();
 		matrizeaSortu(pZailt);
@@ -87,9 +90,23 @@ public class MatrizeGelaxka {
 		}
 	}
 	
+	/*public void irabazitakoMinakErakutzi(){
+		for(int x=0; x<minak.size(); x++){
+			
+		}
+	}*/
+	
 	public void gelaIreki(int pX, int pY){
 		if(matrizeBarruan(pX,pY)){
 			gelaxkak[pX][pY].gelaIreki();
 		}
 	}
+	
+	/*public int getKasilak(){
+		return kasilak;
+	}
+	
+	public void setKasilak(int pKasilak){
+		kasilak = pKasilak;
+	}*/
 }

@@ -13,7 +13,7 @@ public class Leihoa extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
 	private Menua mnMenua = new Menua();
-	private int zail = 0;
+	private int zail;
 	private JPanel gPanela;
 	private BotoienPanela botoiak = new BotoienPanela();
 	
@@ -26,7 +26,7 @@ public class Leihoa extends JFrame{
 		this.addWindowListener(new WindowAdapter() {					//Leihoa ixtean aterako den mezua
 			  public void windowClosing(WindowEvent e) {
 			    int confirmed = JOptionPane.showConfirmDialog(null, 
-			        "Are you sure you want to exit the program?", "DRAGAMINA ITXI",
+			        "Ziur zaude DRAGAMINAtik irten nahi duzula?", "DRAGAMINA ITXI",
 			        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Irudiak.smiley[4]);
 
 			    if (confirmed == JOptionPane.YES_OPTION) {
@@ -89,7 +89,15 @@ public class Leihoa extends JFrame{
 		botoiak.minaErakutzi(x, y);
 	}
 	
+	/*public void irabazitakoMinak(int x, int y){
+		botoiak.irabazitakoMinak(x, y);
+	}*/
+	
 	public void galdu(){
 		botoiak.galdu();
 	}
+	
+	/*public void irabazi(){
+		botoiak.irabazi();
+	}*/
 }
