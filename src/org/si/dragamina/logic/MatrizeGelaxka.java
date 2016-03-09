@@ -1,6 +1,9 @@
 package org.si.dragamina.logic;
 
 import java.util.Random;
+
+import org.si.dragamina.interf.Leihoa;
+
 import java.util.ArrayList;
 
 public class MatrizeGelaxka {
@@ -10,16 +13,16 @@ public class MatrizeGelaxka {
 	private int zut;
 	private int err;
 	
-	public MatrizeGelaxka(int pZailt, int pErr, int pZut){
+	public MatrizeGelaxka(int pErr, int pZut){
 		zut = pZut;
 		err = pErr;
 		gelaxkak = new Gelaxka[zut][err];
 		minak = new ArrayList<Gelaxka>();
-		matrizeaSortu(pZailt);
+		matrizeaSortu();
 	}
 	
-	public void matrizeaSortu(int pZailt){
-		int minaKop = pZailt * zut;
+	public void matrizeaSortu(){
+		int minaKop = Leihoa.getLeihoa().getZailtasuna() * zut;
 		minakSortu(minaKop);
 		gelaxkaHutzakSortu();
 	}

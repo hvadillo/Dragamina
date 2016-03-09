@@ -13,7 +13,7 @@ public class Leihoa extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
 	private Menua mnMenua = new Menua();
-	private int zail = 0;
+	private int zail = 1;
 	private JPanel gPanela;
 	private BotoienPanela botoiak = new BotoienPanela();
 	

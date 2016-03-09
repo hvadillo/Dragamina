@@ -24,7 +24,7 @@ public class Panela{
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 		int[] dim = dimentzioakKalkulatu(pZail);
 		Leihoa.getLeihoa().leihoaAldatu(pZail, dim[0], dim[1]);
-		matrizea = new MatrizeGelaxka(pZail, dim[0],dim[1]);
+		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
 		Leihoa.getLeihoa().setVisible(true);
 	}
 	
@@ -33,7 +33,7 @@ public class Panela{
 		Leihoa.getLeihoa().kasilakItxi();
 		int zail = Leihoa.getLeihoa().getZailtasuna();
 		int[] dim = dimentzioakKalkulatu(zail);
-		matrizea = new MatrizeGelaxka(zail,dim[0],dim[1]);
+		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
 	}
 	
 	private int[] dimentzioakKalkulatu(int pZ){
