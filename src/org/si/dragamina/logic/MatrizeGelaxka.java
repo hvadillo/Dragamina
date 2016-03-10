@@ -1,11 +1,7 @@
 package org.si.dragamina.logic;
 
 import java.util.Random;
-
-import org.si.dragamina.interf.Irudiak;
 import org.si.dragamina.interf.Leihoa;
-import org.si.dragamina.interf.Smiley;
-
 import java.util.ArrayList;
 
 public class MatrizeGelaxka {
@@ -14,7 +10,7 @@ public class MatrizeGelaxka {
 	private ArrayList<Gelaxka> minak;
 	private int zut;
 	private int err;
-	private int kasilak;
+	private int kasilaItxiak;						//Minak ez diren zenbak kasila geratzen diren
 	
 	public MatrizeGelaxka(int pErr, int pZut){
 		zut = pZut;
@@ -25,8 +21,8 @@ public class MatrizeGelaxka {
 	}
 	
 	public void matrizeaSortu(){
-		int minaKop = Leihoa.getLeihoa().getZailtasuna() * zut;
-		kasilak = (zut * err) - minaKop;
+		int minaKop = Leihoa.getLeihoa().getZailtasuna() * err;
+		kasilaItxiak = (zut * err) - minaKop;
 		minakSortu(minaKop);
 		gelaxkaHutzakSortu();
 	}
@@ -96,28 +92,15 @@ public class MatrizeGelaxka {
 		}
 	}
 	
-	/*public void irabazitakoMinakErakutzi(){
-		for(int x=0; x<minak.size(); x++){
-			Gelaxka g = minak.get(x);
-			//Leihoa.getLeihoa().bandera(g.x, g.y)
-		}
-	}*/
-	
 	public void gelaIreki(int pX, int pY){
 		if(matrizeBarruan(pX,pY)){
 			if(!gelaxkak[pX][pY].zabaldua){
-				kasilak--;
-				System.out.println(kasilak);
-				if(kasilak==0){
-					Smiley.getSmiley().setIcon(Irudiak.smiley[1]);
-					Leihoa.getLeihoa().mouseListenerrakKendu();
+				kasilaItxiak--;
+				if(kasilaItxiak==0){
+					Panela.getPanela().partidaIrabazi();
 				}
 				gelaxkak[pX][pY].gelaIreki();
 			}
 		}
 	}
-	
-	/*public void setKasilak(int pKasilak){
-		kasilak = pKasilak;
-	}*/
 }

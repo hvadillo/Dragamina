@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
-
 import javax.swing.*;
 
 public class BotoienPanela extends JPanel{
@@ -52,10 +51,6 @@ public class BotoienPanela extends JPanel{
 		botoiak[x][y].setIcon(Irudiak.bloke[2]);
 	}
 	
-	/*public void irabazitakoMinak(int x, int y){
-		botoiak[x][y].setIcon(Irudiak.bloke[3]);
-	}*/
-	
 	public void mouseListenerrakKendu(){
 		for(int j=0; j<botoiak[0].length; j++){
 			for(int i=0; i<botoiak.length; i++){
@@ -63,12 +58,4 @@ public class BotoienPanela extends JPanel{
 			}
 		}
 	}
-	
-	/*public void irabazi(){
-		for(int j=0; j<botoiak[0].length; j++){
-			for(int i=0; i<botoiak.length; i++){
-				botoiak[i][j].kenduMouseListener();
-			}
-		}
-	}*/
 }

@@ -1,6 +1,7 @@
 package org.si.dragamina.logic;
 
 import org.si.dragamina.interf.Irudiak;
+import org.si.dragamina.interf.Kontadorea;
 import org.si.dragamina.interf.Leihoa;
 import org.si.dragamina.interf.Smiley;
 
@@ -34,6 +35,7 @@ public class Panela{
 		int zail = Leihoa.getLeihoa().getZailtasuna();
 		int[] dim = dimentzioakKalkulatu(zail);
 		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
+		Kontadorea.getKontadorea().partidaBerria(minaKopurua());
 	}
 	
 	private int[] dimentzioakKalkulatu(int pZ){
@@ -52,28 +54,25 @@ public class Panela{
 		return dim;
 	}
 	
+	public int minaKopurua(){
+		int z = Leihoa.getLeihoa().getZailtasuna();
+		int[] d = dimentzioakKalkulatu(z);
+		return z * d[1];
+	}
+	
 	public void ireki(int pX, int pY){
 		matrizea.gelaIreki(pX, pY);
 	}
 	
-	public void partidaGaldu(){
-		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);
-		matrizea.minakErakutzi();
-		Leihoa.getLeihoa().mouseListenerrakKendu();
+	public void partidaIrabazi(){
+		Kontadorea.getKontadorea().irabazi(); 					//Bomba kontadorea 0-n jarri
+		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);			//Irabazi smiley-a erakutzi
+		Leihoa.getLeihoa().mouseListenerrakKendu();				//Botoien MouseListener kendu
 	}
 	
-	/*public boolean irabaziDu(){
-		boolean irabazi = false;
-		int kasilak = matrizea.getKasilak();
-		kasilak = kasilak - 1;
-		matrizea.setKasilak(kasilak);
-		if(kasilak==0){
-			irabazi = true;
-		}
-		return irabazi;
+	public void partidaGaldu(){
+		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);			//Galdu "smiley-a" erakutzi
+		matrizea.minakErakutzi();								//Minak non dauden pantailaratu
+		Leihoa.getLeihoa().mouseListenerrakKendu();				//Botoien MouseListener kendu
 	}
-	public void partidaIrabazi(){
-		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);
-		matrizea.minakErakutzi();
-	}*/
 }

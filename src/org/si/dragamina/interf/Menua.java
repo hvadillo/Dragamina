@@ -2,12 +2,10 @@ package org.si.dragamina.interf;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Box;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-
 import org.si.dragamina.logic.Panela;
 
 public class Menua extends JMenuBar implements ActionListener{
