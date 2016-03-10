@@ -56,7 +56,7 @@ public class BotoienPanela extends JPanel{
 		botoiak[x][y].setIcon(Irudiak.bloke[3]);
 	}*/
 	
-	public void galdu(){
+	public void mouseListenerrakKendu(){
 		for(int j=0; j<botoiak[0].length; j++){
 			for(int i=0; i<botoiak.length; i++){
 				botoiak[i][j].kenduMouseListener();

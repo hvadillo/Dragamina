@@ -14,13 +14,8 @@ public class GelaZenbakia extends Gelaxka{
 	
 	@Override
 	protected void gelaIreki() {
-		if(!zabaldua){
-			zabaldua = true;
-			zenbakiaErakutzi();
-			/*if(Panela.getPanela().irabaziDu()){
-				Panela.getPanela().partidaIrabazi();
-			}*/
-		}
+		zabaldua = true;
+		zenbakiaErakutzi();
 	}
 	
 	private void zenbakiaErakutzi(){

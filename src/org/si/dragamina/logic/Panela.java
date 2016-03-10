@@ -59,7 +59,7 @@ public class Panela{
 	public void partidaGaldu(){
 		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);
 		matrizea.minakErakutzi();
-		Leihoa.getLeihoa().galdu();
+		Leihoa.getLeihoa().mouseListenerrakKendu();
 	}
 	
 	/*public boolean irabaziDu(){

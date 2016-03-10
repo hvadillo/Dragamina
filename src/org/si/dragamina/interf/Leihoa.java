@@ -13,7 +13,7 @@ public class Leihoa extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
 	private Menua mnMenua = new Menua();
-	private int zail;
+	private int zail = 1;
 	private JPanel gPanela;
 	private BotoienPanela botoiak = new BotoienPanela();
 	
@@ -93,8 +93,8 @@ public class Leihoa extends JFrame{
 		botoiak.irabazitakoMinak(x, y);
 	}*/
 	
-	public void galdu(){
-		botoiak.galdu();
+	public void mouseListenerrakKendu(){
+		botoiak.mouseListenerrakKendu();
 	}
 	
 	/*public void irabazi(){
