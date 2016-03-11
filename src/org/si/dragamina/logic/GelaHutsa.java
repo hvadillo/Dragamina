@@ -6,7 +6,6 @@ public class GelaHutsa extends Gelaxka {
 
 	public GelaHutsa(int pX, int pY){
 		super(pX,pY);
-		mota = "hutsa";
 	}
 
 	@Override

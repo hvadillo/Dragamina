@@ -6,7 +6,6 @@ public class GelaMina extends Gelaxka {
 	
 	public GelaMina(int x, int y){
 		super(x,y);
-		mota = "mina";
 	}
 
 	@Override

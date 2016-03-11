@@ -9,7 +9,6 @@ public class GelaZenbakia extends Gelaxka{
 	public GelaZenbakia(int pX, int pY){
 		super(pX, pY);
 		minaInguruan = 1;
-		mota = "zenbakia";
 	}
 	
 	@Override

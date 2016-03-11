@@ -33,7 +33,7 @@ public class MatrizeGelaxka {
 			Random rand = new Random();
 			xPos = rand.nextInt(zut);
 			yPos = rand.nextInt(err);
-			if(gelaxkak[xPos][yPos]==null || gelaxkak[xPos][yPos].mota!="mina"){
+			if(gelaxkak[xPos][yPos]==null || !(gelaxkak[xPos][yPos] instanceof GelaMina)){
 				gelaxkak[xPos][yPos] = new GelaMina(xPos,yPos);
 				minak.add(gelaxkak[xPos][yPos]);
 				kasilakEguneratu(xPos,yPos);
@@ -58,7 +58,7 @@ public class MatrizeGelaxka {
 			if(gelaxkak[pZut][pErr]==null){
 				gelaxkak[pZut][pErr] = new GelaZenbakia(pZut, pErr);
 			}
-			else if(gelaxkak[pZut][pErr].mota == "zenbakia"){
+			else if(gelaxkak[pZut][pErr] instanceof GelaZenbakia){
 				gelaxkak[pZut][pErr].eguneratu();
 			}
 		}
