@@ -42,7 +42,7 @@ public class MatrizeGelaxka {
 		}
 	}
 	
-	private void kasilakEguneratu(int pX, int pY){
+	private void kasilakEguneratu(int pX, int pY){						//zenbakiak minen inguruan jarri
 		eguneratu(pX+1,pY);
 		eguneratu(pX+1,pY+1);
 		eguneratu(pX,pY+1);

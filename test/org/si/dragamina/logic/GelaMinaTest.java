@@ -1,4 +1,4 @@
-package org.si.dragamina;
+package org.si.dragamina.logic;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class GelaZenbakiaTest {
+public class GelaMinaTest {
 
 	@Before
 	public void setUp() throws Exception {
@@ -27,7 +27,7 @@ public class GelaZenbakiaTest {
 	}
 
 	@Test
-	public void testGelaZenbakia() {
+	public void testGelaMina() {
 		fail("Not yet implemented");
 	}
 

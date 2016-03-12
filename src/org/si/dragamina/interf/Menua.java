@@ -2,6 +2,9 @@ package org.si.dragamina.interf;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.Box;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -17,6 +20,7 @@ public class Menua extends JMenuBar implements ActionListener{
 	
 	public Menua(){
 		setBorder(null);
+		setBackground(new Color(255,255,255));
 		
 		mnMenua = new JMenu("Jokoa");
 		mnLaguntza = new JMenu("Laguntza");
@@ -31,7 +35,9 @@ public class Menua extends JMenuBar implements ActionListener{
 		mntmIrten.addActionListener(this);
 		
 		mntmArgibidea = new JMenuItem("Argibidea");
-		mntmAboutThis = new JMenuItem("About This");
+		mntmArgibidea.addActionListener(this);
+		mntmAboutThis = new JMenuItem("Guri buruz");
+		mntmAboutThis.addActionListener(this);
 		
 		mnMenua.add(mntmErraza);
 		mnMenua.add(mntmNormala);
@@ -66,11 +72,24 @@ public class Menua extends JMenuBar implements ActionListener{
 			Leihoa.getLeihoa().dispose();
 		}
 		else if(e.getSource() == mntmArgibidea){
-			
+			JDialog guriBuruz  = new JDialog(Leihoa.getLeihoa(),"Guri Buruz");
+			JLabel etiqueta = new JLabel("ARGIBIDEA");
+			guriBuruz.getContentPane().add(etiqueta);
+			guriBuruz.pack();
+			guriBuruz.setLocationRelativeTo(null);
+			guriBuruz.setSize(300, 200);
+			guriBuruz.setResizable(false);
+			guriBuruz.setVisible(true);
 		}
 		else if (e.getSource() == mntmAboutThis){
-
+			JDialog guriBuruz  = new JDialog(Leihoa.getLeihoa(),"Guri Buruz");
+			JLabel etiqueta = new JLabel("LIUV TALDEA");
+			guriBuruz.getContentPane().add(etiqueta);
+			guriBuruz.pack();
+			guriBuruz.setLocationRelativeTo(null);
+			guriBuruz.setSize(300, 200);
+			guriBuruz.setResizable(false);
+			guriBuruz.setVisible(true);
 		}
 	}
-
 }

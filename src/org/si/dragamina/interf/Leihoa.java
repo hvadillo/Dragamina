@@ -5,9 +5,9 @@ import java.awt.event.WindowEvent;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.*;
-import org.si.dragamina.logic.Panela;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import org.si.dragamina.logic.Panela;
 
 public class Leihoa extends JFrame{
 
@@ -20,7 +20,7 @@ public class Leihoa extends JFrame{
 	
 	public Leihoa() {
 		setTitle("DRAGAMINA");
-		setResizable(true);
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setIconImage(Irudiak.ikonoa);
 		
@@ -113,7 +113,7 @@ public class Leihoa extends JFrame{
 	public void minaErakutzi(int x, int y) {
 		botoiak.minaErakutzi(x, y);
 	}
-	
+
 	public void mouseListenerrakKendu(){
 		botoiak.mouseListenerrakKendu();
 	}

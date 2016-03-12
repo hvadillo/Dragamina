@@ -12,11 +12,7 @@ public abstract class Gelaxka {
 		zabaldua = false;
 	}
 	
-	protected abstract void gelaIreki();{
-		
-	}
+	protected abstract void gelaIreki();
 	
-	protected abstract void eguneratu();{
-		
-	}
+	protected abstract void eguneratu();
 }

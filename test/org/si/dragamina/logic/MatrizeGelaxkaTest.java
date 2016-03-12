@@ -1,4 +1,4 @@
-package org.si.dragamina;
+package org.si.dragamina.logic;
 
 import org.si.dragamina.logic.MatrizeGelaxka;
 
@@ -19,6 +19,7 @@ public class MatrizeGelaxkaTest {
 
 	@After
 	public void tearDown() throws Exception {
+		m1 = null;
 	}
 
 	@Test

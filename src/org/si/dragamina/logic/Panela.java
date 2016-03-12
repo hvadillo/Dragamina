@@ -7,7 +7,7 @@ import org.si.dragamina.interf.Smiley;
 
 public class Panela{
 	
-	private static Panela nPanela;
+	private static Panela nPanela = null;
 	private MatrizeGelaxka matrizea;
 	
 	private Panela(){

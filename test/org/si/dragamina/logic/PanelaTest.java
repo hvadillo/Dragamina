@@ -1,9 +1,6 @@
-package org.si.dragamina;
-
-import org.si.dragamina.logic.Panela;
+package org.si.dragamina.logic;
 
 import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +11,7 @@ public class PanelaTest {
 
 	@Before
 	public void setUp() throws Exception {
-		p1 = new Panela.getPanela();
+		p1 = Panela.getPanela();
 	}
 
 	@After
