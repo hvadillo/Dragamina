@@ -31,8 +31,10 @@ public class Kasila extends JButton implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(e.getButton() == MouseEvent.BUTTON1){
-			Smiley.getSmiley().setIcon(Irudiak.smiley[3]);
+		if(getIcon()!=Irudiak.bloke[3]){			//Bandera ez badago aldatu smiley-a
+			if(e.getButton() == MouseEvent.BUTTON1){
+					Smiley.getSmiley().setIcon(Irudiak.smiley[3]);
+			}
 		}	
 	}
 
@@ -44,17 +46,22 @@ public class Kasila extends JButton implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getButton() == MouseEvent.BUTTON1){
-			Panela.getPanela().ireki(zutabe, errenkada);
+			if(getIcon()!=Irudiak.bloke[3]){			//Bandera ez badago zabaldu
+				Panela.getPanela().ireki(zutabe, errenkada);
+			}
 		}
 		else{											//ESKUMAKO BOTOIA
 			if(getIcon()==Irudiak.bloke[3]){
 				Kontadorea.getKontadorea().minaJarri();
-				setIcon(Irudiak.bloke[0]);
+				setIcon(Irudiak.bloke[4]);
 			}
-			else{
+			else if(getIcon()==Irudiak.bloke[0]){
 				if(Kontadorea.getKontadorea().minaKendu()==0){
 					setIcon(Irudiak.bloke[3]);
 				}
+			}
+			else if(getIcon()==Irudiak.bloke[4]){
+				setIcon(Irudiak.bloke[0]);
 			}
 		}
 	}
