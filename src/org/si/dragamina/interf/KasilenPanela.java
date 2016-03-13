@@ -6,19 +6,27 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
-public class BotoienPanela extends JPanel{
+public class KasilenPanela extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
+	private static KasilenPanela nKasilenPanela = null;
 	private Kasila[][] botoiak;
 		
-	public BotoienPanela(){
+	private KasilenPanela(){
 		setBackground(new Color(250,250,250));
 			
 		JPanel bereizgarri = new JPanel();								//botoien eta smiley-aren arteko tartea
 		bereizgarri.setBackground(new Color(250, 250, 250));
 		add(bereizgarri, BorderLayout.NORTH);
 	}
-		
+	
+	public static KasilenPanela getKasilenPanela(){
+		if(nKasilenPanela==null){
+			nKasilenPanela = new KasilenPanela();
+		}
+		return nKasilenPanela;
+	}
+	
 	public void kasilakSortu(int pZutabe, int pErrenkada){
 		removeAll();
 		setLayout(new GridLayout(pErrenkada, pZutabe, 0, 0));
@@ -40,22 +48,28 @@ public class BotoienPanela extends JPanel{
 	}							
 	
 	public void zenbakiaErakutzi(int pZenb, int pZut, int pErr){
+		mouseListenerBatKendu(pZut, pErr);	//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
 		botoiak[pZut][pErr].setIcon(Irudiak.zenbakiak[pZenb]);
 	}
 	
-	public void hutsaErakutzi(int zut, int err){
-		botoiak[zut][err].setIcon(Irudiak.bloke[1]);
+	public void hutsaErakutzi(int pZut, int pErr){
+		mouseListenerBatKendu(pZut, pErr);	//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
+		botoiak[pZut][pErr].setIcon(Irudiak.bloke[1]);
 	}
 	
-	public void minaErakutzi(int x, int y){
-		botoiak[x][y].setIcon(Irudiak.bloke[2]);
+	public void minaErakutzi(int pZut, int pErr){
+		botoiak[pZut][pErr].setIcon(Irudiak.bloke[2]);
 	}
 	
-	public void mouseListenerrakKendu(){
+	public void mouseListenerrakGuztiakKendu(){
 		for(int j=0; j<botoiak[0].length; j++){
 			for(int i=0; i<botoiak.length; i++){
-				botoiak[i][j].kenduMouseListener();
+				mouseListenerBatKendu(i, j);
 			}
 		}
+	}
+	
+	private void mouseListenerBatKendu(int pZut, int pErr){
+		botoiak[pZut][pErr].kenduMouseListener();
 	}
 }

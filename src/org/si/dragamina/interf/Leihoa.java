@@ -14,7 +14,6 @@ public class Leihoa extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
 	private Menua mnMenua = new Menua();
-	private BotoienPanela botoiak = new BotoienPanela();
 	private int zail = 1;
 	
 	
@@ -77,7 +76,7 @@ public class Leihoa extends JFrame{
 		gPanela.add(gPanela3, BorderLayout.EAST);
 		
 		
-		getContentPane().add(botoiak, BorderLayout.CENTER);
+		getContentPane().add(KasilenPanela.getKasilenPanela(), BorderLayout.CENTER);		//Kasilak gehitu panelean
 	}
 	
 	public void leihoaAldatu(int pZail, int pErre, int pZut){			//Leihoen tamaina zailtasunaren arabera
@@ -91,30 +90,10 @@ public class Leihoa extends JFrame{
 		}
 		setLocationRelativeTo(null); 
 		Kontadorea.getKontadorea().partidaBerria(Panela.getPanela().minaKopurua());
-		botoiak.kasilakSortu(pZut, pErre);
-	}
-	
-	public void kasilakItxi(){
-		botoiak.botoiakItxi();
-	}
-	
-	public void zenbakiaPantailaratu(int pZenb, int pZut, int pErr){
-		botoiak.zenbakiaErakutzi(pZenb, pZut, pErr);
-	}
-	
-	public void hutsaPantailaratu(int zut, int err){
-		botoiak.hutsaErakutzi(zut, err);
+		KasilenPanela.getKasilenPanela().kasilakSortu(pZut, pErre);
 	}
 	
 	public int getZailtasuna(){
 		return zail;
-	}
-
-	public void minaErakutzi(int x, int y) {
-		botoiak.minaErakutzi(x, y);
-	}
-
-	public void mouseListenerrakKendu(){
-		botoiak.mouseListenerrakKendu();
 	}
 }

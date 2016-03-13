@@ -1,6 +1,6 @@
 package org.si.dragamina.logic;
 
-import org.si.dragamina.interf.Leihoa;
+import org.si.dragamina.interf.KasilenPanela;
 
 public class GelaMina extends Gelaxka {
 	
@@ -10,7 +10,7 @@ public class GelaMina extends Gelaxka {
 
 	@Override
 	protected void gelaIreki() {
-		Leihoa.getLeihoa().minaErakutzi(x, y);
+		KasilenPanela.getKasilenPanela().minaErakutzi(x, y);
 		zabaldua = true;
 		Panela.getPanela().partidaGaldu();
 	}

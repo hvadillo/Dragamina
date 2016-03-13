@@ -1,6 +1,7 @@
 package org.si.dragamina.logic;
 
 import org.si.dragamina.interf.Irudiak;
+import org.si.dragamina.interf.KasilenPanela;
 import org.si.dragamina.interf.Kontadorea;
 import org.si.dragamina.interf.Leihoa;
 import org.si.dragamina.interf.Smiley;
@@ -21,7 +22,7 @@ public class Panela{
 		return nPanela;
 	}
 	
-	public void panelaEraiki(int pZail){
+	public void panelaEraiki(int pZail){					//Partida berria sortu (zailtasun berria)
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 		int[] dim = dimentzioakKalkulatu(pZail);
 		Leihoa.getLeihoa().leihoaAldatu(pZail, dim[0], dim[1]);
@@ -29,9 +30,9 @@ public class Panela{
 		Leihoa.getLeihoa().setVisible(true);
 	}
 	
-	public void matrizeaEguneratu(){
+	public void matrizeaEguneratu(){						//Partida berria sortu (zailtasun berina aurreko partidarekiko)
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
-		Leihoa.getLeihoa().kasilakItxi();
+		KasilenPanela.getKasilenPanela().botoiakItxi();
 		int zail = Leihoa.getLeihoa().getZailtasuna();
 		int[] dim = dimentzioakKalkulatu(zail);
 		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
@@ -57,7 +58,7 @@ public class Panela{
 	public int minaKopurua(){
 		int z = Leihoa.getLeihoa().getZailtasuna();
 		int[] d = dimentzioakKalkulatu(z);
-		return z * d[1];
+		return z * d[0];
 	}
 	
 	public void ireki(int pX, int pY){
@@ -65,14 +66,14 @@ public class Panela{
 	}
 	
 	public void partidaIrabazi(){
-		Kontadorea.getKontadorea().irabazi(); 					//Bomba kontadorea 0-n jarri
-		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);			//Irabazi smiley-a erakutzi
-		Leihoa.getLeihoa().mouseListenerrakKendu();				//Botoien MouseListener kendu
+		Kontadorea.getKontadorea().irabazi(); 									//Bomba kontadorea 0-n jarri
+		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);							//Irabazi smiley-a erakutzi
+		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
 	}
 	
 	public void partidaGaldu(){
-		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);			//Galdu "smiley-a" erakutzi
-		matrizea.minakErakutzi();								//Minak non dauden pantailaratu
-		Leihoa.getLeihoa().mouseListenerrakKendu();				//Botoien MouseListener kendu
+		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);							//Galdu "smiley-a" erakutzi
+		matrizea.minakErakutzi();												//Minak non dauden pantailaratu
+		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
 	}
 }

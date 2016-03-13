@@ -44,9 +44,15 @@ public class Kontadorea extends JPanel {
 		eguneratu();
 	}
 	
-	public void minaKendu(){
-		minakFaltan--;
-		eguneratu();
+	public int minaKendu(){
+		if(minakFaltan>0){
+			minakFaltan--;
+			eguneratu();
+			return 0;		//Ondo joan dela jakiteko 0 bueltatu.
+		}
+		else{
+			return -1;		//Dauden minak baino marka gehiago jar ez dezan, -1 bueltatu hau egin ezin dela jakiteko.
+		}
 	}
 	
 	public void minaJarri(){

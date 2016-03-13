@@ -1,6 +1,6 @@
 package org.si.dragamina.logic;
 
-import org.si.dragamina.interf.Leihoa;
+import org.si.dragamina.interf.KasilenPanela;
 
 public class GelaZenbakia extends Gelaxka{
 
@@ -14,11 +14,7 @@ public class GelaZenbakia extends Gelaxka{
 	@Override
 	protected void gelaIreki() {
 		zabaldua = true;
-		zenbakiaErakutzi();
-	}
-	
-	private void zenbakiaErakutzi(){
-		Leihoa.getLeihoa().zenbakiaPantailaratu(minaInguruan, x, y);
+		KasilenPanela.getKasilenPanela().zenbakiaErakutzi(minaInguruan, x, y);		//Zenbakia pantailaratu
 	}
 
 	@Override

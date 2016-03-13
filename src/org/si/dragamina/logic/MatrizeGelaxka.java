@@ -42,7 +42,7 @@ public class MatrizeGelaxka {
 		}
 	}
 	
-	private void kasilakEguneratu(int pX, int pY){						//zenbakiak minen inguruan jarri
+	private void kasilakEguneratu(int pX, int pY){				//zenbakiak minen inguruan jarri
 		eguneratu(pX+1,pY);
 		eguneratu(pX+1,pY+1);
 		eguneratu(pX,pY+1);
@@ -53,7 +53,7 @@ public class MatrizeGelaxka {
 		eguneratu(pX+1,pY-1);
 	}
 	
-	private void eguneratu(int pZut, int pErr){
+	private void eguneratu(int pZut, int pErr){					//zenbaki kasilak mina inguruan izatekotan zenbakia +1
 		if(matrizeBarruan(pZut, pErr)){
 			if(gelaxkak[pZut][pErr]==null){
 				gelaxkak[pZut][pErr] = new GelaZenbakia(pZut, pErr);
@@ -93,10 +93,10 @@ public class MatrizeGelaxka {
 	}
 	
 	public void gelaIreki(int pX, int pY){
-		if(matrizeBarruan(pX,pY)){
-			if(!gelaxkak[pX][pY].zabaldua){
+		if(matrizeBarruan(pX,pY)){					//Gela matrize barruan dagoela zihurtatu
+			if(!gelaxkak[pX][pY].zabaldua){			//Gela dagoeneko zabalik dagoen konprobatu
 				kasilaItxiak--;
-				if(kasilaItxiak==0){
+				if(kasilaItxiak==0){				//Kasila guztiak zabalik badaude partida irabazi
 					Panela.getPanela().partidaIrabazi();
 				}
 				gelaxkak[pX][pY].gelaIreki();
