@@ -68,6 +68,7 @@ public class Panela{
 	public void partidaIrabazi(){
 		Kontadorea.getKontadorea().irabazi(); 									//Bomba kontadorea 0-n jarri
 		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);							//Irabazi smiley-a erakutzi
+		matrizea.banderakErakutzi();
 		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
 	}
 	

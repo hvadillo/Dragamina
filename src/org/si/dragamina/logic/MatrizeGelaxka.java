@@ -1,6 +1,8 @@
 package org.si.dragamina.logic;
 
 import java.util.Random;
+
+import org.si.dragamina.interf.KasilenPanela;
 import org.si.dragamina.interf.Leihoa;
 import java.util.ArrayList;
 
@@ -81,6 +83,12 @@ public class MatrizeGelaxka {
 					gelaxkak[x][y] = new GelaHutsa(x,y);
 				}
 			}
+		}
+	}
+	
+	public void banderakErakutzi(){
+		for(int x=0; x<minak.size(); x++){
+			KasilenPanela.getKasilenPanela().banderaErakutzi(minak.get(x).x, minak.get(x).y);
 		}
 	}
 	

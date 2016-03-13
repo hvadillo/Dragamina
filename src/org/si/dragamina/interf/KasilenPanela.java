@@ -61,6 +61,10 @@ public class KasilenPanela extends JPanel{
 		botoiak[pZut][pErr].setIcon(Irudiak.bloke[2]);
 	}
 	
+	public void banderaErakutzi(int pZut, int pErr){
+		botoiak[pZut][pErr].setIcon(Irudiak.bloke[4]);
+	}
+	
 	public void mouseListenerrakGuztiakKendu(){
 		for(int j=0; j<botoiak[0].length; j++){
 			for(int i=0; i<botoiak.length; i++){
