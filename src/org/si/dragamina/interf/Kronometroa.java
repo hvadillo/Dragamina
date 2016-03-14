@@ -11,6 +11,8 @@ public class Kronometroa extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private static Kronometroa nKronometroa = null;
+	private double hasierakoa;
+	private double horaingoa;
 	private JButton[] zenbakiak = new JButton[3];
 
 	private Kronometroa() {
@@ -18,6 +20,7 @@ public class Kronometroa extends JPanel {
 		GridLayout g = new GridLayout(1, 3, 0, 0);
 		setLayout(g);
 		KronometroaEraiki();
+		hasierakoa = 0;
 	}
 	
 	public static Kronometroa getKronometroa(){
@@ -38,9 +41,35 @@ public class Kronometroa extends JPanel {
 		eguneratu();
 	}
 	
+	public void kronometroaHasieratu(){
+		horaingoa = 0;
+		eguneratu();
+	}
+	
+	public void kronometroaHasi(){
+		if(hasierakoa==0){
+			hasierakoa = System.currentTimeMillis();
+		}
+	}
+	
+	public void kronometroaBukatu(){
+		 horaingoa = System.currentTimeMillis();
+		 horaingoa = (horaingoa - hasierakoa) / 1000;
+		 eguneratu();
+		 hasierakoa = 0;
+	}
+	
 	private void eguneratu(){
-		zenbakiak[0].setIcon(Irudiak.kontadore[0]);
-		zenbakiak[1].setIcon(Irudiak.kontadore[0]);
-		zenbakiak[2].setIcon(Irudiak.kontadore[0]);
+		if(horaingoa<=999){
+			zenbakiak[0].setIcon(Irudiak.kontadore[(int)Math.round(horaingoa)/100]);
+			zenbakiak[1].setIcon(Irudiak.kontadore[((int)Math.round(horaingoa)/10)%10]);
+			zenbakiak[2].setIcon(Irudiak.kontadore[(int)Math.round(horaingoa)%10]);
+		}
+		else{
+			zenbakiak[0].setIcon(Irudiak.kontadore[9]);
+			zenbakiak[1].setIcon(Irudiak.kontadore[9]);
+			zenbakiak[2].setIcon(Irudiak.kontadore[9]);
+		}
+		
 	}
 }

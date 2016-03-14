@@ -95,7 +95,7 @@ public class MatrizeGelaxka {
 	public void minakErakutzi(){
 		for(int x=0; x<minak.size(); x++){
 			if(!minak.get(x).zabaldua){
-				minak.get(x).gelaIreki();
+				KasilenPanela.getKasilenPanela().minaErakutzi(minak.get(x).x, minak.get(x).y);
 			}
 		}
 	}

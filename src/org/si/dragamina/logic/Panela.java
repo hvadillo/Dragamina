@@ -3,6 +3,7 @@ package org.si.dragamina.logic;
 import org.si.dragamina.interf.Irudiak;
 import org.si.dragamina.interf.KasilenPanela;
 import org.si.dragamina.interf.Kontadorea;
+import org.si.dragamina.interf.Kronometroa;
 import org.si.dragamina.interf.Leihoa;
 import org.si.dragamina.interf.Smiley;
 
@@ -70,11 +71,13 @@ public class Panela{
 		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);							//Irabazi smiley-a erakutzi
 		matrizea.banderakErakutzi();
 		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
+		Kronometroa.getKronometroa().kronometroaBukatu();
 	}
 	
 	public void partidaGaldu(){
 		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);							//Galdu "smiley-a" erakutzi
 		matrizea.minakErakutzi();												//Minak non dauden pantailaratu
 		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
+		Kronometroa.getKronometroa().kronometroaBukatu();
 	}
 }

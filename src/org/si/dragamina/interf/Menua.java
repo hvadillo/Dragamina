@@ -59,20 +59,23 @@ public class Menua extends JMenuBar implements ActionListener{
 		if(e.getSource() == mntmErraza){
 			if(Leihoa.getLeihoa().getZailtasuna()==1) Panela.getPanela().matrizeaEguneratu();
 			else Panela.getPanela().panelaEraiki(1);
+			Kronometroa.getKronometroa().kronometroaHasieratu();
 		}
 		else if (e.getSource() == mntmNormala){
 			if(Leihoa.getLeihoa().getZailtasuna()==2) Panela.getPanela().matrizeaEguneratu();
 			else Panela.getPanela().panelaEraiki(2);
+			Kronometroa.getKronometroa().kronometroaHasieratu();
 		}
 		else if(e.getSource() == mntmZaila){
 			if(Leihoa.getLeihoa().getZailtasuna()==3) Panela.getPanela().matrizeaEguneratu();
 			else Panela.getPanela().panelaEraiki(3);
+			Kronometroa.getKronometroa().kronometroaHasieratu();
 		}
 		else if (e.getSource() == mntmIrten){
 			Leihoa.getLeihoa().dispose();
 		}
 		else if(e.getSource() == mntmArgibidea){
-			JDialog guriBuruz  = new JDialog(Leihoa.getLeihoa(),"Guri Buruz");
+			JDialog guriBuruz  = new JDialog(Leihoa.getLeihoa(),"Argibidea");
 			JLabel etiqueta = new JLabel("ARGIBIDEA");
 			guriBuruz.getContentPane().add(etiqueta);
 			guriBuruz.pack();
