@@ -22,6 +22,7 @@ public class Leihoa extends JFrame{
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setIconImage(Irudiak.ikonoa);
+		setBackground(new Color(250, 250, 250));
 		
 		this.addWindowListener(new WindowAdapter() {					//Leihoa ixtean aterako den mezua
 			  public void windowClosing(WindowEvent e) {
