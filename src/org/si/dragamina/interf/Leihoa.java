@@ -82,12 +82,24 @@ public class Leihoa extends JFrame{
 	
 	public void leihoaAldatu(int pZail, int pErre, int pZut){			//Leihoen tamaina zailtasunaren arabera
 		zail = pZail;
-		switch (zail){
+		
+		if(System.getProperty("os.name").equals("Mac OS X")){
+			switch (zail){
+				case 1:	setSize(330, 309);
+						break;
+				case 2:	setSize(495, 408);
+						break;
+				case 3:	setSize(825, 474);
+			}
+		}
+		else{
+			switch (zail){
 			case 1:	setSize(330, 309);
 					break;
 			case 2:	setSize(495, 408);
 					break;
 			case 3:	setSize(825, 474);
+			}
 		}
 		setLocationRelativeTo(null); 
 		Kontadorea.getKontadorea().partidaBerria(Panela.getPanela().minaKopurua());
