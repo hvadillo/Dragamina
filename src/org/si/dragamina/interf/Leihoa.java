@@ -83,7 +83,7 @@ public class Leihoa extends JFrame{
 	public void leihoaAldatu(int pZail, int pErre, int pZut){			//Leihoen tamaina zailtasunaren arabera
 		zail = pZail;
 		
-		if(System.getProperty("os.name").equals("Mac OS X")){
+		if(System.getProperty("os.name").equals("Mac OS X")){			//MAC OS-erako dimentzioak
 			switch (zail){
 				case 1:	setSize(330, 309);
 						break;
@@ -93,7 +93,7 @@ public class Leihoa extends JFrame{
 			}
 		}
 		else{
-			switch (zail){
+			switch (zail){												//WINDOWS-erako dimentzioak
 			case 1:	setSize(372, 357);
 					break;
 			case 2:	setSize(547, 462);

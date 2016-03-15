@@ -52,14 +52,14 @@ public class Kasila extends JButton implements MouseListener {
 			}
 		}
 		else{											//ESKUMAKO BOTOIA
-			if(getIcon()==Irudiak.bloke[3]){
-				Kontadorea.getKontadorea().minaJarri();
-				setIcon(Irudiak.bloke[4]);
-			}
-			else if(getIcon()==Irudiak.bloke[0]){
+			if(getIcon()==Irudiak.bloke[0]){
 				if(Kontadorea.getKontadorea().minaKendu()==0){
 					setIcon(Irudiak.bloke[3]);
 				}
+			}
+			else if(getIcon()==Irudiak.bloke[3]){
+				Kontadorea.getKontadorea().minaJarri();
+				setIcon(Irudiak.bloke[4]);
 			}
 			else if(getIcon()==Irudiak.bloke[4]){
 				setIcon(Irudiak.bloke[0]);
