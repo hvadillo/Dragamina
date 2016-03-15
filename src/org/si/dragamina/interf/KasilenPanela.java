@@ -48,12 +48,15 @@ public class KasilenPanela extends JPanel{
 	}							
 	
 	public void zenbakiaErakutzi(int pZenb, int pZut, int pErr){
-		mouseListenerBatKendu(pZut, pErr);	//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
+		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
 		botoiak[pZut][pErr].setIcon(Irudiak.zenbakiak[pZenb]);
 	}
 	
 	public void hutsaErakutzi(int pZut, int pErr){
-		mouseListenerBatKendu(pZut, pErr);	//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
+		if(botoiak[pZut][pErr].getIcon() == Irudiak.bloke[3]){
+			Kontadorea.getKontadorea().minaJarri();
+		}
+		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
 		botoiak[pZut][pErr].setIcon(Irudiak.bloke[1]);
 	}
 	
@@ -62,18 +65,16 @@ public class KasilenPanela extends JPanel{
 	}
 	
 	public void banderaErakutzi(int pZut, int pErr){
-		botoiak[pZut][pErr].setIcon(Irudiak.bloke[4]);
+		botoiak[pZut][pErr].setIcon(Irudiak.bloke[3]);
 	}
 	
 	public void mouseListenerrakGuztiakKendu(){
 		for(int j=0; j<botoiak[0].length; j++){
 			for(int i=0; i<botoiak.length; i++){
-				mouseListenerBatKendu(i, j);
+				botoiak[i][j].kenduMouseListener();
 			}
 		}
 	}
 	
-	private void mouseListenerBatKendu(int pZut, int pErr){
-		botoiak[pZut][pErr].kenduMouseListener();
-	}
+
 }
