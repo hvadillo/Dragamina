@@ -19,7 +19,7 @@ public class Leihoa extends JFrame{
 	
 	public Leihoa() {
 		setTitle("DRAGAMINA");
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setIconImage(Irudiak.ikonoa);
 		setBackground(new Color(250, 250, 250));
@@ -94,11 +94,11 @@ public class Leihoa extends JFrame{
 		}
 		else{
 			switch (zail){
-			case 1:	setSize(330, 309);
+			case 1:	setSize(372, 357);
 					break;
-			case 2:	setSize(495, 408);
+			case 2:	setSize(547, 462);
 					break;
-			case 3:	setSize(825, 474);
+			case 3:	setSize(897, 532);
 			}
 		}
 		setLocationRelativeTo(null); 
