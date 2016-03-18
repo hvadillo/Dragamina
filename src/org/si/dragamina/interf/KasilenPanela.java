@@ -75,6 +75,4 @@ public class KasilenPanela extends JPanel{
 			}
 		}
 	}
-	
-
 }

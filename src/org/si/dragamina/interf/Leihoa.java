@@ -8,14 +8,13 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import org.si.dragamina.logic.Panela;
+import org.si.dragamina.logic.PanelaTest;
 
 public class Leihoa extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
 	private Menua mnMenua = new Menua();
-	private int zail = 1;
-	
 	
 	public Leihoa() {
 		setTitle("DRAGAMINA");
@@ -80,11 +79,9 @@ public class Leihoa extends JFrame{
 		getContentPane().add(KasilenPanela.getKasilenPanela(), BorderLayout.CENTER);		//Kasilak gehitu panelean
 	}
 	
-	public void leihoaAldatu(int pZail, int pErre, int pZut){			//Leihoen tamaina zailtasunaren arabera
-		zail = pZail;
-		
+	public void leihoaAldatu(int pZail, int pErre, int pZut){			//Leihoen tamaina zailtasunaren arabera	
 		if(System.getProperty("os.name").equals("Mac OS X")){			//MAC OS-erako dimentzioak
-			switch (zail){
+			switch (pZail){
 				case 1:	setSize(330, 309);
 						break;
 				case 2:	setSize(495, 408);
@@ -93,7 +90,7 @@ public class Leihoa extends JFrame{
 			}
 		}
 		else{
-			switch (zail){												//WINDOWS-erako dimentzioak
+			switch (pZail){												//WINDOWS-erako dimentzioak
 			case 1:	setSize(372, 357);
 					break;
 			case 2:	setSize(547, 462);
@@ -104,9 +101,7 @@ public class Leihoa extends JFrame{
 		setLocationRelativeTo(null); 
 		Kontadorea.getKontadorea().partidaBerria(Panela.getPanela().minaKopurua());
 		KasilenPanela.getKasilenPanela().kasilakSortu(pZut, pErre);
+		setVisible(true);
 	}
-	
-	public int getZailtasuna(){
-		return zail;
-	}
+
 }

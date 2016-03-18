@@ -9,6 +9,7 @@ import org.si.dragamina.interf.Smiley;
 
 public class Panela{
 	
+	private int zailtasuna = 0;
 	private static Panela nPanela = null;
 	private MatrizeGelaxka matrizea;
 	
@@ -24,18 +25,20 @@ public class Panela{
 	}
 	
 	public void panelaEraiki(int pZail){					//Partida berria sortu (zailtasun berria)
+		if(pZail == zailtasuna){
+			matrizeaEguneratu();
+		}
+		zailtasuna = pZail;
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 		int[] dim = dimentzioakKalkulatu(pZail);
 		Leihoa.getLeihoa().leihoaAldatu(pZail, dim[0], dim[1]);
 		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
-		Leihoa.getLeihoa().setVisible(true);
 	}
 	
 	public void matrizeaEguneratu(){						//Partida berria sortu (zailtasun berina aurreko partidarekiko)
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 		KasilenPanela.getKasilenPanela().botoiakItxi();
-		int zail = Leihoa.getLeihoa().getZailtasuna();
-		int[] dim = dimentzioakKalkulatu(zail);
+		int[] dim = dimentzioakKalkulatu(zailtasuna);
 		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
 		Kontadorea.getKontadorea().partidaBerria(minaKopurua());
 	}
@@ -57,9 +60,8 @@ public class Panela{
 	}
 	
 	public int minaKopurua(){
-		int z = Leihoa.getLeihoa().getZailtasuna();
-		int[] d = dimentzioakKalkulatu(z);
-		return z * d[0];
+		int[] d = dimentzioakKalkulatu(zailtasuna);
+		return zailtasuna * d[0];
 	}
 	
 	public void ireki(int pX, int pY){

@@ -2,12 +2,13 @@ package org.si.dragamina.interf;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import org.si.dragamina.logic.Panela;
 
-public class Kasila extends JButton implements MouseListener {
-
+public class Kasila extends JButton implements MouseListener{
+	
 	private static final long serialVersionUID = 1L;
 	private int zutabe;
 	private int errenkada;

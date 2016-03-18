@@ -1,7 +1,7 @@
 package org.si.dragamina.logic;
 
-public abstract class Gelaxka {
-
+public abstract class Gelaxka{
+	
 	protected int x;
 	protected int y;
 	protected boolean zabaldua;

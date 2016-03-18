@@ -3,10 +3,9 @@ package org.si.dragamina.logic;
 import java.util.Random;
 
 import org.si.dragamina.interf.KasilenPanela;
-import org.si.dragamina.interf.Leihoa;
 import java.util.ArrayList;
 
-public class MatrizeGelaxka {
+public class MatrizeGelaxka{
 
 	private Gelaxka[][] gelaxkak;
 	private ArrayList<Gelaxka> minak;
@@ -23,7 +22,7 @@ public class MatrizeGelaxka {
 	}
 	
 	public void matrizeaSortu(){
-		int minaKop = Leihoa.getLeihoa().getZailtasuna() * err;
+		int minaKop = Panela.getPanela().minaKopurua();
 		kasilaItxiak = (zut * err) - minaKop;
 		minakSortu(minaKop);
 		gelaxkaHutzakSortu();

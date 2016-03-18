@@ -1,6 +1,6 @@
 package org.si.dragamina.logic;
 
-import org.si.dragamina.interf.KasilenPanela;
+import org.si.dragamina.interf.KasilenPanela; 
 
 public class GelaZenbakia extends Gelaxka{
 
