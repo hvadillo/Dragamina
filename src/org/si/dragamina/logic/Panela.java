@@ -1,20 +1,17 @@
 package org.si.dragamina.logic;
 
-import org.si.dragamina.interf.Irudiak;
-import org.si.dragamina.interf.KasilenPanela;
-import org.si.dragamina.interf.Kontadorea;
-import org.si.dragamina.interf.Kronometroa;
-import org.si.dragamina.interf.Leihoa;
-import org.si.dragamina.interf.Smiley;
+import java.util.Observable;
 
-public class Panela{
+import org.si.dragamina.interf.KasilenPanela;
+
+public class Panela extends Observable{
 	
-	private int zailtasuna = 0;
+	private int zailtasuna;
 	private static Panela nPanela = null;
 	private MatrizeGelaxka matrizea;
 	
 	private Panela(){
-		Irudiak.kargatu();
+		zailtasuna = 0;
 	}
 	
 	public static Panela getPanela(){
@@ -28,19 +25,20 @@ public class Panela{
 		if(pZail == zailtasuna){
 			matrizeaEguneratu();
 		}
-		zailtasuna = pZail;
-		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
-		int[] dim = dimentzioakKalkulatu(pZail);
-		Leihoa.getLeihoa().leihoaAldatu(pZail, dim[0], dim[1]);
-		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
+		else{
+			zailtasuna = pZail;
+		
+			int[] dim = dimentzioakKalkulatu(zailtasuna);
+			matrizea = new MatrizeGelaxka(dim[0],dim[1]);
+			setChanged();
+			notifyObservers("LEIHOA ALDATU");
+		}
 	}
 	
 	public void matrizeaEguneratu(){						//Partida berria sortu (zailtasun berina aurreko partidarekiko)
-		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 		KasilenPanela.getKasilenPanela().botoiakItxi();
 		int[] dim = dimentzioakKalkulatu(zailtasuna);
 		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
-		Kontadorea.getKontadorea().partidaBerria(minaKopurua());
 	}
 	
 	private int[] dimentzioakKalkulatu(int pZ){
@@ -64,22 +62,23 @@ public class Panela{
 		return zailtasuna * d[0];
 	}
 	
+	public int getZailtasuna(){
+		return zailtasuna;
+	}
+	
 	public void ireki(int pX, int pY){
 		matrizea.gelaIreki(pX, pY);
 	}
 	
 	public void partidaIrabazi(){
-		Kronometroa.getKronometroa().kronometroaBukatu();						//Kronometroa gelditu partida irabaztean
-		Kontadorea.getKontadorea().irabazi(); 									//Bomba kontadorea 0-n jarri
-		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);							//Irabazi smiley-a erakutzi
 		matrizea.banderakErakutzi();											//Minak banderarekin pantailaratu
-		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
+		setChanged();
+		notifyObservers(true);
 	}
 	
 	public void partidaGaldu(){
-		Kronometroa.getKronometroa().kronometroaBukatu();						//Kronometroa gelditu partida irabaztean
-		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);							//Galdu "smiley-a" erakutzi
 		matrizea.minakErakutzi();												//Minak non dauden pantailaratu
-		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
+		setChanged();
+		notifyObservers(false);
 	}
 }

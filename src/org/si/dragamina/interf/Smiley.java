@@ -2,10 +2,8 @@ package org.si.dragamina.interf;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-
 import org.si.dragamina.logic.Panela;
 
 public class Smiley extends JButton{

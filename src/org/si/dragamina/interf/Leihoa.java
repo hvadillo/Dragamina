@@ -4,19 +4,25 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import org.si.dragamina.logic.Panela;
-import org.si.dragamina.logic.PanelaTest;
+import javax.swing.*;
 
-public class Leihoa extends JFrame{
+import java.util.Observable;
+import java.util.Observer;
+
+import org.si.dragamina.logic.Panela;
+
+public class Leihoa extends JFrame implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
 	private Menua mnMenua = new Menua();
+	private Observable gurePanela;
 	
 	public Leihoa() {
+		Irudiak.kargatu();
+		
 		setTitle("DRAGAMINA");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -36,6 +42,9 @@ public class Leihoa extends JFrame{
 			});
 		
 		setJMenuBar(mnMenua);											//Menua
+		
+		gurePanela = Panela.getPanela();
+		gurePanela.addObserver(this);
 		
 		panelakEraiki();
 	}
@@ -75,33 +84,43 @@ public class Leihoa extends JFrame{
 		gPanela3.add(Kronometroa.getKronometroa());
 		gPanela.add(gPanela3, BorderLayout.EAST);
 		
-		
 		getContentPane().add(KasilenPanela.getKasilenPanela(), BorderLayout.CENTER);		//Kasilak gehitu panelean
 	}
 	
-	public void leihoaAldatu(int pZail, int pErre, int pZut){			//Leihoen tamaina zailtasunaren arabera	
-		if(System.getProperty("os.name").equals("Mac OS X")){			//MAC OS-erako dimentzioak
-			switch (pZail){
-				case 1:	setSize(330, 309);
-						break;
-				case 2:	setSize(495, 408);
-						break;
-				case 3:	setSize(825, 474);
-			}
-		}
-		else{
-			switch (pZail){												//WINDOWS-erako dimentzioak
-			case 1:	setSize(372, 357);
-					break;
-			case 2:	setSize(547, 462);
-					break;
-			case 3:	setSize(897, 532);
-			}
-		}
+	public void leihoaAldatu(int pZail){			//Leihoen tamaina zailtasunaren arabera	
+		Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);
 		setLocationRelativeTo(null); 
 		Kontadorea.getKontadorea().partidaBerria(Panela.getPanela().minaKopurua());
-		KasilenPanela.getKasilenPanela().kasilakSortu(pZut, pErre);
+		int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
+		KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
 		setVisible(true);
 	}
 
+	@Override
+	public void update(Observable o, Object arg) {
+		if(arg instanceof Boolean){
+			boolean irabaziGaldu = (Boolean) arg;
+			if(irabaziGaldu) irabazi();
+			else galdu();
+		}
+		else if(arg instanceof String){
+			String agindua = (String) arg;
+			if(agindua.equals("LEIHOA ALDATU")){
+				leihoaAldatu(Panela.getPanela().getZailtasuna());
+			}
+		}
+	}
+	
+	public void irabazi(){
+		Kronometroa.getKronometroa().kronometroaBukatu();						//Kronometroa gelditu partida bukatzean
+		Kontadorea.getKontadorea().irabazi(); 									//Bomba kontadorea 0-n jarri
+		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);							//Irabazi smiley-a erakutzi
+		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
+	}
+	
+	public void galdu(){
+		Kronometroa.getKronometroa().kronometroaBukatu();						//Kronometroa gelditu partida bukatzean
+		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);							//Galdu "smiley-a" erakutzi
+		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
+	}
 }

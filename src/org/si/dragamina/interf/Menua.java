@@ -57,16 +57,22 @@ public class Menua extends JMenuBar implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == mntmErraza){
-			Panela.getPanela().panelaEraiki(1);
+			Kontadorea.getKontadorea().partidaBerria(Panela.getPanela().minaKopurua());
+			Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 			Kronometroa.getKronometroa().kronometroaHasieratu();
+			Panela.getPanela().panelaEraiki(1);
 		}
 		else if (e.getSource() == mntmNormala){
-			Panela.getPanela().panelaEraiki(2);
+			Kontadorea.getKontadorea().partidaBerria(Panela.getPanela().minaKopurua());
+			Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 			Kronometroa.getKronometroa().kronometroaHasieratu();
+			Panela.getPanela().panelaEraiki(2);
 		}
 		else if(e.getSource() == mntmZaila){
-			Panela.getPanela().panelaEraiki(3);
+			Kontadorea.getKontadorea().partidaBerria(Panela.getPanela().minaKopurua());
+			Smiley.getSmiley().setIcon(Irudiak.smiley[0]);		//Hasierako egoeran jarri aurpegia
 			Kronometroa.getKronometroa().kronometroaHasieratu();
+			Panela.getPanela().panelaEraiki(3);
 		}
 		else if (e.getSource() == mntmIrten){
 			Leihoa.getLeihoa().dispose();
