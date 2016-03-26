@@ -2,8 +2,6 @@ package org.si.dragamina.logic;
 
 import java.util.Observable;
 
-import org.si.dragamina.interf.KasilenPanela;
-
 public class Panela extends Observable{
 	
 	private int zailtasuna;
@@ -27,7 +25,6 @@ public class Panela extends Observable{
 		}
 		else{
 			zailtasuna = pZail;
-		
 			int[] dim = dimentzioakKalkulatu(zailtasuna);
 			matrizea = new MatrizeGelaxka(dim[0],dim[1]);
 			setChanged();
@@ -36,7 +33,8 @@ public class Panela extends Observable{
 	}
 	
 	public void matrizeaEguneratu(){						//Partida berria sortu (zailtasun berina aurreko partidarekiko)
-		KasilenPanela.getKasilenPanela().botoiakItxi();
+		setChanged();
+		notifyObservers("EGUNERATU");
 		int[] dim = dimentzioakKalkulatu(zailtasuna);
 		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
 	}

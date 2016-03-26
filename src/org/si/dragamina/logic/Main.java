@@ -1,8 +1,12 @@
 package org.si.dragamina.logic;
 
-public abstract class Main {
+import org.si.dragamina.interf.Leihoa;
 
+public abstract class Main {
+	
 	public static void main(String[] args) {
-		Panela.getPanela().panelaEraiki(1);
+		int hastekoZailtasuna = 1;
+		Panela.getPanela().panelaEraiki(hastekoZailtasuna);
+		Leihoa.getLeihoa().leihoaAldatu(hastekoZailtasuna);
 	}
 }

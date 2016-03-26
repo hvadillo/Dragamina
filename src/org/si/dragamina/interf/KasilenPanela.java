@@ -3,10 +3,12 @@ package org.si.dragamina.interf;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.*;
 
-public class KasilenPanela extends JPanel{
+public class KasilenPanela extends JPanel implements Observer{
 	
 	private static final long serialVersionUID = 1L;
 	private static KasilenPanela nKasilenPanela = null;
@@ -28,6 +30,7 @@ public class KasilenPanela extends JPanel{
 	}
 	
 	public void kasilakSortu(int pZutabe, int pErrenkada){
+		System.out.println("aaa");
 		removeAll();
 		setLayout(new GridLayout(pErrenkada, pZutabe, 0, 0));
 		botoiak = new Kasila[pZutabe][pErrenkada];
@@ -53,7 +56,7 @@ public class KasilenPanela extends JPanel{
 	}
 	
 	public void hutsaErakutzi(int pZut, int pErr){
-		if(botoiak[pZut][pErr].getIcon() == Irudiak.bloke[3]){
+		if(botoiak[pZut][pErr].getIcon().equals(Irudiak.bloke[3])){
 			Kontadorea.getKontadorea().minaJarri();
 		}
 		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
@@ -74,5 +77,11 @@ public class KasilenPanela extends JPanel{
 				botoiak[i][j].kenduMouseListener();
 			}
 		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 }

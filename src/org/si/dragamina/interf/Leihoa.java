@@ -104,9 +104,14 @@ public class Leihoa extends JFrame implements Observer{
 			else galdu();
 		}
 		else if(arg instanceof String){
+			KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();
 			String agindua = (String) arg;
 			if(agindua.equals("LEIHOA ALDATU")){
 				leihoaAldatu(Panela.getPanela().getZailtasuna());
+				KasilenPanela.getKasilenPanela().botoiakItxi();
+			}
+			else if(agindua.equals("EGUNERATU")){
+				KasilenPanela.getKasilenPanela().botoiakItxi();
 			}
 		}
 	}

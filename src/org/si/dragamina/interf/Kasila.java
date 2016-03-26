@@ -15,6 +15,9 @@ public class Kasila extends JButton implements MouseListener{
 	
 	public Kasila(int pZ, int pE){
 		setBorder(BorderFactory.createEmptyBorder());
+		setFocusPainted(false);
+		setBorder(null);
+		setContentAreaFilled(false);
 		zutabe = pZ;
 		errenkada = pE;
 		addMouseListener(this);
@@ -32,7 +35,7 @@ public class Kasila extends JButton implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(getIcon()!=Irudiak.bloke[3]){			//Bandera ez badago aldatu smiley-a
+		if(getIcon().equals(Irudiak.bloke[3])){			//Bandera ez badago aldatu smiley-a
 			if(e.getButton() == MouseEvent.BUTTON1){
 					Smiley.getSmiley().setIcon(Irudiak.smiley[3]);
 			}
@@ -46,23 +49,24 @@ public class Kasila extends JButton implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		System.out.println("a");
 		if(e.getButton() == MouseEvent.BUTTON1){
-			if(getIcon()!=Irudiak.bloke[3]){			//Bandera ez badago zabaldu
+			if(!getIcon().equals(Irudiak.bloke[3])){			//Bandera ez badago zabaldu
 				Kronometroa.getKronometroa().kronometroaHasi();
 				Panela.getPanela().ireki(zutabe, errenkada);
 			}
 		}
 		else{											//ESKUMAKO BOTOIA
-			if(getIcon()==Irudiak.bloke[0]){
+			if(getIcon().equals(Irudiak.bloke[0])){
 				if(Kontadorea.getKontadorea().minaKendu()==0){
 					setIcon(Irudiak.bloke[3]);
 				}
 			}
-			else if(getIcon()==Irudiak.bloke[3]){
+			else if(getIcon().equals(Irudiak.bloke[3])){
 				Kontadorea.getKontadorea().minaJarri();
 				setIcon(Irudiak.bloke[4]);
 			}
-			else if(getIcon()==Irudiak.bloke[4]){
+			else if(getIcon().equals(Irudiak.bloke[4])){
 				setIcon(Irudiak.bloke[0]);
 			}
 		}
