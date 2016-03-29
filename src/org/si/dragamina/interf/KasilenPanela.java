@@ -3,12 +3,10 @@ package org.si.dragamina.interf;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.*;
 
-public class KasilenPanela extends JPanel implements Observer{
+public class KasilenPanela extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	private static KasilenPanela nKasilenPanela = null;
@@ -30,7 +28,6 @@ public class KasilenPanela extends JPanel implements Observer{
 	}
 	
 	public void kasilakSortu(int pZutabe, int pErrenkada){
-		System.out.println("aaa");
 		removeAll();
 		setLayout(new GridLayout(pErrenkada, pZutabe, 0, 0));
 		botoiak = new Kasila[pZutabe][pErrenkada];
@@ -77,11 +74,5 @@ public class KasilenPanela extends JPanel implements Observer{
 				botoiak[i][j].kenduMouseListener();
 			}
 		}
-	}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -1,6 +1,9 @@
 package org.si.dragamina.interf;
 
 import javax.swing.JPanel;
+
+import org.si.dragamina.logic.Panela;
+
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import java.awt.Color;
@@ -39,8 +42,8 @@ public class Kontadorea extends JPanel {
 		eguneratu();
 	}
 	
-	public void partidaBerria(int pMinak){
-		minakFaltan=pMinak;
+	public void partidaBerria(){
+		minakFaltan=Panela.getPanela().minaKopurua();;
 		eguneratu();
 	}
 	

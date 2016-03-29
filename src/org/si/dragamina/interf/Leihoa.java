@@ -89,8 +89,8 @@ public class Leihoa extends JFrame implements Observer{
 	
 	public void leihoaAldatu(int pZail){			//Leihoen tamaina zailtasunaren arabera	
 		Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);
-		setLocationRelativeTo(null); 
-		Kontadorea.getKontadorea().partidaBerria(Panela.getPanela().minaKopurua());
+		setLocationRelativeTo(null);
+		Kontadorea.getKontadorea().partidaBerria();
 		int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
 		KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
 		setVisible(true);
@@ -104,11 +104,13 @@ public class Leihoa extends JFrame implements Observer{
 			else galdu();
 		}
 		else if(arg instanceof String){
-			KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();
+			Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
+			Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
+			Kronometroa.getKronometroa().kronometroaHasieratu();		//Hasieratu kronometroa
+			
 			String agindua = (String) arg;
 			if(agindua.equals("LEIHOA ALDATU")){
 				leihoaAldatu(Panela.getPanela().getZailtasuna());
-				KasilenPanela.getKasilenPanela().botoiakItxi();
 			}
 			else if(agindua.equals("EGUNERATU")){
 				KasilenPanela.getKasilenPanela().botoiakItxi();
