@@ -25,6 +25,7 @@ public class Kasila extends JButton implements MouseListener{
 	}
 	
 	public void itxi(){
+		addMouseListener(this);
 		setIcon(Irudiak.bloke[0]);
 	}
 	
