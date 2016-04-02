@@ -59,6 +59,9 @@ public class Leihoa extends JFrame implements Observer{
 	}
 	
 	public void jokalariarenIzena(){
+		setMenuBar(null);
+		getContentPane().removeAll();
+		
 		JPanel gPanela = new JPanel();									//Jokalari panela
 		gPanela.setLayout(new GridLayout(2,1,0,0));
 		gPanela.setBackground(new Color(250, 250, 250));

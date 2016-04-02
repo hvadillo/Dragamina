@@ -48,6 +48,9 @@ public class KasilenPanela extends JPanel{
 	}							
 	
 	public void zenbakiaErakutzi(int pZenb, int pZut, int pErr){
+		if(botoiak[pZut][pErr].getIcon().equals(Irudiak.bloke[3])){
+			Kontadorea.getKontadorea().minaJarri();
+		}
 		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
 		botoiak[pZut][pErr].setIcon(Irudiak.zenbakiak[pZenb]);
 	}

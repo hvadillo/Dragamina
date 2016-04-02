@@ -64,7 +64,7 @@ public class Menua extends JMenuBar implements ActionListener{
 		else if (e.getSource() == mntmNormala) Panela.getPanela().panelaEraiki(2);
 		else if(e.getSource() == mntmZaila) Panela.getPanela().panelaEraiki(3);
 		else if (e.getSource() == mntmIrten) Leihoa.getLeihoa().dispose();
-		else if (e.getSource() == mntmAldatu){} //TODO
+		else if (e.getSource() == mntmAldatu){ Leihoa.getLeihoa().jokalariarenIzena();} //TODO
 		else if(e.getSource() == mntmArgibidea){
 			JDialog guriBuruz  = new JDialog(Leihoa.getLeihoa(),"Argibidea");
 			JLabel etiqueta = new JLabel("ARGIBIDEA");
