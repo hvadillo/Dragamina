@@ -1,13 +1,10 @@
 package org.si.dragamina.interf;
 
 import javax.swing.JPanel;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-
 import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Insets;
 
 public class Kronometroa extends JPanel {
 

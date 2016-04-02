@@ -8,6 +8,5 @@ public abstract class Main {
 		int hastekoZailtasuna = 1;
 		Panela.getPanela().panelaEraiki(hastekoZailtasuna);
 		Leihoa.getLeihoa().jokalariarenIzena();
-		//Leihoa.getLeihoa().leihoaAldatu(hastekoZailtasuna);
 	}
 }

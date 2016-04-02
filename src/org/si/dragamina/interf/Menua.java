@@ -15,7 +15,7 @@ public class Menua extends JMenuBar implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JMenu mnMenua, mnLaguntza;
-	private JMenuItem mntmErraza, mntmNormala, mntmZaila, mntmIrten;
+	private JMenuItem mntmErraza, mntmNormala, mntmZaila, mntmIrten, mntmAldatu;
 	private JMenuItem mntmArgibidea, mntmAboutThis;
 	
 	public Menua(){
@@ -33,6 +33,8 @@ public class Menua extends JMenuBar implements ActionListener{
 		mntmZaila.addActionListener(this);
 		mntmIrten = new JMenuItem("Irten");
 		mntmIrten.addActionListener(this);
+		mntmAldatu = new JMenuItem("Jokalaria aldatu");
+		mntmAldatu.addActionListener(this);
 		
 		mntmArgibidea = new JMenuItem("Argibidea");
 		mntmArgibidea.addActionListener(this);
@@ -42,6 +44,8 @@ public class Menua extends JMenuBar implements ActionListener{
 		mnMenua.add(mntmErraza);
 		mnMenua.add(mntmNormala);
 		mnMenua.add(mntmZaila);
+		mnMenua.addSeparator();
+		mnMenua.add(mntmAldatu);
 		mnMenua.addSeparator();
 		mnMenua.add(mntmIrten);
 		
@@ -60,6 +64,7 @@ public class Menua extends JMenuBar implements ActionListener{
 		else if (e.getSource() == mntmNormala) Panela.getPanela().panelaEraiki(2);
 		else if(e.getSource() == mntmZaila) Panela.getPanela().panelaEraiki(3);
 		else if (e.getSource() == mntmIrten) Leihoa.getLeihoa().dispose();
+		else if (e.getSource() == mntmAldatu){} //TODO
 		else if(e.getSource() == mntmArgibidea){
 			JDialog guriBuruz  = new JDialog(Leihoa.getLeihoa(),"Argibidea");
 			JLabel etiqueta = new JLabel("ARGIBIDEA");

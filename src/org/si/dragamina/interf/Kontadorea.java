@@ -4,13 +4,10 @@ import javax.swing.JPanel;
 
 import org.si.dragamina.logic.Panela;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
-
 import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Insets;
 
 public class Kontadorea extends JPanel {
 
