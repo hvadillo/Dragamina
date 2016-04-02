@@ -36,7 +36,6 @@ public class Leihoa extends JFrame implements Observer{
 			    int confirmed = JOptionPane.showConfirmDialog(null, 
 			        "Ziur zaude DRAGAMINAtik irten nahi duzula?", "DRAGAMINA ITXI",
 			        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Irudiak.smiley[4]);
-
 			    if (confirmed == JOptionPane.YES_OPTION) {
 			      dispose();
 			    }
@@ -59,7 +58,7 @@ public class Leihoa extends JFrame implements Observer{
 	}
 	
 	public void jokalariarenIzena(){
-		setMenuBar(null);
+		setJMenuBar(null);
 		getContentPane().removeAll();
 		
 		JPanel gPanela = new JPanel();									//Jokalari panela
@@ -82,6 +81,7 @@ public class Leihoa extends JFrame implements Observer{
 				Panela.getPanela().jokalariaSortu(jokIzena.getText());  //Jokalariaren izena pasatu
 				getContentPane().remove(gPanela);						//Text field-a borratu
 				panelakEraiki();
+				Panela.getPanela().panelaEraiki(1);
 				leihoaAldatu(1);
 			}
 		});
