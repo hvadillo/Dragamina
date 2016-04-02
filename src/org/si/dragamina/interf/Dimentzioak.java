@@ -18,6 +18,8 @@ public class Dimentzioak{
 	public void lehioarenDimentzioakAldatu(int pZail){
 		if(System.getProperty("os.name").equals("Mac OS X")){			//MAC OS-erako dimentzioak
 			switch (pZail){
+				case 0:Leihoa.getLeihoa().setSize(200, 100);
+						break;
 				case 1:	Leihoa.getLeihoa().setSize(330, 309);
 						break;
 				case 2:	Leihoa.getLeihoa().setSize(495, 408);

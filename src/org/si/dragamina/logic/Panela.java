@@ -79,4 +79,8 @@ public class Panela extends Observable{
 		setChanged();
 		notifyObservers(false);
 	}
+	
+	public void jokalariaSortu(String pIzena){
+		Partida p = new Partida(pIzena);
+	}
 }

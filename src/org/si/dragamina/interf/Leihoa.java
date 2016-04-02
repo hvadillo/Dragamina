@@ -1,5 +1,7 @@
 package org.si.dragamina.interf;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.FlowLayout;
@@ -30,7 +32,7 @@ public class Leihoa extends JFrame implements Observer{
 		setBackground(new Color(250, 250, 250));
 		
 		this.addWindowListener(new WindowAdapter() {					//Leihoa ixtean aterako den mezua
-			  public void windowClosing(WindowEvent e) {
+			public void windowClosing(WindowEvent e) {
 			    int confirmed = JOptionPane.showConfirmDialog(null, 
 			        "Ziur zaude DRAGAMINAtik irten nahi duzula?", "DRAGAMINA ITXI",
 			        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Irudiak.smiley[4]);
@@ -38,15 +40,11 @@ public class Leihoa extends JFrame implements Observer{
 			    if (confirmed == JOptionPane.YES_OPTION) {
 			      dispose();
 			    }
-			  }
-			});
-		
-		setJMenuBar(mnMenua);											//Menua
-		
+			}
+		});
+	
 		gurePanela = Panela.getPanela();
 		gurePanela.addObserver(this);
-		
-		panelakEraiki();
 	}
 	
 	public static Leihoa getLeihoa(){
@@ -60,7 +58,39 @@ public class Leihoa extends JFrame implements Observer{
 		return nLeihoa;
 	}
 	
+	public void jokalariarenIzena(){
+		JPanel gPanela = new JPanel();									//Jokalari panela
+		gPanela.setLayout(new GridLayout(2,1,0,0));
+		gPanela.setBackground(new Color(250, 250, 250));
+		getContentPane().add(gPanela, BorderLayout.CENTER);
+		
+		JTextField jokIzena = new JTextField();
+		jokIzena.setText("Zure izena sartu");
+		jokIzena.setBounds(0, 0, 50, 50);
+		JButton okBotoia = new JButton();
+		okBotoia.setText("ok");
+		okBotoia.setBounds(0, 0, 10, 10);
+		gPanela.add(jokIzena);
+		gPanela.add(okBotoia);
+		
+		okBotoia.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Panela.getPanela().jokalariaSortu(jokIzena.getText());  //Jokalariaren izena pasatu
+				getContentPane().remove(gPanela);						//Text field-a borratu
+				panelakEraiki();
+				leihoaAldatu(1);
+			}
+		});
+		
+		setSize(350, 70);
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
+	
 	private void panelakEraiki(){
+		setJMenuBar(mnMenua);											//Menua
+		
 		JPanel gPanela = new JPanel();									//Panel nagusia
 		gPanela.setLayout(new GridLayout(1,3,0,0));
 		gPanela.setBackground(new Color(250, 250, 250));
@@ -85,6 +115,8 @@ public class Leihoa extends JFrame implements Observer{
 		gPanela.add(gPanela3, BorderLayout.EAST);
 		
 		getContentPane().add(KasilenPanela.getKasilenPanela(), BorderLayout.CENTER);		//Kasilak gehitu panelean
+		
+		setVisible(true);
 	}
 	
 	public void leihoaAldatu(int pZail){			//Leihoen tamaina zailtasunaren arabera	
@@ -110,7 +142,6 @@ public class Leihoa extends JFrame implements Observer{
 			
 			String agindua = (String) arg;
 			if(agindua.equals("LEIHOA ALDATU")){
-				
 				leihoaAldatu(Panela.getPanela().getZailtasuna());
 			}
 			else if(agindua.equals("EGUNERATU")){
