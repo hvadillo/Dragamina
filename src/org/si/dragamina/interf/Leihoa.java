@@ -19,11 +19,13 @@ public class Leihoa extends JFrame implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
-	private Menua mnMenua = new Menua();
 	private Observable gurePanela;
+	private int zail = 0;
+	private boolean hasita = false;
 	
 	public Leihoa() {
 		Irudiak.kargatu();
+		Textua.kargatu();
 		
 		setTitle("DRAGAMINA");
 		setResizable(false);
@@ -34,7 +36,7 @@ public class Leihoa extends JFrame implements Observer{
 		this.addWindowListener(new WindowAdapter() {					//Leihoa ixtean aterako den mezua
 			public void windowClosing(WindowEvent e) {
 			    int confirmed = JOptionPane.showConfirmDialog(null, 
-			        "Ziur zaude DRAGAMINAtik irten nahi duzula?", "DRAGAMINA ITXI",
+			        Textua.itxiTextua, Textua.itxiTextuaIzenburu,
 			        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Irudiak.smiley[4]);
 			    if (confirmed == JOptionPane.YES_OPTION) {
 			      dispose();
@@ -44,6 +46,8 @@ public class Leihoa extends JFrame implements Observer{
 	
 		gurePanela = Panela.getPanela();
 		gurePanela.addObserver(this);
+		
+		panelakEraiki();
 	}
 	
 	public static Leihoa getLeihoa(){
@@ -67,10 +71,10 @@ public class Leihoa extends JFrame implements Observer{
 		getContentPane().add(gPanela, BorderLayout.CENTER);
 		
 		JTextField jokIzena = new JTextField();
-		jokIzena.setText("Zure izena sartu");
+		jokIzena.setText(Textua.izenaSartu);
 		jokIzena.setBounds(0, 0, 50, 50);
 		JButton okBotoia = new JButton();
-		okBotoia.setText("ok");
+		okBotoia.setText("OK");
 		okBotoia.setBounds(0, 0, 10, 10);
 		gPanela.add(jokIzena);
 		gPanela.add(okBotoia);
@@ -81,7 +85,6 @@ public class Leihoa extends JFrame implements Observer{
 				Panela.getPanela().jokalariaSortu(jokIzena.getText());  //Jokalariaren izena pasatu
 				getContentPane().remove(gPanela);						//Text field-a borratu
 				panelakEraiki();
-				Panela.getPanela().panelaEraiki(1);
 				leihoaAldatu(1);
 			}
 		});
@@ -91,8 +94,8 @@ public class Leihoa extends JFrame implements Observer{
 		setVisible(true);
 	}
 	
-	private void panelakEraiki(){
-		setJMenuBar(mnMenua);											//Menua
+	public void panelakEraiki(){
+		setJMenuBar(new Menua());											//Menua
 		
 		JPanel gPanela = new JPanel();									//Panel nagusia
 		gPanela.setLayout(new GridLayout(1,3,0,0));
@@ -118,17 +121,53 @@ public class Leihoa extends JFrame implements Observer{
 		gPanela.add(gPanela3, BorderLayout.EAST);
 		
 		getContentPane().add(KasilenPanela.getKasilenPanela(), BorderLayout.CENTER);		//Kasilak gehitu panelean
-		
-		setVisible(true);
 	}
 	
 	public void leihoaAldatu(int pZail){			//Leihoen tamaina zailtasunaren arabera	
-		Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);
-		setLocationRelativeTo(null);
-		Kontadorea.getKontadorea().partidaBerria();
-		int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
-		KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
+		if(pZail == zail){
+			eguneratu();
+		}
+		else{
+			zail = pZail;
+			Panela.getPanela().setZailtasuna(zail);
+			
+			Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
+			Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
+			Kronometroa.getKronometroa().kronometroaHasieratu();		//Hasieratu kronometroa
+			
+			Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);
+			int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
+			KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
+			
+			hasita = false;
+			
+			setLocationRelativeTo(null);
+			setVisible(true);
+		}
+	}
+	
+	public void eguneratu(){
+		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
+		Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
+		Kronometroa.getKronometroa().kronometroaHasieratu();		//Hasieratu kronometroa
+		
+		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();
+		KasilenPanela.getKasilenPanela().botoiakItxi();
+		hasita = false;
+	}
+	
+	public void menuaHasieratu(){
+		setJMenuBar(null);
+		setJMenuBar(new Menua());
 		setVisible(true);
+	}
+	
+	public boolean partidaHasita(){
+		return hasita;
+	}
+	
+	public void partidaHasi(){
+		hasita = true;
 	}
 
 	@Override
@@ -137,20 +176,6 @@ public class Leihoa extends JFrame implements Observer{
 			boolean irabaziGaldu = (Boolean) arg;
 			if(irabaziGaldu) irabazi();
 			else galdu();
-		}
-		else if(arg instanceof String){
-			Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
-			Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
-			Kronometroa.getKronometroa().kronometroaHasieratu();		//Hasieratu kronometroa
-			
-			String agindua = (String) arg;
-			if(agindua.equals("LEIHOA ALDATU")){
-				leihoaAldatu(Panela.getPanela().getZailtasuna());
-			}
-			else if(agindua.equals("EGUNERATU")){
-				KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();
-				KasilenPanela.getKasilenPanela().botoiakItxi();
-			}
 		}
 	}
 	

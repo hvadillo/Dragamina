@@ -13,34 +13,49 @@ public class MatrizeGelaxka{
 	private int err;
 	private int kasilaItxiak;						//Minak ez diren zenbak kasila geratzen diren
 	
-	public MatrizeGelaxka(int pErr, int pZut){
+	public MatrizeGelaxka(int pErr, int pZut, int irekiZut, int irekiErr){
 		zut = pZut;
 		err = pErr;
 		gelaxkak = new Gelaxka[zut][err];
 		minak = new ArrayList<Gelaxka>();
-		matrizeaSortu();
+		matrizeaSortu(irekiZut,irekiErr);
 	}
 	
-	public void matrizeaSortu(){
+	public void matrizeaSortu(int irekiZut, int irekiErr){
 		int minaKop = Panela.getPanela().minaKopurua();
 		kasilaItxiak = (zut * err) - minaKop;
-		minakSortu(minaKop);
+		minakSortu(minaKop,irekiZut,irekiErr);
 		gelaxkaHutzakSortu();
 	}
 	
-	private void minakSortu(int pMinaKop){
+	private void minakSortu(int pMinaKop, int irekiZut, int irekiErr){
 		int xPos, yPos;
 		while(pMinaKop>0){
 			Random rand = new Random();
 			xPos = rand.nextInt(zut);
 			yPos = rand.nextInt(err);
-			if(gelaxkak[xPos][yPos]==null || !(gelaxkak[xPos][yPos] instanceof GelaMina)){
-				gelaxkak[xPos][yPos] = new GelaMina(xPos,yPos);
-				minak.add(gelaxkak[xPos][yPos]);
-				kasilakEguneratu(xPos,yPos);
-				pMinaKop = pMinaKop - 1;
+			if(minaJarDaiteke(xPos, yPos, irekiZut, irekiErr)){
+				if(gelaxkak[xPos][yPos]==null || !(gelaxkak[xPos][yPos] instanceof GelaMina)){
+					gelaxkak[xPos][yPos] = new GelaMina(xPos,yPos);
+					minak.add(gelaxkak[xPos][yPos]);
+					kasilakEguneratu(xPos,yPos);
+					pMinaKop = pMinaKop - 1;
+				}
 			}
 		}
+	}
+	
+	private boolean minaJarDaiteke(int x, int y, int ireX, int ireY){	//Zabaldutako lehenengo kasilan mina ez jartzeko (eta ingurukoetan)
+		if(x == ireX && y == ireY) return false;
+		else if(x == ireX+1 && y == ireY) return false;
+		else if(x == ireX+1 && y == ireY+1) return false;
+		else if(x == ireX && y == ireY+1) return false;
+		else if(x == ireX-1 && y == ireY+1) return false;
+		else if(x == ireX-1 && y == ireY) return false;
+		else if(x == ireX-1 && y == ireY-1) return false;
+		else if(x == ireX && y == ireY-1) return false;
+		else if(x == ireX+1 && y == ireY-1) return false;
+		return true;
 	}
 	
 	private void kasilakEguneratu(int pX, int pY){				//zenbakiak minen inguruan jarri

@@ -42,7 +42,6 @@ public class Kronometroa extends JPanel{
 	private void KronometroaEraiki() {
 		for(int i=0; i<zenbakiak.length; i++) {
 			zenbakiak[i] = new JLabel();
-			//zenbakiak[i].setMargin(new Insets(0, 0, 0, 0));
 			zenbakiak[i].setPreferredSize(new Dimension(13, 23));
 			zenbakiak[i].setIcon(Irudiak.kontadore[0]);
 			add(zenbakiak[i]);

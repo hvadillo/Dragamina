@@ -4,7 +4,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import org.si.dragamina.logic.Panela;
 
 public class Smiley extends JButton{
 	
@@ -19,9 +18,7 @@ public class Smiley extends JButton{
 		setIcon(Irudiak.smiley[0]);
 		addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				setIcon(Irudiak.smiley[0]);
-				Kronometroa.getKronometroa().kronometroaHasieratu();
-		    	Panela.getPanela().matrizeaEguneratu();
+				Leihoa.getLeihoa().eguneratu();
 		    }
 		});
 	}

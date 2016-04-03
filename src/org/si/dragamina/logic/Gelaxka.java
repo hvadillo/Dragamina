@@ -1,6 +1,8 @@
 package org.si.dragamina.logic;
 
-public abstract class Gelaxka{
+import java.util.Observable;
+
+public abstract class Gelaxka extends Observable{
 	
 	protected int x;
 	protected int y;

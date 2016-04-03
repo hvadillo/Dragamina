@@ -6,7 +6,7 @@ public class Panela extends Observable{
 	
 	private int zailtasuna;
 	private static Panela nPanela = null;
-	private MatrizeGelaxka matrizea;
+	private MatrizeGelaxka matrizea = null;
 	
 	private Panela(){
 		zailtasuna = 0;
@@ -19,24 +19,9 @@ public class Panela extends Observable{
 		return nPanela;
 	}
 	
-	public void panelaEraiki(int pZail){					//Partida berria sortu (zailtasun berria)
-		if(pZail == zailtasuna){
-			matrizeaEguneratu();
-		}
-		else{
-			zailtasuna = pZail;
-			int[] dim = dimentzioakKalkulatu(zailtasuna);
-			matrizea = new MatrizeGelaxka(dim[0],dim[1]);
-			setChanged();
-			notifyObservers("LEIHOA ALDATU");
-		}
-	}
-	
-	public void matrizeaEguneratu(){						//Partida berria sortu (zailtasun berina aurreko partidarekiko)
-		setChanged();
-		notifyObservers("EGUNERATU");
+	public void panelaEraiki(int zut, int err){			//Partida berria sortu (zailtasun berria)
 		int[] dim = dimentzioakKalkulatu(zailtasuna);
-		matrizea = new MatrizeGelaxka(dim[0],dim[1]);
+		matrizea = new MatrizeGelaxka(dim[0],dim[1], zut, err);
 	}
 	
 	private int[] dimentzioakKalkulatu(int pZ){
@@ -60,8 +45,8 @@ public class Panela extends Observable{
 		return zailtasuna * d[0];
 	}
 	
-	public int getZailtasuna(){
-		return zailtasuna;
+	public void setZailtasuna(int pZ){
+		zailtasuna = pZ;
 	}
 	
 	public void ireki(int pX, int pY){
