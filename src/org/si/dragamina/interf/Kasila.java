@@ -5,6 +5,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+
+import org.si.dragamina.interf.Baliabideak.Irudiak;
 import org.si.dragamina.logic.Panela;
 
 public class Kasila extends JButton implements MouseListener{

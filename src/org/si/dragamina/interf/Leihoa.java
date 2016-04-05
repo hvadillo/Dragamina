@@ -13,6 +13,8 @@ import javax.swing.*;
 import java.util.Observable;
 import java.util.Observer;
 
+import org.si.dragamina.interf.Baliabideak.Irudiak;
+import org.si.dragamina.interf.Baliabideak.Textua;
 import org.si.dragamina.logic.Panela;
 
 public class Leihoa extends JFrame implements Observer{

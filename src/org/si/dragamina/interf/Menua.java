@@ -1,16 +1,24 @@
 package org.si.dragamina.interf;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.Color;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
 import javax.swing.Box;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class Menua extends JMenuBar implements ActionListener{
+import org.si.dragamina.ActionListener.AldatuAL;
+import org.si.dragamina.ActionListener.ArgibideaAL;
+import org.si.dragamina.ActionListener.ErrazaAL;
+import org.si.dragamina.ActionListener.EuskeraAL;
+import org.si.dragamina.ActionListener.GaztelaniaAL;
+import org.si.dragamina.ActionListener.GuriBuruzAL;
+import org.si.dragamina.ActionListener.IngelesaAL;
+import org.si.dragamina.ActionListener.IrtenAL;
+import org.si.dragamina.ActionListener.NormalaAL;
+import org.si.dragamina.ActionListener.ZailaAL;
+import org.si.dragamina.interf.Baliabideak.Textua;
+
+public class Menua extends JMenuBar{
 
 	private static final long serialVersionUID = 1L;
 	private JMenu mnMenua, mnLaguntza;
@@ -27,29 +35,28 @@ public class Menua extends JMenuBar implements ActionListener{
 		mnLaguntza = new JMenu(Textua.menuLaguntza);
 		
 		mntmErraza = new JMenuItem(Textua.aukErraza);
-		mntmErraza.addActionListener(this);
+		mntmErraza.addActionListener(new ErrazaAL());
 		mntmNormala = new JMenuItem(Textua.aukNorlama);
-		mntmNormala.addActionListener(this);
+		mntmNormala.addActionListener(new NormalaAL());
 		mntmZaila = new JMenuItem(Textua.aukZaila);
-		mntmZaila.addActionListener(this);
+		mntmZaila.addActionListener(new ZailaAL());
 		mntmIrten = new JMenuItem(Textua.aukIrten);
-		mntmIrten.addActionListener(this);
+		mntmIrten.addActionListener(new IrtenAL());
 		mntmAldatu = new JMenuItem(Textua.aukJokAldatu);
-		mntmAldatu.addActionListener(this);
+		mntmAldatu.addActionListener(new AldatuAL());
 		
 		mntmArgibidea = new JMenuItem(Textua.argibidea);
-		mntmArgibidea.addActionListener(this);
+		mntmArgibidea.addActionListener(new ArgibideaAL());
 		mntmAboutUs = new JMenuItem(Textua.guriBuruz);
-		mntmAboutUs.addActionListener(this);
+		mntmAboutUs.addActionListener(new GuriBuruzAL());
 		mnHizkuntza = new JMenu(Textua.hizkuntza);
-		mnHizkuntza.addActionListener(this);
 		
 		mntmEus = new JMenuItem(Textua.euskera);
-		mntmEus.addActionListener(this);
+		mntmEus.addActionListener(new EuskeraAL());
 		mntmIng = new JMenuItem(Textua.ingelesa);
-		mntmIng.addActionListener(this);
+		mntmIng.addActionListener(new IngelesaAL());
 		mntmGaz = new JMenuItem(Textua.gaztelania);
-		mntmGaz.addActionListener(this);
+		mntmGaz.addActionListener(new GaztelaniaAL());
 		
 		mnMenua.add(mntmErraza);
 		mnMenua.add(mntmNormala);
@@ -69,49 +76,8 @@ public class Menua extends JMenuBar implements ActionListener{
 		mnLaguntza.addSeparator();
 		mnLaguntza.add(mntmAboutUs);
 		
-		this.add(mnMenua);
-		this.add(Box.createHorizontalGlue());
-		this.add(mnLaguntza);
-	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == mntmErraza) Leihoa.getLeihoa().leihoaAldatu(1); 
-		else if (e.getSource() == mntmNormala) Leihoa.getLeihoa().leihoaAldatu(2); 
-		else if(e.getSource() == mntmZaila) Leihoa.getLeihoa().leihoaAldatu(3);
-		else if (e.getSource() == mntmIrten) Leihoa.getLeihoa().dispose();
-		else if (e.getSource() == mntmAldatu) Leihoa.getLeihoa().jokalariarenIzena();
-		else if (e.getSource() == mntmEus){
-			Textua.euskeraKargatu();
-			Leihoa.getLeihoa().menuaHasieratu();
-		}
-		else if (e.getSource() == mntmIng){
-			Textua.ingelesaKargatu();
-			Leihoa.getLeihoa().menuaHasieratu();
-		}
-		else if (e.getSource() == mntmGaz){
-			Textua.gaztelaniaKargatu();
-			Leihoa.getLeihoa().menuaHasieratu();
-		}
-		else if(e.getSource() == mntmArgibidea){
-			JDialog guriBuruz  = new JDialog(Leihoa.getLeihoa(),"Argibidea");
-			JLabel etiqueta = new JLabel("ARGIBIDEA");
-			guriBuruz.getContentPane().add(etiqueta);
-			guriBuruz.pack();
-			guriBuruz.setLocationRelativeTo(null);
-			guriBuruz.setSize(300, 200);
-			guriBuruz.setResizable(false);
-			guriBuruz.setVisible(true);
-		}
-		else if (e.getSource() == mntmAboutUs){
-			JDialog guriBuruz  = new JDialog(Leihoa.getLeihoa(),"Guri Buruz");
-			JLabel etiqueta = new JLabel("LIUV TALDEA");
-			guriBuruz.getContentPane().add(etiqueta);
-			guriBuruz.pack();
-			guriBuruz.setLocationRelativeTo(null);
-			guriBuruz.setSize(300, 200);
-			guriBuruz.setResizable(false);
-			guriBuruz.setVisible(true);
-		}
-	}
+		add(mnMenua);
+		add(Box.createHorizontalGlue());
+		add(mnLaguntza);
+	}	
 }

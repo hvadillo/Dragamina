@@ -5,6 +5,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
+import org.si.dragamina.interf.Baliabideak.Irudiak;
+
 public class Smiley extends JButton{
 	
 	private static final long serialVersionUID = 1L;

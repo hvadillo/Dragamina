@@ -1,4 +1,4 @@
-package org.si.dragamina.interf;
+package org.si.dragamina.interf.Baliabideak;
 
 public class Textua {
 	

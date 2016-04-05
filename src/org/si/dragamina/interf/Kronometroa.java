@@ -2,6 +2,9 @@ package org.si.dragamina.interf;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import org.si.dragamina.interf.Baliabideak.Irudiak;
+
 import javax.swing.JLabel;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

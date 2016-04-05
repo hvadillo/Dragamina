@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+import org.si.dragamina.interf.Baliabideak.Irudiak;
+
 public class KasilenPanela extends JPanel{
 	
 	private static final long serialVersionUID = 1L;

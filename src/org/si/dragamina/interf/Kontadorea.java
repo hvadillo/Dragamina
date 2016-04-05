@@ -2,6 +2,7 @@ package org.si.dragamina.interf;
 
 import javax.swing.JPanel;
 
+import org.si.dragamina.interf.Baliabideak.Irudiak;
 import org.si.dragamina.logic.Panela;
 
 import javax.swing.JLabel;
