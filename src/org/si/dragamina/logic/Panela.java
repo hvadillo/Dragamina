@@ -42,7 +42,7 @@ public class Panela extends Observable{
 	
 	public int minaKopurua(){
 		int[] d = dimentzioakKalkulatu(zailtasuna);
-		return zailtasuna * d[1];
+		return zailtasuna * d[0];
 	}
 	
 	public void setZailtasuna(int pZ){
