@@ -3,14 +3,17 @@ package org.si.dragamina.interf;
 import javax.swing.JPanel;
 
 import org.si.dragamina.interf.Baliabideak.Irudiak;
+import org.si.dragamina.logic.MinaKontagailua;
 import org.si.dragamina.logic.Panela;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.Color;
 import java.awt.Dimension;
 
-public class Kontadorea extends JPanel {
+public class Kontadorea extends JPanel implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private static Kontadorea nKontadorea = null;
@@ -18,6 +21,7 @@ public class Kontadorea extends JPanel {
 	private int minakFaltan;
 
 	private Kontadorea() {
+		MinaKontagailua.getMinaKontagailua().addObserver(this);
 		setBackground(new Color(250, 250, 250));
 		GridLayout g = new GridLayout(1, 3, 0, 0);
 		setLayout(g);
@@ -42,7 +46,7 @@ public class Kontadorea extends JPanel {
 	}
 	
 	public void partidaBerria(){
-		minakFaltan=Panela.getPanela().minaKopurua();;
+		minakFaltan=Panela.getPanela().minaKopurua();
 		eguneratu();
 	}
 	
@@ -71,5 +75,10 @@ public class Kontadorea extends JPanel {
 		zenbakiak[0].setIcon(Irudiak.kontadore[minakFaltan/100]);
 		zenbakiak[1].setIcon(Irudiak.kontadore[(minakFaltan/10)%10]);
 		zenbakiak[2].setIcon(Irudiak.kontadore[minakFaltan%10]);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		//eguneratu((int) arg);
 	}
 }

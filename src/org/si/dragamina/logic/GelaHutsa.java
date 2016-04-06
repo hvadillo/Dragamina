@@ -1,6 +1,7 @@
 package org.si.dragamina.logic;
 
 import org.si.dragamina.interf.KasilenPanela;
+import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 public class GelaHutsa extends Gelaxka {
 
@@ -10,8 +11,11 @@ public class GelaHutsa extends Gelaxka {
 
 	@Override
 	protected void gelaIreki() {
-		zabaldua = true;
-		gelaHutsakIreki();
+		if(e == egoera.ITXITA){
+			e = egoera.ZABALDUA;
+			zabaldua = true;
+			gelaHutsakIreki();
+		}
 	}
 	
 	private void gelaHutsakIreki(){

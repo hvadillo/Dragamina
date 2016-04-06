@@ -2,19 +2,19 @@ package org.si.dragamina.logic;
 
 import java.util.Observable;
 
-import org.si.dragamina.logic.Egoera.e;
+import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 public abstract class Gelaxka extends Observable{
 	
 	protected int x;
 	protected int y;
 	protected boolean zabaldua;
-	//private Egoera egoera;
+	protected egoera e;
 	
 	public Gelaxka(int pX, int pY){
 		x = pX;
 		y = pY;
-		//egoera = e.ITXITA;
+		e = egoera.ITXITA;
 		zabaldua = false;
 	}
 	

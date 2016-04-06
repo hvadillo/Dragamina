@@ -1,6 +1,7 @@
 package org.si.dragamina.logic;
 
 import org.si.dragamina.interf.KasilenPanela;
+import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 public class GelaMina extends Gelaxka {
 	
@@ -10,9 +11,12 @@ public class GelaMina extends Gelaxka {
 
 	@Override
 	protected void gelaIreki() {
-		KasilenPanela.getKasilenPanela().minaErakutzi(x, y);
-		zabaldua = true;
-		Panela.getPanela().partidaGaldu();
+		if(e == egoera.ITXITA){
+			e = egoera.ZABALDUA;
+			KasilenPanela.getKasilenPanela().minaErakutzi(x, y);
+			zabaldua = true;
+			Panela.getPanela().partidaGaldu();
+		}
 	}
 
 	@Override

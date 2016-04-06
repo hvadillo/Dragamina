@@ -39,7 +39,7 @@ public class Kasila extends JButton implements MouseListener{
 	public void mousePressed(MouseEvent e) {
 		if(getIcon().equals(Irudiak.bloke[3])){			//Bandera ez badago aldatu smiley-a
 			if(e.getButton() == MouseEvent.BUTTON1){
-					Smiley.getSmiley().setIcon(Irudiak.smiley[3]);
+				Smiley.getSmiley().setIcon(Irudiak.smiley[3]);
 			}
 		}	
 	}

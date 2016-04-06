@@ -46,6 +46,10 @@ public class Panela extends Observable{
 		unekoJok.klikGehitu();
 	}
 	
+	public void ezkerKlika(int pX, int pY){
+		//TODO
+	}
+	
 	public void ireki(int pX, int pY){
 		if(hasita==false){
 			panelaEraiki(pX, pY);
