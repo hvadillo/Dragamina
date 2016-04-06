@@ -21,13 +21,11 @@ public class Leihoa extends JFrame implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private static Leihoa nLeihoa = null;
-	private Observable gurePanela;
-	private int zail = 0;
-	private boolean hasita = false;
 	
 	public Leihoa() {
 		Irudiak.kargatu();
 		Textua.kargatu();
+		Kronometroa.getKronometroa();
 		
 		setTitle("DRAGAMINA");
 		setResizable(false);
@@ -46,8 +44,7 @@ public class Leihoa extends JFrame implements Observer{
 			}
 		});
 	
-		gurePanela = Panela.getPanela();
-		gurePanela.addObserver(this);
+		Panela.getPanela().addObserver(this);
 	}
 	
 	public static Leihoa getLeihoa(){
@@ -62,13 +59,10 @@ public class Leihoa extends JFrame implements Observer{
 	}
 	
 	public void jokalariarenIzena(){
-		zail = 0;
-		
 		setJMenuBar(null);
 		getContentPane().removeAll();
 		
 		JPanel gPanela = new JPanel();									//Jokalari panela
-		//gPanela.setLayout(new GridLayout(3,3,0,0));
 		gPanela.setBackground(new Color(250, 250, 250));
 		getContentPane().add(gPanela, BorderLayout.CENTER);
 		
@@ -111,7 +105,7 @@ public class Leihoa extends JFrame implements Observer{
 				Panela.getPanela().jokalariaSortu(jokIzena.getText());  //Jokalariaren izena pasatu
 				getContentPane().remove(gPanela);						//Text field-a borratu
 				panelakEraiki();
-				leihoaAldatu(autatuZai);
+				Panela.getPanela().partidaBerria(autatuZai);
 			}
 		});
 		
@@ -150,50 +144,29 @@ public class Leihoa extends JFrame implements Observer{
 	}
 	
 	public void leihoaAldatu(int pZail){			//Leihoen tamaina zailtasunaren arabera	
-		if(pZail == zail){
-			eguneratu();
-		}
-		else{
-			zail = pZail;
-			Panela.getPanela().setZailtasuna(zail);
-			
-			Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
-			Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
-			Kronometroa.getKronometroa().kronometroaHasieratu();		//Hasieratu kronometroa
-			
-			Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);
-			int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
-			KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
-			
-			hasita = false;
-			
-			setLocationRelativeTo(null);
-			setVisible(true);
-		}
-	}
-	
-	public void eguneratu(){
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
 		Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
-		Kronometroa.getKronometroa().kronometroaHasieratu();		//Hasieratu kronometroa
+			
+		Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);
+		int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
+		KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
+		
+		setLocationRelativeTo(null);
+		setVisible(true);
+	}
+	
+	private void eguneratu(){
+		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
+		Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
 		
 		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();
 		KasilenPanela.getKasilenPanela().botoiakItxi();
-		hasita = false;
 	}
 	
 	public void menuaHasieratu(){
 		setJMenuBar(null);
 		setJMenuBar(new Menua());
 		setVisible(true);
-	}
-	
-	public boolean partidaHasita(){
-		return hasita;
-	}
-	
-	public void partidaHasi(){
-		hasita = true;
 	}
 
 	@Override
@@ -203,23 +176,24 @@ public class Leihoa extends JFrame implements Observer{
 			if(irabaziGaldu) irabazi();
 			else galdu();
 		}
-		if(arg instanceof String){
-			String agindua = (String) arg;
-			if(agindua.equals("HASIERA")){
-				jokalariarenIzena();
+		if(arg instanceof Integer){
+			Integer z = (Integer) arg;
+			if(z==0){
+				eguneratu();
+			}
+			else{
+				leihoaAldatu(z.intValue());
 			}
 		}
 	}
 	
 	public void irabazi(){
-		Kronometroa.getKronometroa().kronometroaBukatu();						//Kronometroa gelditu partida bukatzean
 		Kontadorea.getKontadorea().irabazi(); 									//Bomba kontadorea 0-n jarri
 		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);							//Irabazi smiley-a erakutzi
 		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
 	}
 	
 	public void galdu(){
-		Kronometroa.getKronometroa().kronometroaBukatu();						//Kronometroa gelditu partida bukatzean
 		Smiley.getSmiley().setIcon(Irudiak.smiley[2]);							//Galdu "smiley-a" erakutzi
 		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
 	}

@@ -1,38 +1,29 @@
 package org.si.dragamina.interf;
 
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
 import org.si.dragamina.interf.Baliabideak.Irudiak;
+import org.si.dragamina.logic.Denbora;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 import java.awt.Color;
 import java.awt.Dimension;
 
-public class Kronometroa extends JPanel{
+public class Kronometroa extends JPanel implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private static Kronometroa nKronometroa = null;
-	private Timer chronometer;
-	private int denbora;
 	private JLabel[] zenbakiak = new JLabel[3];
 
 	private Kronometroa() {
-		chronometer = new Timer(1000, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				denbora++;
-				eguneratu();
-			}
-		});
+		Denbora.getDenbora().addObserver(this);
 		setBackground(new Color(250, 250, 250));
 		GridLayout g = new GridLayout(1, 3, 0, 5);
 		setLayout(g);
 		KronometroaEraiki();
-		denbora = 0;
 	}
 	
 	public static Kronometroa getKronometroa(){
@@ -49,29 +40,13 @@ public class Kronometroa extends JPanel{
 			zenbakiak[i].setIcon(Irudiak.kontadore[0]);
 			add(zenbakiak[i]);
 		}
-		eguneratu();
 	}
 	
-	public void kronometroaHasieratu(){
-		chronometer.stop();
-		denbora = 0;
-		eguneratu();
-	}
-	
-	public void kronometroaHasi(){
-		chronometer.start();
-	}
-	
-	public void kronometroaBukatu(){
-		chronometer.stop();
-		eguneratu();
-	}
-	
-	private void eguneratu(){
-		if(denbora<=999){
-			zenbakiak[0].setIcon(Irudiak.kontadore[(int)Math.round(denbora)/100]);
-			zenbakiak[1].setIcon(Irudiak.kontadore[((int)Math.round(denbora)/10)%10]);
-			zenbakiak[2].setIcon(Irudiak.kontadore[(int)Math.round(denbora)%10]);
+	private void eguneratu(int pDenbora){
+		if(pDenbora<=999){
+			zenbakiak[0].setIcon(Irudiak.kontadore[(int)Math.round(pDenbora)/100]);
+			zenbakiak[1].setIcon(Irudiak.kontadore[((int)Math.round(pDenbora)/10)%10]);
+			zenbakiak[2].setIcon(Irudiak.kontadore[(int)Math.round(pDenbora)%10]);
 		}
 		else{
 			zenbakiak[0].setIcon(Irudiak.kontadore[9]);
@@ -79,5 +54,10 @@ public class Kronometroa extends JPanel{
 			zenbakiak[2].setIcon(Irudiak.kontadore[9]);
 		}
 		
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		eguneratu((int) arg);
 	}
 }

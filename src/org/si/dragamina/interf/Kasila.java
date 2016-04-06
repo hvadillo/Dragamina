@@ -53,12 +53,7 @@ public class Kasila extends JButton implements MouseListener{
 	public void mouseClicked(MouseEvent e) {
 		if(e.getButton() == MouseEvent.BUTTON1){
 			if(!getIcon().equals(Irudiak.bloke[3])){			//Bandera ez badago zabaldu
-				if(!Leihoa.getLeihoa().partidaHasita()){
-					Panela.getPanela().panelaEraiki(zutabe, errenkada);
-					Leihoa.getLeihoa().partidaHasi();
-					Kronometroa.getKronometroa().kronometroaHasi();
-				}
-				Panela.getPanela().ireki(zutabe, errenkada);
+				Panela.getPanela().klikEgin(zutabe, errenkada);
 			}
 		}
 		else{													//ESKUMAKO BOTOIA

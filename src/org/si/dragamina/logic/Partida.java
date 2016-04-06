@@ -10,7 +10,7 @@ public class Partida {
 	private int zailtasuna;
 	private int klikak;
 	private int denbora;
-	private double puntuak;
+	private int puntuak;
 	private Date partidaData;
 	
 	public Partida(String pIzena){
@@ -23,7 +23,16 @@ public class Partida {
 		denbora = pDenbora;
 	}
 	
-	private void puntuakKalkulatu(){
-		puntuak = klikak/denbora;
+	public int puntuakKalkulatu(){
+		puntuak = (int) (((double)klikak/(double)denbora) * 1000);
+		return puntuak;
+	}
+	
+	public void klikGehitu(){
+		klikak++;
+	}
+	 
+	public void zailtasunaAldatu(int pZail){
+		zailtasuna = pZail;
 	}
 }

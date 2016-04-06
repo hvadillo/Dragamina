@@ -6,6 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import org.si.dragamina.interf.Baliabideak.Irudiak;
+import org.si.dragamina.logic.Panela;
 
 public class Smiley extends JButton{
 	
@@ -20,7 +21,7 @@ public class Smiley extends JButton{
 		setIcon(Irudiak.smiley[0]);
 		addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent e) {
-				Leihoa.getLeihoa().eguneratu();
+				Panela.getPanela().partidaBerria(0);
 		    }
 		});
 	}

@@ -4,11 +4,14 @@ import java.util.Observable;
 
 public class Panela extends Observable{
 	
-	private int zailtasuna;
 	private static Panela nPanela = null;
-	private MatrizeGelaxka matrizea = null;
+	private boolean hasita;
+	private Integer zailtasuna;
+	private MatrizeGelaxka matrizea;
+	private Partida unekoJok;
 	
 	private Panela(){
+		hasita = false;
 		zailtasuna = 0;
 	}
 	
@@ -19,9 +22,58 @@ public class Panela extends Observable{
 		return nPanela;
 	}
 	
-	public void panelaEraiki(int zut, int err){			//Partida berria sortu (zailtasun berria)
+	public void panelaEraiki(int zut, int err){			//Gelaxkak sortu
 		int[] dim = dimentzioakKalkulatu(zailtasuna);
 		matrizea = new MatrizeGelaxka(dim[0],dim[1], zut, err);
+	}
+	
+	public void partidaBerria(int pZail){
+		Denbora.getDenbora().hasieratu();
+		hasita = false;
+		setChanged();
+		if(pZail==zailtasuna || pZail==0){
+			Integer v = 0;
+			notifyObservers(v);
+		}
+		else{
+			zailtasuna = pZail;
+			notifyObservers(zailtasuna);
+		}	
+	}
+	
+	public void klikEgin(int pX, int pY){
+		ireki(pX, pY);
+		unekoJok.klikGehitu();
+	}
+	
+	public void ireki(int pX, int pY){
+		if(hasita==false){
+			panelaEraiki(pX, pY);
+			Denbora.getDenbora().hasi();
+			hasita = true;
+		}
+		matrizea.gelaIreki(pX, pY);
+	}
+	
+	public void partidaIrabazi(){
+		matrizea.banderakErakutzi();											//Minak banderarekin pantailaratu
+		setChanged();
+		notifyObservers(true);
+		int denb = Denbora.getDenbora().gelditu();
+		unekoJok.zailtasunaAldatu(zailtasuna);
+		unekoJok.setDenbora(denb);
+	}
+	
+	public void partidaGaldu(){
+		Denbora.getDenbora().gelditu();
+		matrizea.minakErakutzi();												//Minak non dauden pantailaratu
+		setChanged();
+		notifyObservers(false);
+	}
+	
+	public int minaKopurua(){
+		int[] d = dimentzioakKalkulatu(zailtasuna);
+		return zailtasuna * d[0];
 	}
 	
 	private int[] dimentzioakKalkulatu(int pZ){
@@ -40,36 +92,7 @@ public class Panela extends Observable{
 		return dim;
 	}
 	
-	public int minaKopurua(){
-		int[] d = dimentzioakKalkulatu(zailtasuna);
-		return zailtasuna * d[0];
-	}
-	
-	public void setZailtasuna(int pZ){
-		zailtasuna = pZ;
-	}
-	
-	public void ireki(int pX, int pY){
-		matrizea.gelaIreki(pX, pY);
-	}
-	
-	public void partidaIrabazi(){
-		matrizea.banderakErakutzi();											//Minak banderarekin pantailaratu
-		setChanged();
-		notifyObservers(true);
-	}
-	
-	public void partidaGaldu(){
-		matrizea.minakErakutzi();												//Minak non dauden pantailaratu
-		setChanged();
-		notifyObservers(false);
-	}
-	
 	public void jokalariaSortu(String pIzena){
-		Partida p = new Partida(pIzena);
-	}
-	
-	public void puntuakKalkulatu(int pDenb){
-		
+		unekoJok = new Partida(pIzena);
 	}
 }
