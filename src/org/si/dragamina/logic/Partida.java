@@ -8,6 +8,8 @@ public class Partida {
 
 	private String izena;
 	private int zailtasuna;
+	private int klikak;
+	private int denbora;
 	private double puntuak;
 	private Date partidaData;
 	
@@ -17,8 +19,11 @@ public class Partida {
 		partidaData = new Date();
 	}
 	
-	public void setPuntuak(double pPuntuak, int pZail){
-		puntuak = pPuntuak;
-		zailtasuna = pZail;
+	public void setDenbora(int pDenbora){
+		denbora = pDenbora;
+	}
+	
+	private void puntuakKalkulatu(){
+		puntuak = klikak/denbora;
 	}
 }

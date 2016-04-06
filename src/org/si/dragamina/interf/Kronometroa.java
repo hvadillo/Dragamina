@@ -29,7 +29,7 @@ public class Kronometroa extends JPanel{
 			}
 		});
 		setBackground(new Color(250, 250, 250));
-		GridLayout g = new GridLayout(1, 3, 0, 0);
+		GridLayout g = new GridLayout(1, 3, 0, 5);
 		setLayout(g);
 		KronometroaEraiki();
 		denbora = 0;

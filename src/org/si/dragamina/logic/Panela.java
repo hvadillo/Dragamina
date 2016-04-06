@@ -68,4 +68,8 @@ public class Panela extends Observable{
 	public void jokalariaSortu(String pIzena){
 		Partida p = new Partida(pIzena);
 	}
+	
+	public void puntuakKalkulatu(int pDenb){
+		
+	}
 }

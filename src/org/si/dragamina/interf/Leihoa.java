@@ -48,8 +48,6 @@ public class Leihoa extends JFrame implements Observer{
 	
 		gurePanela = Panela.getPanela();
 		gurePanela.addObserver(this);
-		
-		panelakEraiki();
 	}
 	
 	public static Leihoa getLeihoa(){
@@ -64,11 +62,13 @@ public class Leihoa extends JFrame implements Observer{
 	}
 	
 	public void jokalariarenIzena(){
+		zail = 0;
+		
 		setJMenuBar(null);
 		getContentPane().removeAll();
 		
 		JPanel gPanela = new JPanel();									//Jokalari panela
-		gPanela.setLayout(new GridLayout(2,1,0,0));
+		//gPanela.setLayout(new GridLayout(3,3,0,0));
 		gPanela.setBackground(new Color(250, 250, 250));
 		getContentPane().add(gPanela, BorderLayout.CENTER);
 		
@@ -78,20 +78,44 @@ public class Leihoa extends JFrame implements Observer{
 		JButton okBotoia = new JButton();
 		okBotoia.setText("OK");
 		okBotoia.setBounds(0, 0, 10, 10);
+		
+		ButtonGroup zailTaldea = new ButtonGroup();
+		JRadioButton batZail = new JRadioButton("1");
+		JRadioButton biZail = new JRadioButton("2");
+		JRadioButton hiruZail = new JRadioButton("3");
+		zailTaldea.add(batZail);
+		zailTaldea.add(biZail);
+		zailTaldea.add(hiruZail);
+		zailTaldea.setSelected(batZail.getModel(), true);
+		
 		gPanela.add(jokIzena);
+		gPanela.add(batZail);
+		gPanela.add(biZail);
+		gPanela.add(hiruZail);
+		
 		gPanela.add(okBotoia);
 		
 		okBotoia.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				int autatuZai = 1;
+				if(batZail.isSelected()){
+					autatuZai = 1;
+				}
+				else if(biZail.isSelected()){
+					autatuZai = 2;
+				}
+				else if(hiruZail.isSelected()){
+					autatuZai = 3;
+				}
 				Panela.getPanela().jokalariaSortu(jokIzena.getText());  //Jokalariaren izena pasatu
 				getContentPane().remove(gPanela);						//Text field-a borratu
 				panelakEraiki();
-				leihoaAldatu(1);
+				leihoaAldatu(autatuZai);
 			}
 		});
 		
-		setSize(350, 70);
+		setSize(350, 75);
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
@@ -178,6 +202,12 @@ public class Leihoa extends JFrame implements Observer{
 			boolean irabaziGaldu = (Boolean) arg;
 			if(irabaziGaldu) irabazi();
 			else galdu();
+		}
+		if(arg instanceof String){
+			String agindua = (String) arg;
+			if(agindua.equals("HASIERA")){
+				jokalariarenIzena();
+			}
 		}
 	}
 	

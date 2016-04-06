@@ -43,6 +43,7 @@ public class Menua extends JMenuBar{
 		mntmIrten = new JMenuItem(Textua.aukIrten);
 		mntmIrten.addActionListener(new IrtenAL());
 		mntmAldatu = new JMenuItem(Textua.aukJokAldatu);
+		
 		mntmAldatu.addActionListener(new AldatuAL());
 		
 		mntmArgibidea = new JMenuItem(Textua.argibidea);

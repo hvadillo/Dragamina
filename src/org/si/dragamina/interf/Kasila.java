@@ -61,9 +61,9 @@ public class Kasila extends JButton implements MouseListener{
 				Panela.getPanela().ireki(zutabe, errenkada);
 			}
 		}
-		else{											//ESKUMAKO BOTOIA
+		else{													//ESKUMAKO BOTOIA
 			if(getIcon().equals(Irudiak.bloke[0])){
-				if(Kontadorea.getKontadorea().minaKendu()==0){		//Berdin 0 bada errorerik ez
+				if(Kontadorea.getKontadorea().minaKendu()==0){	//Berdin 0 bada errorerik ez
 					setIcon(Irudiak.bloke[3]);
 				}
 			}
