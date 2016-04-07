@@ -97,6 +97,7 @@ public class Panela extends Observable{
 	}
 	
 	public void jokalariaSortu(String pIzena){
+		zailtasuna = 0;
 		unekoJok = new Partida(pIzena);
 	}
 }
