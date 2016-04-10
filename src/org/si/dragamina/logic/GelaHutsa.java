@@ -1,6 +1,5 @@
 package org.si.dragamina.logic;
 
-import org.si.dragamina.interf.KasilenPanela;
 import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 public class GelaHutsa extends Gelaxka {
@@ -13,13 +12,16 @@ public class GelaHutsa extends Gelaxka {
 	protected void gelaIreki() {
 		if(e == egoera.ITXITA){
 			e = egoera.ZABALDUA;
-			zabaldua = true;
 			gelaHutsakIreki();
 		}
 	}
 	
 	private void gelaHutsakIreki(){
-		KasilenPanela.getKasilenPanela().hutsaErakutzi(x, y);		//Gela hau bera zabaldu
+		int[] pos = new int[2]; 
+		pos[0] = x;
+		pos[1] = y;
+		setChanged();
+		notifyObservers(pos);
 		Panela.getPanela().ireki(x, y-1);							//Ondoan dituen gela guztiak zabaldu		
 		Panela.getPanela().ireki(x, y+1);
 		Panela.getPanela().ireki(x+1, y-1);

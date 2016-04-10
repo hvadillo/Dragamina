@@ -7,7 +7,6 @@ public class MinaKontagailua extends Observable{
 	private static MinaKontagailua nMinaKontagailua = null;
 	private int minakFaltan;
 	
-	
 	private MinaKontagailua(){
 		minakFaltan = Panela.getPanela().minaKopurua();
 	}

@@ -1,6 +1,5 @@
 package org.si.dragamina.logic;
 
-import org.si.dragamina.interf.KasilenPanela;
 import org.si.dragamina.logic.GelaxkaEgoerak.egoera; 
 
 public class GelaZenbakia extends Gelaxka{
@@ -16,8 +15,12 @@ public class GelaZenbakia extends Gelaxka{
 	protected void gelaIreki() {
 		if(e == egoera.ITXITA){
 			e = egoera.ZABALDUA;
-			zabaldua = true;
-			KasilenPanela.getKasilenPanela().zenbakiaErakutzi(minaInguruan, x, y);		//Zenbakia pantailaratu
+			int[] pos = new int[3]; 
+			pos[0] = x;
+			pos[1] = y;
+			pos[2] = minaInguruan;
+			setChanged();
+			notifyObservers(pos);
 		}
 	}
 

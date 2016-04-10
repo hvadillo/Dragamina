@@ -3,12 +3,17 @@ package org.si.dragamina.interf;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.*;
 
 import org.si.dragamina.interf.Baliabideak.Irudiak;
+import org.si.dragamina.logic.GelaHutsa;
+import org.si.dragamina.logic.GelaMina;
+import org.si.dragamina.logic.GelaZenbakia;
 
-public class KasilenPanela extends JPanel{
+public class KasilenPanela extends JPanel implements Observer{
 	
 	private static final long serialVersionUID = 1L;
 	private static KasilenPanela nKasilenPanela = null;
@@ -78,6 +83,22 @@ public class KasilenPanela extends JPanel{
 			for(int i=0; i<botoiak.length; i++){
 				botoiak[i][j].kenduMouseListener();
 			}
+		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		if(o instanceof GelaMina){
+			int[] pos = (int[]) arg;
+			minaErakutzi(pos[0], pos[1]);
+		}
+		else if(o instanceof GelaHutsa){
+			int[] pos = (int[]) arg;
+			hutsaErakutzi(pos[0], pos[1]);
+		}
+		else if(o instanceof GelaZenbakia){
+			int[] pos = (int[]) arg;
+			zenbakiaErakutzi(pos[2], pos[0], pos[1]);
 		}
 	}
 }

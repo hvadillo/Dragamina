@@ -3,6 +3,8 @@ package org.si.dragamina.logic;
 import java.util.Random;
 
 import org.si.dragamina.interf.KasilenPanela;
+import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
+
 import java.util.ArrayList;
 
 public class MatrizeGelaxka{
@@ -108,7 +110,7 @@ public class MatrizeGelaxka{
 	
 	public void minakErakutzi(){
 		for(int x=0; x<minak.size(); x++){
-			if(!minak.get(x).zabaldua){
+			if(minak.get(x).e.equals(egoera.ITXITA)){
 				KasilenPanela.getKasilenPanela().minaErakutzi(minak.get(x).x, minak.get(x).y);
 			}
 		}
@@ -116,12 +118,12 @@ public class MatrizeGelaxka{
 	
 	public void gelaIreki(int pX, int pY){
 		if(matrizeBarruan(pX,pY)){					//Gela matrize barruan dagoela zihurtatu
-			if(!gelaxkak[pX][pY].zabaldua){			//Gela dagoeneko zabalik dagoen konprobatu
+			if(gelaxkak[pX][pY].e.equals(egoera.ITXITA)){			//Gela dagoeneko zabalik dagoen konprobatu
+				gelaxkak[pX][pY].gelaIreki();
 				kasilaItxiak--;
 				if(kasilaItxiak==0){				//Kasila guztiak zabalik badaude partida irabazi
 					Panela.getPanela().partidaIrabazi();
 				}
-				gelaxkak[pX][pY].gelaIreki();
 			}
 		}
 	}
