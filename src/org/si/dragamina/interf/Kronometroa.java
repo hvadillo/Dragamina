@@ -53,7 +53,6 @@ public class Kronometroa extends JPanel implements Observer{
 			zenbakiak[1].setIcon(Irudiak.kontadore[9]);
 			zenbakiak[2].setIcon(Irudiak.kontadore[9]);
 		}
-		
 	}
 
 	@Override

@@ -19,7 +19,7 @@ public class Textua {
 	}
 	
 	public static void euskeraKargatu(){
-		izenaSartu = "Zure izena sartu";
+		izenaSartu = "Sartu izea";
 		
 		menuJokoa = "Jokoa";
 		menuLaguntza = "Laguntza";

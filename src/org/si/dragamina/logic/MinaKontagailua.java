@@ -17,4 +17,22 @@ public class MinaKontagailua extends Observable{
 		}
 		return nMinaKontagailua;
 	}
+	
+	public void hasieratu(){
+		minakFaltan = 0;
+		setChanged();
+		notifyObservers(minakFaltan);
+	}
+	
+	public void gehitu(){
+		minakFaltan++;
+		setChanged();
+		notifyObservers(minakFaltan);
+	}
+	
+	public void kendu(){
+		minakFaltan--;
+		setChanged();
+		notifyObservers(minakFaltan);
+	}
 }

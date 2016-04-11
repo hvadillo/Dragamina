@@ -1,7 +1,5 @@
 package org.si.dragamina.interf;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.FlowLayout;
@@ -61,60 +59,14 @@ public class Leihoa extends JFrame implements Observer{
 	public void jokalariarenIzena(){
 		setJMenuBar(null);
 		getContentPane().removeAll();
-		
-		JPanel gPanela = new JPanel();									//Jokalari panela
-		gPanela.setBackground(new Color(250, 250, 250));
-		getContentPane().add(gPanela, BorderLayout.CENTER);
-		
-		JTextField jokIzena = new JTextField();
-		jokIzena.setText(Textua.izenaSartu);
-		jokIzena.setBounds(0, 0, 50, 50);
-		JButton okBotoia = new JButton();
-		okBotoia.setText("OK");
-		okBotoia.setBounds(0, 0, 10, 10);
-		
-		ButtonGroup zailTaldea = new ButtonGroup();
-		JRadioButton batZail = new JRadioButton("1");
-		JRadioButton biZail = new JRadioButton("2");
-		JRadioButton hiruZail = new JRadioButton("3");
-		zailTaldea.add(batZail);
-		zailTaldea.add(biZail);
-		zailTaldea.add(hiruZail);
-		zailTaldea.setSelected(batZail.getModel(), true);
-		
-		gPanela.add(jokIzena);
-		gPanela.add(batZail);
-		gPanela.add(biZail);
-		gPanela.add(hiruZail);
-		
-		gPanela.add(okBotoia);
-		
-		okBotoia.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				int autatuZai = 1;
-				if(batZail.isSelected()){
-					autatuZai = 1;
-				}
-				else if(biZail.isSelected()){
-					autatuZai = 2;
-				}
-				else if(hiruZail.isSelected()){
-					autatuZai = 3;
-				}
-				Panela.getPanela().jokalariaSortu(jokIzena.getText());  //Jokalariaren izena pasatu
-				getContentPane().remove(gPanela);						//Text field-a borratu
-				panelakEraiki();
-				Panela.getPanela().partidaBerria(autatuZai);
-			}
-		});
-		
-		setSize(350, 75);
+		getContentPane().add(new ErabiltzailePanela(), BorderLayout.CENTER);
+		setSize(440, 130);
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
 	
 	public void panelakEraiki(){
+		getContentPane().removeAll();
 		setJMenuBar(new Menua());											//Menua
 		
 		JPanel gPanela = new JPanel();									//Panel nagusia

@@ -38,7 +38,6 @@ public class Denbora extends Observable{
 	}
 	
 	public void hasi(){
-		System.out.println();
 		chronometer.start();
 		setChanged();
 		notifyObservers(denbora);
