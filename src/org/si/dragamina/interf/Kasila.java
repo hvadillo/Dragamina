@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import org.si.dragamina.interf.Baliabideak.Irudiak;
+import org.si.dragamina.logic.MinaKontagailua;
 import org.si.dragamina.logic.Panela;
 
 public class Kasila extends JButton implements MouseListener{
@@ -37,7 +38,7 @@ public class Kasila extends JButton implements MouseListener{
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(getIcon().equals(Irudiak.bloke[3])){			//Bandera ez badago aldatu smiley-a
+		if(!getIcon().equals(Irudiak.bloke[3])){			//Bandera ez badago aldatu smiley-a
 			if(e.getButton() == MouseEvent.BUTTON1){
 				Smiley.getSmiley().setIcon(Irudiak.smiley[3]);
 			}
@@ -57,17 +58,15 @@ public class Kasila extends JButton implements MouseListener{
 			}
 		}
 		else{													//ESKUMAKO BOTOIA
-			if(getIcon().equals(Irudiak.bloke[0])){
-				if(Kontadorea.getKontadorea().minaKendu()==0){	//Berdin 0 bada errorerik ez
+			if(Panela.getPanela().eskuinKlika(zutabe, errenkada)==-1){
+				if(getIcon().equals(Irudiak.bloke[3])){
+					MinaKontagailua.getMinaKontagailua().gehitu();
+					setIcon(Irudiak.bloke[0]);
+				}
+				else if(getIcon().equals(Irudiak.bloke[0])){
+					MinaKontagailua.getMinaKontagailua().kendu();
 					setIcon(Irudiak.bloke[3]);
 				}
-			}
-			else if(getIcon().equals(Irudiak.bloke[3])){
-				Kontadorea.getKontadorea().minaJarri();
-				setIcon(Irudiak.bloke[4]);
-			}
-			else if(getIcon().equals(Irudiak.bloke[4])){
-				setIcon(Irudiak.bloke[0]);
 			}
 		}
 	}

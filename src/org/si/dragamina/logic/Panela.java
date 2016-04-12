@@ -28,7 +28,6 @@ public class Panela extends Observable{
 	}
 	
 	public void partidaBerria(int pZail){
-		Denbora.getDenbora().hasieratu();
 		hasita = false;
 		setChanged();
 		if(pZail==zailtasuna || pZail==0){
@@ -39,31 +38,38 @@ public class Panela extends Observable{
 			zailtasuna = pZail;
 			notifyObservers(zailtasuna);
 		}	
+		MinaKontagailua.getMinaKontagailua().hasieratu();
+		Denbora.getDenbora().hasieratu();
 	}
 	
 	public void klikEgin(int pX, int pY){
-		ireki(pX, pY);
-		unekoJok.klikGehitu();
-	}
-	
-	public void ezkerKlika(int pX, int pY){
-		//TODO
-	}
-	
-	public void ireki(int pX, int pY){
 		if(hasita==false){
 			panelaEraiki(pX, pY);
 			Denbora.getDenbora().hasi();
 			hasita = true;
 		}
+		ireki(pX, pY);
+		unekoJok.klikGehitu();
+	}
+	
+	public int eskuinKlika(int pX, int pY){
+		if(hasita==true){
+			matrizea.eskuinKlika(pX, pY);
+			return 0;
+		}
+		else return -1;
+	}
+	
+	public void ireki(int pX, int pY){
 		matrizea.gelaIreki(pX, pY);
 	}
 	
 	public void partidaIrabazi(){
+		int denb = Denbora.getDenbora().gelditu();
+		MinaKontagailua.getMinaKontagailua().irabazi();
 		matrizea.banderakErakutzi();											//Minak banderarekin pantailaratu
 		setChanged();
 		notifyObservers(true);
-		int denb = Denbora.getDenbora().gelditu();
 		unekoJok.zailtasunaAldatu(zailtasuna);
 		unekoJok.setDenbora(denb);
 	}

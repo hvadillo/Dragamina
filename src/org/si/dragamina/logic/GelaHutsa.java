@@ -10,7 +10,7 @@ public class GelaHutsa extends Gelaxka {
 
 	@Override
 	protected void gelaIreki() {
-		if(e == egoera.ITXITA){
+		if(e == egoera.ITXITA || e == egoera.GALDERA){
 			e = egoera.ZABALDUA;
 			gelaHutsakIreki();
 		}

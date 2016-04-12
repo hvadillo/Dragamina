@@ -104,6 +104,7 @@ public class MatrizeGelaxka{
 	
 	public void banderakErakutzi(){
 		for(int x=0; x<minak.size(); x++){
+			minak.get(x).egoeraAldatu(egoera.BANDERA);
 			KasilenPanela.getKasilenPanela().banderaErakutzi(minak.get(x).x, minak.get(x).y);
 		}
 	}
@@ -111,6 +112,7 @@ public class MatrizeGelaxka{
 	public void minakErakutzi(){
 		for(int x=0; x<minak.size(); x++){
 			if(minak.get(x).e.equals(egoera.ITXITA)){
+				minak.get(x).egoeraAldatu(egoera.MINA);
 				KasilenPanela.getKasilenPanela().minaErakutzi(minak.get(x).x, minak.get(x).y);
 			}
 		}
@@ -126,5 +128,9 @@ public class MatrizeGelaxka{
 				}
 			}
 		}
+	}
+	
+	public void eskuinKlika(int pX, int pY){
+		gelaxkak[pX][pY].eskuinKlik();
 	}
 }

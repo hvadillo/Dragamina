@@ -12,6 +12,8 @@ import org.si.dragamina.interf.Baliabideak.Irudiak;
 import org.si.dragamina.logic.GelaHutsa;
 import org.si.dragamina.logic.GelaMina;
 import org.si.dragamina.logic.GelaZenbakia;
+import org.si.dragamina.logic.MinaKontagailua;
+import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 public class KasilenPanela extends JPanel implements Observer{
 	
@@ -56,7 +58,8 @@ public class KasilenPanela extends JPanel implements Observer{
 	
 	public void zenbakiaErakutzi(int pZenb, int pZut, int pErr){
 		if(botoiak[pZut][pErr].getIcon().equals(Irudiak.bloke[3])){
-			Kontadorea.getKontadorea().minaJarri();
+			MinaKontagailua.getMinaKontagailua().gehitu();
+			//Kontadorea.getKontadorea().minaJarri();
 		}
 		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
 		botoiak[pZut][pErr].setIcon(Irudiak.zenbakiak[pZenb]);
@@ -64,7 +67,8 @@ public class KasilenPanela extends JPanel implements Observer{
 	
 	public void hutsaErakutzi(int pZut, int pErr){
 		if(botoiak[pZut][pErr].getIcon().equals(Irudiak.bloke[3])){
-			Kontadorea.getKontadorea().minaJarri();
+			MinaKontagailua.getMinaKontagailua().gehitu();
+			//Kontadorea.getKontadorea().minaJarri();
 		}
 		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
 		botoiak[pZut][pErr].setIcon(Irudiak.bloke[1]);
@@ -88,17 +92,37 @@ public class KasilenPanela extends JPanel implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		if(o instanceof GelaMina){
-			int[] pos = (int[]) arg;
-			minaErakutzi(pos[0], pos[1]);
+		if(arg instanceof int[]){
+			if(o instanceof GelaMina){
+				int[] pos = (int[]) arg;
+				minaErakutzi(pos[0], pos[1]);
+			}
+			else if(o instanceof GelaHutsa){
+				int[] pos = (int[]) arg;
+				hutsaErakutzi(pos[0], pos[1]);
+			}
+			else if(o instanceof GelaZenbakia){
+				int[] pos = (int[]) arg;
+				zenbakiaErakutzi(pos[2], pos[0], pos[1]);
+			}
 		}
-		else if(o instanceof GelaHutsa){
-			int[] pos = (int[]) arg;
-			hutsaErakutzi(pos[0], pos[1]);
-		}
-		else if(o instanceof GelaZenbakia){
-			int[] pos = (int[]) arg;
-			zenbakiaErakutzi(pos[2], pos[0], pos[1]);
+		else if(arg instanceof Object[]){
+			Object[] obj = (Object[]) arg;
+			egoera e = (egoera) obj[0];
+			int x = (Integer) obj[1];
+			int y = (Integer)obj[2];
+			switch (e) {
+			case BANDERA: 	botoiak[x][y].setIcon(Irudiak.bloke[3]);
+					break;
+			case GALDERA: 	botoiak[x][y].setIcon(Irudiak.bloke[4]);
+					break;
+			case ITXITA: 	botoiak[x][y].setIcon(Irudiak.bloke[0]);
+					break;
+			case MINA: 		minaErakutzi(x, y);
+					break;
+			default:
+				break;
+			}
 		}
 	}
 }

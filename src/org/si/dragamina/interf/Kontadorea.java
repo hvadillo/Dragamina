@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 
 import org.si.dragamina.interf.Baliabideak.Irudiak;
 import org.si.dragamina.logic.MinaKontagailua;
-import org.si.dragamina.logic.Panela;
 
 import javax.swing.JLabel;
 import java.awt.GridLayout;
@@ -18,7 +17,6 @@ public class Kontadorea extends JPanel implements Observer{
 	private static final long serialVersionUID = 1L;
 	private static Kontadorea nKontadorea = null;
 	private JLabel[] zenbakiak = new JLabel[3];
-	private int minakFaltan;
 
 	private Kontadorea() {
 		MinaKontagailua.getMinaKontagailua().addObserver(this);
@@ -42,43 +40,16 @@ public class Kontadorea extends JPanel implements Observer{
 			zenbakiak[i].setIcon(Irudiak.kontadore[0]);
 			add(zenbakiak[i]);
 		}
-		eguneratu();
 	}
 	
-	public void partidaBerria(){
-		minakFaltan=Panela.getPanela().minaKopurua();
-		eguneratu();
-	}
-	
-	public int minaKendu(){
-		if(minakFaltan>0){
-			minakFaltan--;
-			eguneratu();
-			return 0;		//Ondo joan dela jakiteko 0 bueltatu.
-		}
-		else{
-			return -1;		//Dauden minak baino marka gehiago jar ez dezan, -1 bueltatu hau egin ezin dela jakiteko.
-		}
-	}
-	
-	public void minaJarri(){
-		minakFaltan++;
-		eguneratu();
-	}
-	
-	public void irabazi(){
-		minakFaltan = 0;
-		eguneratu();
-	}
-	
-	private void eguneratu(){
-		zenbakiak[0].setIcon(Irudiak.kontadore[minakFaltan/100]);
-		zenbakiak[1].setIcon(Irudiak.kontadore[(minakFaltan/10)%10]);
-		zenbakiak[2].setIcon(Irudiak.kontadore[minakFaltan%10]);
+	private void eguneratu(int pMinak){
+		zenbakiak[0].setIcon(Irudiak.kontadore[pMinak/100]);
+		zenbakiak[1].setIcon(Irudiak.kontadore[(pMinak/10)%10]);
+		zenbakiak[2].setIcon(Irudiak.kontadore[pMinak%10]);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		//eguneratu((int) arg);
+		eguneratu((int) arg);
 	}
 }

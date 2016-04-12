@@ -5,7 +5,7 @@ import java.util.Observable;
 public class MinaKontagailua extends Observable{
 
 	private static MinaKontagailua nMinaKontagailua = null;
-	private int minakFaltan;
+	private int minakFaltan = 5;
 	
 	private MinaKontagailua(){
 		minakFaltan = Panela.getPanela().minaKopurua();
@@ -19,7 +19,7 @@ public class MinaKontagailua extends Observable{
 	}
 	
 	public void hasieratu(){
-		minakFaltan = 0;
+		minakFaltan = Panela.getPanela().minaKopurua();
 		setChanged();
 		notifyObservers(minakFaltan);
 	}
@@ -30,8 +30,18 @@ public class MinaKontagailua extends Observable{
 		notifyObservers(minakFaltan);
 	}
 	
-	public void kendu(){
-		minakFaltan--;
+	public int  kendu(){
+		if(minakFaltan>0){
+			minakFaltan--;
+			setChanged();
+			notifyObservers(minakFaltan);
+			return 0;
+		}
+		else return -1; 
+	}
+	
+	public void irabazi(){
+		minakFaltan = 0;
 		setChanged();
 		notifyObservers(minakFaltan);
 	}

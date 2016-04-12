@@ -97,8 +97,7 @@ public class Leihoa extends JFrame implements Observer{
 	
 	public void leihoaAldatu(int pZail){			//Leihoen tamaina zailtasunaren arabera	
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
-		Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
-			
+	
 		Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);
 		int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
 		KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
@@ -109,7 +108,6 @@ public class Leihoa extends JFrame implements Observer{
 	
 	private void eguneratu(){
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
-		Kontadorea.getKontadorea().partidaBerria();					//Hasieratu kontadorea
 		
 		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();
 		KasilenPanela.getKasilenPanela().botoiakItxi();
@@ -140,7 +138,6 @@ public class Leihoa extends JFrame implements Observer{
 	}
 	
 	public void irabazi(){
-		Kontadorea.getKontadorea().irabazi(); 									//Bomba kontadorea 0-n jarri
 		Smiley.getSmiley().setIcon(Irudiak.smiley[1]);							//Irabazi smiley-a erakutzi
 		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();		//Botoien MouseListener kendu
 	}
