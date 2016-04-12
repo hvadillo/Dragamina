@@ -43,7 +43,7 @@ public class Panela extends Observable{
 	}
 	
 	public void klikEgin(int pX, int pY){
-		if(hasita==false){
+		if(!hasita){
 			panelaEraiki(pX, pY);
 			Denbora.getDenbora().hasi();
 			hasita = true;
@@ -52,16 +52,21 @@ public class Panela extends Observable{
 		unekoJok.klikGehitu();
 	}
 	
-	public int eskuinKlika(int pX, int pY){
-		if(hasita==true){
+	public void eskuinKlika(int pX, int pY){
+		if(hasita){
 			matrizea.eskuinKlika(pX, pY);
-			return 0;
 		}
-		else return -1;
 	}
 	
 	public void ireki(int pX, int pY){
 		matrizea.gelaIreki(pX, pY);
+	}
+	
+	public boolean banderaDAuka(int pX, int pY){
+		if(hasita){
+			return matrizea.banderaDu(pX, pY);
+		}
+		else return false;
 	}
 	
 	public void partidaIrabazi(){

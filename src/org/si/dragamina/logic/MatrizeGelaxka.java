@@ -119,11 +119,14 @@ public class MatrizeGelaxka{
 	}
 	
 	public void gelaIreki(int pX, int pY){
-		if(matrizeBarruan(pX,pY)){					//Gela matrize barruan dagoela zihurtatu
-			if(gelaxkak[pX][pY].e.equals(egoera.ITXITA)){			//Gela dagoeneko zabalik dagoen konprobatu
+		if(matrizeBarruan(pX,pY)){								//Gela matrize barruan dagoela zihurtatu
+			if(!gelaxkak[pX][pY].e.equals(egoera.ZABALDUA)){	//Gela dagoeneko zabalik dagoen konprobatu
+				if(gelaxkak[pX][pY].e.equals(egoera.BANDERA)){
+					MinaKontagailua.getMinaKontagailua().gehitu();
+				}
 				gelaxkak[pX][pY].gelaIreki();
 				kasilaItxiak--;
-				if(kasilaItxiak==0){				//Kasila guztiak zabalik badaude partida irabazi
+				if(kasilaItxiak==0){							//Kasila guztiak zabalik badaude partida irabazi
 					Panela.getPanela().partidaIrabazi();
 				}
 			}
@@ -132,5 +135,12 @@ public class MatrizeGelaxka{
 	
 	public void eskuinKlika(int pX, int pY){
 		gelaxkak[pX][pY].eskuinKlik();
+	}
+	
+	public boolean banderaDu(int pX, int pY){
+		if(gelaxkak[pX][pY].e.equals(egoera.BANDERA)){
+			return true;
+		}
+		else return false;
 	}
 }

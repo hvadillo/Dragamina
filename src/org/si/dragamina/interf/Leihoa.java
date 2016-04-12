@@ -95,7 +95,7 @@ public class Leihoa extends JFrame implements Observer{
 		getContentPane().add(KasilenPanela.getKasilenPanela(), BorderLayout.CENTER);		//Kasilak gehitu panelean
 	}
 	
-	public void leihoaAldatu(int pZail){			//Leihoen tamaina zailtasunaren arabera	
+	public void leihoaAldatu(int pZail){							//Leihoen tamaina zailtasunaren arabera	
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
 	
 		Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);

@@ -12,7 +12,6 @@ import org.si.dragamina.interf.Baliabideak.Irudiak;
 import org.si.dragamina.logic.GelaHutsa;
 import org.si.dragamina.logic.GelaMina;
 import org.si.dragamina.logic.GelaZenbakia;
-import org.si.dragamina.logic.MinaKontagailua;
 import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 public class KasilenPanela extends JPanel implements Observer{
@@ -57,19 +56,11 @@ public class KasilenPanela extends JPanel implements Observer{
 	}							
 	
 	public void zenbakiaErakutzi(int pZenb, int pZut, int pErr){
-		if(botoiak[pZut][pErr].getIcon().equals(Irudiak.bloke[3])){
-			MinaKontagailua.getMinaKontagailua().gehitu();
-			//Kontadorea.getKontadorea().minaJarri();
-		}
 		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
 		botoiak[pZut][pErr].setIcon(Irudiak.zenbakiak[pZenb]);
 	}
 	
 	public void hutsaErakutzi(int pZut, int pErr){
-		if(botoiak[pZut][pErr].getIcon().equals(Irudiak.bloke[3])){
-			MinaKontagailua.getMinaKontagailua().gehitu();
-			//Kontadorea.getKontadorea().minaJarri();
-		}
 		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
 		botoiak[pZut][pErr].setIcon(Irudiak.bloke[1]);
 	}

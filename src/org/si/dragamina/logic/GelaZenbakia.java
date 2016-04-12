@@ -13,7 +13,7 @@ public class GelaZenbakia extends Gelaxka{
 	
 	@Override
 	protected void gelaIreki() {
-		if(e == egoera.ITXITA || e == egoera.GALDERA){
+		if(e == egoera.ITXITA || e == egoera.GALDERA || e == egoera.BANDERA){
 			e = egoera.ZABALDUA;
 			int[] pos = new int[3]; 
 			pos[0] = x;
