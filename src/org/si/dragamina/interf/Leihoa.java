@@ -2,8 +2,6 @@ package org.si.dragamina.interf;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.*;
@@ -67,32 +65,12 @@ public class Leihoa extends JFrame implements Observer{
 	
 	public void panelakEraiki(){
 		getContentPane().removeAll();
-		setJMenuBar(new Menua());											//Menua
+		setJMenuBar(new Menua());														//Menua
 		
-		JPanel gPanela = new JPanel();									//Panel nagusia
-		gPanela.setLayout(new GridLayout(1,3,0,0));
-		gPanela.setBackground(new Color(250, 250, 250));
-		getContentPane().add(gPanela, BorderLayout.NORTH);
+		getContentPane().add(new jokoarenGoikoPanela(), BorderLayout.NORTH);			//Goiko panela (Smiley, kontadorea, kronometroa)
 		
-		JPanel gPanela1 = new JPanel();									//Kontadorerako-rako panela
-		gPanela1.setLayout(new FlowLayout(FlowLayout.LEFT));
-		gPanela1.setBackground(new Color(250, 250, 250));
-		gPanela1.add(Kontadorea.getKontadorea());
-		gPanela.add(gPanela1, BorderLayout.WEST);
-	
-		JPanel gPanela2 = new JPanel();									//Smiley-rako panela
-		gPanela2.setLayout(new FlowLayout(FlowLayout.CENTER));
-		gPanela2.setBackground(new Color(250, 250, 250));
-		gPanela2.add(Smiley.getSmiley());
-		gPanela.add(gPanela2, BorderLayout.CENTER);
-		
-		JPanel gPanela3 = new JPanel();									//Kronometro-rako panela
-		gPanela3.setLayout(new FlowLayout(FlowLayout.RIGHT));
-		gPanela3.setBackground(new Color(250, 250, 250));
-		gPanela3.add(Kronometroa.getKronometroa());
-		gPanela.add(gPanela3, BorderLayout.EAST);
-		
-		getContentPane().add(KasilenPanela.getKasilenPanela(), BorderLayout.CENTER);		//Kasilak gehitu panelean
+		getContentPane().add(KasilenPanela.getKasilenPanela(), BorderLayout.CENTER);	//Kasilak gehitu panelean
+		setVisible(true);
 	}
 	
 	public void leihoaAldatu(int pZail){							//Leihoen tamaina zailtasunaren arabera	
@@ -109,8 +87,8 @@ public class Leihoa extends JFrame implements Observer{
 	private void eguneratu(){
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
 		
-		KasilenPanela.getKasilenPanela().mouseListenerrakGuztiakKendu();
-		KasilenPanela.getKasilenPanela().botoiakItxi();
+		KasilenPanela.getKasilenPanela().kasilakHasieratu();
+	
 	}
 	
 	public void menuaHasieratu(){

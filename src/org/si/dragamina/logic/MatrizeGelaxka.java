@@ -2,7 +2,6 @@ package org.si.dragamina.logic;
 
 import java.util.Random;
 
-import org.si.dragamina.interf.KasilenPanela;
 import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 import java.util.ArrayList;
@@ -102,23 +101,28 @@ public class MatrizeGelaxka{
 		}
 	}
 	
-	public void banderakErakutzi(){
+	protected void banderakErakutzi(){
 		for(int x=0; x<minak.size(); x++){
 			minak.get(x).egoeraAldatu(egoera.BANDERA);
-			KasilenPanela.getKasilenPanela().banderaErakutzi(minak.get(x).x, minak.get(x).y);
 		}
 	}
 	
-	public void minakErakutzi(){
+	protected void galdu(){
 		for(int x=0; x<minak.size(); x++){
 			if(minak.get(x).e.equals(egoera.ITXITA)){
 				minak.get(x).egoeraAldatu(egoera.MINA);
-				KasilenPanela.getKasilenPanela().minaErakutzi(minak.get(x).x, minak.get(x).y);
+			}
+		}
+		for(int y=0; y<err; y++){
+			for(int x=0; x<zut; x++){
+				if(gelaxkak[x][y].e.equals(egoera.BANDERA)){
+					gelaxkak[x][y].egoeraAldatu(egoera.EZBANDERA);
+				}
 			}
 		}
 	}
 	
-	public void gelaIreki(int pX, int pY){
+	protected void gelaIreki(int pX, int pY){
 		if(matrizeBarruan(pX,pY)){								//Gela matrize barruan dagoela zihurtatu
 			if(!gelaxkak[pX][pY].e.equals(egoera.ZABALDUA)){	//Gela dagoeneko zabalik dagoen konprobatu
 				if(gelaxkak[pX][pY].e.equals(egoera.BANDERA)){
@@ -133,11 +137,11 @@ public class MatrizeGelaxka{
 		}
 	}
 	
-	public void eskuinKlika(int pX, int pY){
+	protected void eskuinKlika(int pX, int pY){
 		gelaxkak[pX][pY].eskuinKlik();
 	}
 	
-	public boolean banderaDu(int pX, int pY){
+	protected boolean banderaDu(int pX, int pY){
 		if(gelaxkak[pX][pY].e.equals(egoera.BANDERA)){
 			return true;
 		}

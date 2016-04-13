@@ -7,7 +7,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import org.si.dragamina.interf.Baliabideak.Irudiak;
-import org.si.dragamina.logic.MinaKontagailua;
 import org.si.dragamina.logic.Panela;
 
 public class Kasila extends JButton implements MouseListener{
@@ -53,9 +52,7 @@ public class Kasila extends JButton implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(e.getButton() == MouseEvent.BUTTON1){
-			if(!Panela.getPanela().banderaDAuka(zutabe, errenkada)){	//Bandera ez badago zabaldu
-				Panela.getPanela().klikEgin(zutabe, errenkada);
-			}
+			Panela.getPanela().klikEgin(zutabe, errenkada);
 		}
 		else{													//ESKUMAKO BOTOIA
 			Panela.getPanela().eskuinKlika(zutabe, errenkada);

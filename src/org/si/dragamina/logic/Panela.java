@@ -48,8 +48,10 @@ public class Panela extends Observable{
 			Denbora.getDenbora().hasi();
 			hasita = true;
 		}
-		ireki(pX, pY);
-		unekoJok.klikGehitu();
+		if(!matrizea.banderaDu(pX, pY)){
+			ireki(pX, pY);
+			unekoJok.klikGehitu();
+		}
 	}
 	
 	public void eskuinKlika(int pX, int pY){
@@ -60,13 +62,6 @@ public class Panela extends Observable{
 	
 	public void ireki(int pX, int pY){
 		matrizea.gelaIreki(pX, pY);
-	}
-	
-	public boolean banderaDAuka(int pX, int pY){
-		if(hasita){
-			return matrizea.banderaDu(pX, pY);
-		}
-		else return false;
 	}
 	
 	public void partidaIrabazi(){
@@ -81,7 +76,7 @@ public class Panela extends Observable{
 	
 	public void partidaGaldu(){
 		Denbora.getDenbora().gelditu();
-		matrizea.minakErakutzi();												//Minak non dauden pantailaratu
+		matrizea.galdu();												//Minak non dauden pantailaratu
 		setChanged();
 		notifyObservers(false);
 	}

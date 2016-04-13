@@ -76,7 +76,7 @@ public class ErabiltzailePanela extends JPanel{
 				else if(hiruZail.isSelected()){
 					autatuZai = 3;
 				}
-				Panela.getPanela().jokalariaSortu(jokIzena.getText()); 									 //Jokalariaren izena pasatu
+				Panela.getPanela().jokalariaSortu(jokIzena.getText()); 			 //Jokalariaren izena pasatu
 				Leihoa.getLeihoa().panelakEraiki();
 				Panela.getPanela().partidaBerria(autatuZai);
 			}

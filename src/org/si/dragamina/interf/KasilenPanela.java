@@ -47,31 +47,14 @@ public class KasilenPanela extends JPanel implements Observer{
 		}
 	}	
 		
-	public void botoiakItxi(){
+	public void kasilakHasieratu(){
 		for(int j=0; j<botoiak[0].length; j++){
 			for(int i=0; i<botoiak.length; i++){
+				botoiak[i][j].kenduMouseListener();
 				botoiak[i][j].itxi();
 			}
 		}
-	}							
-	
-	public void zenbakiaErakutzi(int pZenb, int pZut, int pErr){
-		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
-		botoiak[pZut][pErr].setIcon(Irudiak.zenbakiak[pZenb]);
-	}
-	
-	public void hutsaErakutzi(int pZut, int pErr){
-		botoiak[pZut][pErr].kenduMouseListener();		//Mouse listenerra kendu behin kasilan dagoena erakutzita berriro klikatu ez dadin.
-		botoiak[pZut][pErr].setIcon(Irudiak.bloke[1]);
-	}
-	
-	public void minaErakutzi(int pZut, int pErr){
-		botoiak[pZut][pErr].setIcon(Irudiak.bloke[2]);
-	}
-	
-	public void banderaErakutzi(int pZut, int pErr){
-		botoiak[pZut][pErr].setIcon(Irudiak.bloke[3]);
-	}
+	}		
 	
 	public void mouseListenerrakGuztiakKendu(){
 		for(int j=0; j<botoiak[0].length; j++){
@@ -79,23 +62,22 @@ public class KasilenPanela extends JPanel implements Observer{
 				botoiak[i][j].kenduMouseListener();
 			}
 		}
-	}
+	}		
 
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof int[]){
+			int[] pos = (int[]) arg;
 			if(o instanceof GelaMina){
-				int[] pos = (int[]) arg;
-				minaErakutzi(pos[0], pos[1]);
+				botoiak[pos[0]][pos[1]].setIcon(Irudiak.bloke[2]);
 			}
 			else if(o instanceof GelaHutsa){
-				int[] pos = (int[]) arg;
-				hutsaErakutzi(pos[0], pos[1]);
+				botoiak[pos[0]][pos[1]].setIcon(Irudiak.bloke[1]);
 			}
 			else if(o instanceof GelaZenbakia){
-				int[] pos = (int[]) arg;
-				zenbakiaErakutzi(pos[2], pos[0], pos[1]);
+				botoiak[pos[0]][pos[1]].setIcon(Irudiak.zenbakiak[pos[2]]);
 			}
+			botoiak[pos[0]][pos[1]].kenduMouseListener();
 		}
 		else if(arg instanceof Object[]){
 			Object[] obj = (Object[]) arg;
@@ -109,8 +91,10 @@ public class KasilenPanela extends JPanel implements Observer{
 					break;
 			case ITXITA: 	botoiak[x][y].setIcon(Irudiak.bloke[0]);
 					break;
-			case MINA: 		minaErakutzi(x, y);
+			case MINA: 		botoiak[x][y].setIcon(Irudiak.bloke[2]);
 					break;
+			case EZBANDERA:	botoiak[x][y].setIcon(Irudiak.bloke[5]);
+				break;
 			default:
 				break;
 			}

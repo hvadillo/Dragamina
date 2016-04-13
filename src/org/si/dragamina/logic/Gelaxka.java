@@ -24,6 +24,7 @@ public abstract class Gelaxka extends Observable{
 	
 	protected void egoeraAldatu(egoera pEgo){
 		e = pEgo;
+		eguneratuIrudia();
 	}
 	
 	protected void eskuinKlik(){
@@ -39,7 +40,10 @@ public abstract class Gelaxka extends Observable{
 		else if(e.equals(egoera.GALDERA)){
 			e = egoera.ITXITA;
 		}
-		
+		eguneratuIrudia();
+	}
+	
+	private void eguneratuIrudia(){
 		Object[] n = {e, x, y};
 		setChanged();
 		notifyObservers(n);
