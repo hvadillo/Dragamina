@@ -22,14 +22,15 @@ public class GelaHutsa extends Gelaxka {
 		pos[1] = y;
 		setChanged();
 		notifyObservers(pos);
-		Panela.getPanela().ireki(x, y-1);							//Ondoan dituen gela guztiak zabaldu		
-		Panela.getPanela().ireki(x, y+1);
-		Panela.getPanela().ireki(x+1, y-1);
-		Panela.getPanela().ireki(x+1, y+1);
+													//Ondoan dituen gela guztiak zabaldu	
 		Panela.getPanela().ireki(x-1, y-1);
 		Panela.getPanela().ireki(x-1, y+1);
-		Panela.getPanela().ireki(x+1, y);
 		Panela.getPanela().ireki(x-1, y);
+		Panela.getPanela().ireki(x+1, y-1);
+		Panela.getPanela().ireki(x, y-1);			
+		Panela.getPanela().ireki(x, y+1);
+		Panela.getPanela().ireki(x+1, y+1);
+		Panela.getPanela().ireki(x+1, y);
 	}
 
 	@Override

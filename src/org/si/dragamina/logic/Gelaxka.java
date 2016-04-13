@@ -27,20 +27,24 @@ public abstract class Gelaxka extends Observable{
 		eguneratuIrudia();
 	}
 	
-	protected void eskuinKlik(){
+	protected int eskuinKlik(){
+		int bueltaSeinalea = 0; //0 ezer aldatu ez bada
 		if(e.equals(egoera.ITXITA)){
 			if(MinaKontagailua.getMinaKontagailua().kendu()!=-1){
 				e = egoera.BANDERA;
+				bueltaSeinalea = 1; //1 bandera jarri bada
 			}
 		}
 		else if(e.equals(egoera.BANDERA)){
 			MinaKontagailua.getMinaKontagailua().gehitu();
 			e = egoera.GALDERA;
+			bueltaSeinalea = -1; //-1 bandera kendu bada
 		}
 		else if(e.equals(egoera.GALDERA)){
 			e = egoera.ITXITA;
 		}
 		eguneratuIrudia();
+		return bueltaSeinalea;
 	}
 	
 	private void eguneratuIrudia(){
