@@ -4,11 +4,12 @@ public class Textua {
 	
 	public static String izenaSartu;
 	public static String menuJokoa, menuLaguntza;
-	public static String aukErraza, aukNorlama, aukZaila, aukJokAldatu, aukIrten;
+	public static String aukErraza, aukNorlama, aukZaila, aukTopa, aukJokAldatu, aukIrten;
 	public static String argibidea, guriBuruz, hizkuntza;
 	public static String itxiTextua, itxiTextuaIzenburu;
 	public static String euskera, ingelesa, gaztelania;
 	public static String guriburuzTextua, argibideaTextua;
+	public static String posizioa, izena, puntuak, data;
 	public static String url;
 	
 	public static void kargatu(){
@@ -30,6 +31,7 @@ public class Textua {
 		aukErraza = "Erraza";
 		aukNorlama = "Normala";
 		aukZaila = "Zaila";
+		aukTopa = "Ranking-a";
 		aukJokAldatu = "Jokalaria aldatu";
 		aukIrten = "Irten";
 		
@@ -43,6 +45,11 @@ public class Textua {
 		
 		itxiTextua = "Ziur zaude DRAGAMINAtik irten nahi duzula?";
 		itxiTextuaIzenburu = "DRAGAMINA ITXI";
+		
+		posizioa = "POSIZIOA";
+		izena = "IZENA";
+		puntuak  = "PUNTUAK";
+		data = "DATA";
 		
 		guriburuzTextua = "<html><center><b><font size = +1>DRAGAMINA</font></b>"
 							+"<br><font size = 1>EUITI 2016</font></b>"
@@ -60,6 +67,7 @@ public class Textua {
 		aukErraza = "Fácil";
 		aukNorlama = "Normal";
 		aukZaila = "Difícil";
+		aukTopa = "Ranking";
 		aukJokAldatu = "Cambiar jugador";
 		aukIrten = "Salir";
 		
@@ -73,6 +81,11 @@ public class Textua {
 		
 		itxiTextua = "Estas seguro que quieres cerrar DRAGAMINA?";
 		itxiTextuaIzenburu = "CERRAR DRAGAMINA";
+		
+		posizioa = "POSICION";
+		izena = "NOMBRE";
+		puntuak  = "PUNTOS";
+		data = "Fecha";
 		
 		guriburuzTextua = "<html><center><b><font size = +1>DRAGAMINA</font></b>"
 				+"<br><font size = 1>EUITI 2016</font></b>"
@@ -90,6 +103,7 @@ public class Textua {
 		aukErraza = "Easy";
 		aukNorlama = "Normal";
 		aukZaila = "Difficult";
+		aukTopa = "Ranking";
 		aukJokAldatu = "Switch player";
 		aukIrten = "Quit";
 		
@@ -103,6 +117,11 @@ public class Textua {
 		
 		itxiTextua = "Are you sure you want to quit DRAGAMINA?";
 		itxiTextuaIzenburu = "QUIT DRAGAMINA";
+		
+		posizioa = "POSITION";
+		izena = "NAME";
+		puntuak  = "POINTS";
+		data = "DATE";
 		
 		guriburuzTextua = "<html><center><b><font size = +1>DRAGAMINA</font></b>"
 				+"<br><font size = 1>EUITI 2016</font></b>"

@@ -75,6 +75,7 @@ public class Panela extends Observable{
 		matrizea.galdu();						//Minak non dauden pantailaratu
 		setChanged();
 		notifyObservers(false);					//Galdu seinalea Leihoari
+		
 	}
 	
 	public int minaKopurua(){

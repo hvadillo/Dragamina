@@ -1,12 +1,24 @@
 package org.si.dragamina.logic;
 
+import java.io.File;
+
 public class TopPartidak {
 
 	private static TopPartidak ntTopPartidak = null;
 	private int tamaina;
 	private Partida[][] topak;
+	private File fitxategia;
 	
 	private TopPartidak(){
+		fitxategia = new File("Ranking.txt");
+		try {
+			if (!fitxategia.exists()){
+				{throw new Exception();}
+			}
+			fitxategia.createNewFile();
+		}catch (Exception e){
+			fitxategia = new File("Ranking.txt");
+		}
 		tamaina = 10;
 		topak = new Partida[3][tamaina];		//3 top (zailtasunak) 10 partida bakoitzean
 	}
@@ -23,10 +35,20 @@ public class TopPartidak {
 	}
 	
 	private void fitxategiaGorde(){
+		try {
+			if (!fitxategia.exists()){
+				{throw new Exception();}
+			}
+			fitxategia.createNewFile();
+		}catch (Exception e){
+			fitxategia = new File("Ranking.txt");
+		}
+		
 		
 	}
 	
 	public void topaEguneratu(Partida pPart, int pZail, int pPunt){
+		pZail--;
 		int pos = hutzuneaTopatu(pZail);
 		if(pos!=-1){
 			topak[pZail][pos] = pPart;
@@ -37,6 +59,7 @@ public class TopPartidak {
 				txertatu(pPart, pos, pZail);
 			}
 		}
+		fitxategiaGorde();
 	}
 	
 	private int hutzuneaTopatu(int pZail){
@@ -70,5 +93,9 @@ public class TopPartidak {
 			topak[pZail][x] = pHunekoa;
 			pHunekoa = pLaguntzaile;
 		}
+	}
+	
+	public Partida[] topaLortu(int pZail){
+		return topak[pZail];
 	}
 }

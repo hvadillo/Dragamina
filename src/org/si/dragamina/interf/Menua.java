@@ -15,6 +15,7 @@ import org.si.dragamina.ActionListener.GuriBuruzAL;
 import org.si.dragamina.ActionListener.IngelesaAL;
 import org.si.dragamina.ActionListener.IrtenAL;
 import org.si.dragamina.ActionListener.NormalaAL;
+import org.si.dragamina.ActionListener.TopaAL;
 import org.si.dragamina.ActionListener.ZailaAL;
 import org.si.dragamina.interf.Baliabideak.Textua;
 
@@ -22,7 +23,7 @@ public class Menua extends JMenuBar{
 
 	private static final long serialVersionUID = 1L;
 	private JMenu mnMenua, mnLaguntza;
-	private JMenuItem mntmErraza, mntmNormala, mntmZaila, mntmIrten, mntmAldatu;
+	private JMenuItem mntmErraza, mntmNormala, mntmZaila, mntmTop, mntmAldatu, mntmIrten;
 	private JMenuItem mntmJokalaria, mntmArgibidea, mntmAboutUs;
 	private JMenu mnHizkuntza;
 	private JMenuItem mntmEus, mntmIng, mntmGaz;
@@ -45,14 +46,16 @@ public class Menua extends JMenuBar{
 		mntmNormala.addActionListener(new NormalaAL());
 		mntmZaila = new JMenuItem(Textua.aukZaila);
 		mntmZaila.addActionListener(new ZailaAL());
+		mntmTop = new JMenuItem(Textua.aukTopa);
+		mntmTop.addActionListener(new TopaAL());
+		//mntmTop.setEnabled(false);
+		mntmAldatu = new JMenuItem(Textua.aukJokAldatu);
+		mntmAldatu.addActionListener(new AldatuAL());
 		mntmIrten = new JMenuItem(Textua.aukIrten);
 		mntmIrten.addActionListener(new IrtenAL());
-		mntmAldatu = new JMenuItem(Textua.aukJokAldatu);
-		
-		mntmAldatu.addActionListener(new AldatuAL());
 		
 		mntmJokalaria = new JMenuItem(pIzena);
-		mntmJokalaria.setForeground(new Color(117, 117, 117));
+		mntmJokalaria.setForeground(new Color(131, 82, 32));
 		mntmArgibidea = new JMenuItem(Textua.argibidea);
 		mntmArgibidea.addActionListener(new ArgibideaAL());
 		mntmAboutUs = new JMenuItem(Textua.guriBuruz);
@@ -72,6 +75,7 @@ public class Menua extends JMenuBar{
 		mnMenua.add(mntmNormala);
 		mnMenua.add(mntmZaila);
 		mnMenua.addSeparator();
+		mnMenua.add(mntmTop);
 		mnMenua.add(mntmAldatu);
 		mnMenua.addSeparator();
 		mnMenua.add(mntmIrten);

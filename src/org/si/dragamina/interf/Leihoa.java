@@ -36,6 +36,7 @@ public class Leihoa extends JFrame implements Observer{
 			        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Irudiak.smiley[4]);
 			    if (confirmed == JOptionPane.YES_OPTION) {
 			      dispose();
+			      TopLeihoa.getTopLeihoa().dispose();
 			    }
 			}
 		});
@@ -86,9 +87,7 @@ public class Leihoa extends JFrame implements Observer{
 	
 	private void eguneratu(){
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
-		
 		KasilenPanela.getKasilenPanela().kasilakHasieratu();
-	
 	}
 	
 	public void menuaHasieratu(){

@@ -140,7 +140,12 @@ public class MatrizeGelaxka{
 				gelaxkak[pX][pY].gelaIreki();
 				kasilaItxiak--;
 				if(kasilaItxiak<=0){							//Kasila guztiak zabalik badaude partida irabazi
+				try {
+					if(gelaxkak[pX][pY] instanceof GelaMina){
+						{throw new Exception();}
+					}
 					Panela.getPanela().partidaIrabazi();
+				} catch (Exception e) {}	
 				}				
 			}
 		}

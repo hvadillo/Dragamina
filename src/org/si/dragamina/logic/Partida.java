@@ -11,12 +11,12 @@ public class Partida {
 	private int klikak;
 	private int denbora;
 	private int puntuak;
-	private Date partidaData;
+	private String partidaData;
 	
 	public Partida(String pIzena){
 		izena = pIzena;
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		partidaData = new Date();
+		partidaData = dateFormat.format(new Date());
 	}
 	
 	public void partidaIrabazi(int pDenbora){
@@ -39,6 +39,14 @@ public class Partida {
 	
 	public String getIzena(){
 		return izena;
+	}
+	
+	public int getPuntuak(){
+		return puntuak;
+	}
+	
+	public String getData(){
+		return partidaData;
 	}
 	
 	public boolean puntuGehiago(int pPunt){
