@@ -11,6 +11,7 @@ public class Panela extends Observable{
 	private Partida unekoJok;
 	
 	private Panela(){
+		TopPartidak.getTopPartidak().fitxategiaKargatu();
 		hasita = false;
 		zailtasuna = 0;
 	}
@@ -22,63 +23,58 @@ public class Panela extends Observable{
 		return nPanela;
 	}
 	
-	public void panelaEraiki(int zut, int err){			//Gelaxkak sortu
-		int[] dim = dimentzioakKalkulatu(zailtasuna);
-		matrizea = new MatrizeGelaxka(dim[0],dim[1], zut, err);
-	}
-	
 	public void partidaBerria(int pZail){
 		hasita = false;
 		setChanged();
 		if(pZail==zailtasuna || pZail==0){
-			Integer v = 0;
-			notifyObservers(v);
+			Integer v = 0;									//0 bada leihoa ez aldatu, kasilak itxi
+			notifyObservers(v);								//Leihoari dimentzioak aldatzeko seinalea
 		}
 		else{
 			zailtasuna = pZail;
-			notifyObservers(zailtasuna);
+			notifyObservers(zailtasuna);					//Leihoari dimentzioak aldatzeko seinalea
 		}	
+		int[] dim = dimentzioakKalkulatu(zailtasuna);
+		matrizea = new MatrizeGelaxka(dim[0],dim[1]);		//Matrizean gelak hutzik sortu, minak lehenengo klikarekin sortzen dira
 		MinaKontagailua.getMinaKontagailua().hasieratu();
 		Denbora.getDenbora().hasieratu();
 	}
 	
-	public void klikEgin(int pX, int pY){
+	public void klikEgin(int zut, int err){		//Botoian klik egitean erabiltzeko
 		if(!hasita){
-			panelaEraiki(pX, pY);
-			Denbora.getDenbora().hasi();
-			hasita = true;
+			matrizea.matrizeaSortu(zut, err);	//Minak sortu
+			Denbora.getDenbora().hasi();		//Denbora martxan
+			hasita = true;		
 		}
-		if(!matrizea.banderaDu(pX, pY)){
-			ireki(pX, pY);
-			unekoJok.klikGehitu();
+		if(!matrizea.banderaDu(zut, err)){		//Banderarik ez badu
+			ireki(zut, err);					//Kasila ireki
+			unekoJok.klikGehitu();				//Klik bat gehitu jokalariari
 		}
 	}
 	
 	public void eskuinKlika(int pX, int pY){
-		if(hasita){
-			matrizea.eskuinKlika(pX, pY);
-		}
+		matrizea.eskuinKlika(pX, pY);
 	}
 	
-	public void ireki(int pX, int pY){
+	public void ireki(int pX, int pY){			//zuzenean irekitzeko (Gelak zabaltzean bakarrik zuzen)
 		matrizea.gelaIreki(pX, pY);
 	}
 	
 	public void partidaIrabazi(){
 		int denb = Denbora.getDenbora().gelditu();
 		MinaKontagailua.getMinaKontagailua().irabazi();
-		matrizea.banderakErakutzi();											//Minak banderarekin pantailaratu
+		matrizea.banderakErakutzi();			//Minak banderarekin pantailaratu
 		setChanged();
-		notifyObservers(true);
+		notifyObservers(true);					//Irabazi seinalea Leihoari
 		unekoJok.zailtasunaAldatu(zailtasuna);
-		unekoJok.setDenbora(denb);
+		unekoJok.partidaIrabazi(denb);
 	}
 	
 	public void partidaGaldu(){
 		Denbora.getDenbora().gelditu();
-		matrizea.galdu();												//Minak non dauden pantailaratu
+		matrizea.galdu();						//Minak non dauden pantailaratu
 		setChanged();
-		notifyObservers(false);
+		notifyObservers(false);					//Galdu seinalea Leihoari
 	}
 	
 	public int minaKopurua(){
@@ -105,5 +101,9 @@ public class Panela extends Observable{
 	public void jokalariaSortu(String pIzena){
 		zailtasuna = 0;
 		unekoJok = new Partida(pIzena);
+	}
+	
+	public String jokalariIzenaLortu(){
+		return unekoJok.getIzena();
 	}
 }

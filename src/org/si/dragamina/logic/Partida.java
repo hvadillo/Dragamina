@@ -19,13 +19,14 @@ public class Partida {
 		partidaData = new Date();
 	}
 	
-	public void setDenbora(int pDenbora){
+	public void partidaIrabazi(int pDenbora){
 		denbora = pDenbora;
+		puntuakKalkulatu();
 	}
 	
-	public int puntuakKalkulatu(){
+	private void puntuakKalkulatu(){
 		puntuak = (int) (((double)klikak/(double)denbora) * 1000);
-		return puntuak;
+		TopPartidak.getTopPartidak().topaEguneratu(this, zailtasuna, puntuak);
 	}
 	
 	public void klikGehitu(){
@@ -34,5 +35,18 @@ public class Partida {
 	 
 	public void zailtasunaAldatu(int pZail){
 		zailtasuna = pZail;
+	}
+	
+	public String getIzena(){
+		return izena;
+	}
+	
+	public boolean puntuGehiago(int pPunt){
+		if(puntuak>=pPunt){
+			return true;
+		}
+		else{
+			return false;
+		} 
 	}
 }

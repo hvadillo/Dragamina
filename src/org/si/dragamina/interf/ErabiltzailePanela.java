@@ -4,14 +4,16 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
+import javax.swing.AbstractAction;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-
 import org.si.dragamina.interf.Baliabideak.Textua;
 import org.si.dragamina.logic.Panela;
 
@@ -36,6 +38,25 @@ public class ErabiltzailePanela extends JPanel{
 		izenaLabel = new JLabel(Textua.izenaSartu);
 		jokIzena = new JTextField();
 		jokIzena.setPreferredSize(new Dimension(150,20));
+		jokIzena.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				if (jokIzena.getText().length()>=15){
+				     e.consume();
+				}
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {}
+			@Override
+			public void keyPressed(KeyEvent e) {}
+		});
+		jokIzena.addActionListener(new AbstractAction(){
+			private static final long serialVersionUID = 1L;
+			@Override
+		    public void actionPerformed(ActionEvent e){
+		        okeyAkzioa();
+		    }
+		});
 		
 		okBotoia = new JButton();
 		okBotoia.setText("OK");
@@ -66,20 +87,27 @@ public class ErabiltzailePanela extends JPanel{
 		okBotoia.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int autatuZai = 1;
-				if(batZail.isSelected()){
-					autatuZai = 1;
-				}
-				else if(biZail.isSelected()){
-					autatuZai = 2;
-				}
-				else if(hiruZail.isSelected()){
-					autatuZai = 3;
-				}
-				Panela.getPanela().jokalariaSortu(jokIzena.getText()); 			 //Jokalariaren izena pasatu
-				Leihoa.getLeihoa().panelakEraiki();
-				Panela.getPanela().partidaBerria(autatuZai);
+				okeyAkzioa();
 			}
 		});
+	}
+	
+	private void okeyAkzioa(){
+		String izena = jokIzena.getText();
+		if(!izena.isEmpty()){
+			int autatuZai = 1;
+			if(batZail.isSelected()){
+				autatuZai = 1;
+			}
+			else if(biZail.isSelected()){
+				autatuZai = 2;
+			}
+			else if(hiruZail.isSelected()){
+				autatuZai = 3;
+			}
+			Panela.getPanela().jokalariaSortu(jokIzena.getText()); 			 //Jokalariaren izena pasatue
+			Leihoa.getLeihoa().panelakEraiki(izena);
+			Panela.getPanela().partidaBerria(autatuZai);
+		}
 	}
 }

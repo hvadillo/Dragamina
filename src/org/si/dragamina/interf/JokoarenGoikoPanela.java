@@ -7,11 +7,11 @@ import java.awt.GridLayout;
 
 import javax.swing.JPanel;
 
-public class jokoarenGoikoPanela extends JPanel{
+public class JokoarenGoikoPanela extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 
-	public jokoarenGoikoPanela(){
+	public JokoarenGoikoPanela(){
 		setLayout(new GridLayout(1,3,0,0));
 		setBackground(new Color(250, 250, 250));
 		

@@ -23,11 +23,16 @@ public class Menua extends JMenuBar{
 	private static final long serialVersionUID = 1L;
 	private JMenu mnMenua, mnLaguntza;
 	private JMenuItem mntmErraza, mntmNormala, mntmZaila, mntmIrten, mntmAldatu;
-	private JMenuItem mntmArgibidea, mntmAboutUs;
+	private JMenuItem mntmJokalaria, mntmArgibidea, mntmAboutUs;
 	private JMenu mnHizkuntza;
 	private JMenuItem mntmEus, mntmIng, mntmGaz;
 	
-	public Menua(){
+	public Menua(String pIzena){
+		menuaSortu(pIzena);
+		itemakGehitu();
+	}
+	
+	private void menuaSortu(String pIzena){
 		setBorder(null);
 		setBackground(new Color(255,255,255));
 		
@@ -46,6 +51,8 @@ public class Menua extends JMenuBar{
 		
 		mntmAldatu.addActionListener(new AldatuAL());
 		
+		mntmJokalaria = new JMenuItem(pIzena);
+		mntmJokalaria.setForeground(new Color(117, 117, 117));
 		mntmArgibidea = new JMenuItem(Textua.argibidea);
 		mntmArgibidea.addActionListener(new ArgibideaAL());
 		mntmAboutUs = new JMenuItem(Textua.guriBuruz);
@@ -58,7 +65,9 @@ public class Menua extends JMenuBar{
 		mntmIng.addActionListener(new IngelesaAL());
 		mntmGaz = new JMenuItem(Textua.gaztelania);
 		mntmGaz.addActionListener(new GaztelaniaAL());
-		
+	}
+	
+	private void itemakGehitu(){		
 		mnMenua.add(mntmErraza);
 		mnMenua.add(mntmNormala);
 		mnMenua.add(mntmZaila);
@@ -67,6 +76,8 @@ public class Menua extends JMenuBar{
 		mnMenua.addSeparator();
 		mnMenua.add(mntmIrten);
 		
+		mnLaguntza.add(mntmJokalaria);
+		mnLaguntza.addSeparator();
 		mnLaguntza.add(mntmArgibidea);
 		mnLaguntza.add(mnHizkuntza);
 		
@@ -80,5 +91,5 @@ public class Menua extends JMenuBar{
 		add(mnMenua);
 		add(Box.createHorizontalGlue());
 		add(mnLaguntza);
-	}	
+	}
 }

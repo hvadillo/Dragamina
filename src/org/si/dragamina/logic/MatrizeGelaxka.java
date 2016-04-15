@@ -15,20 +15,31 @@ public class MatrizeGelaxka{
 	private int err;
 	private int kasilaItxiak;						//Minak ez diren zenbak kasila geratzen diren
 	
-	protected MatrizeGelaxka(int pErr, int pZut, int irekiZut, int irekiErr){
+	protected MatrizeGelaxka(int pErr, int pZut){
 		zut = pZut;
 		err = pErr;
 		gelaxkak = new Gelaxka[zut][err];
 		minak = new ArrayList<Gelaxka>();
 		banderak = new ArrayList<Gelaxka>();
-		matrizeaSortu(irekiZut,irekiErr);
+		gelaxkaHutzakSortu();
 	}
 	
-	private void matrizeaSortu(int irekiZut, int irekiErr){
+	protected void matrizeaSortu(int irekiZut, int irekiErr){
 		int minaKop = Panela.getPanela().minaKopurua();
 		kasilaItxiak = (zut * err) - minaKop;
 		minakSortu(minaKop,irekiZut,irekiErr);
 		gelaxkaHutzakSortu();
+		for(int x=0;x<banderak.size(); x++){
+			if(!banderak.get(x).equals(gelaxkak[banderak.get(x).x][banderak.get(x).y])){ 		//Kasila aldatu bada
+				if(!gelaxkak[banderak.get(x).x][banderak.get(x).y].e.equals(egoera.ZABALDUA)){	//Konprobatu kasila berria zabaldu den
+					gelaxkak[banderak.get(x).x][banderak.get(x).y].egoeraAldatu(egoera.BANDERA);//Zabaldu ez bada bandera jarri
+				}
+				else{
+					banderak.remove(x);															////Zabaldu bada banderetatik kendu
+					MinaKontagailua.getMinaKontagailua().kendu();								//Zabaldu bada kontadoretik bandera kendu
+				}
+			}
+		}
 	}
 	
 	private void minakSortu(int pMinaKop, int irekiZut, int irekiErr){
@@ -74,7 +85,7 @@ public class MatrizeGelaxka{
 	
 	private void eguneratu(int pZut, int pErr){					//zenbaki kasilak mina inguruan izatekotan zenbakia +1
 		if(matrizeBarruan(pZut, pErr)){
-			if(gelaxkak[pZut][pErr]==null){
+			if(gelaxkak[pZut][pErr]==null || gelaxkak[pZut][pErr] instanceof GelaHutsa){
 				gelaxkak[pZut][pErr] = new GelaZenbakia(pZut, pErr);
 			}
 			else if(gelaxkak[pZut][pErr] instanceof GelaZenbakia){
@@ -130,17 +141,17 @@ public class MatrizeGelaxka{
 				kasilaItxiak--;
 				if(kasilaItxiak<=0){							//Kasila guztiak zabalik badaude partida irabazi
 					Panela.getPanela().partidaIrabazi();
-				}
+				}				
 			}
 		}
 	}
 	
 	protected void eskuinKlika(int pX, int pY){
 		int s = gelaxkak[pX][pY].eskuinKlik();
-		if(s==1){
+		if(s==1){			//bandera jarri
 			banderak.add(gelaxkak[pX][pY]);
 		}
-		else if(s==-1){
+		else if(s==-1){		//bandera kendu
 			banderak.remove(gelaxkak[pX][pY]);
 		}
 	}

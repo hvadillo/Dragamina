@@ -8,6 +8,8 @@ public class Textua {
 	public static String argibidea, guriBuruz, hizkuntza;
 	public static String itxiTextua, itxiTextuaIzenburu;
 	public static String euskera, ingelesa, gaztelania;
+	public static String guriburuzTextua, argibideaTextua;
+	public static String url;
 	
 	public static void kargatu(){
 		if(System.getProperty("user.language").equals("eu") || System.getProperty("user.language").equals("es")){
@@ -16,10 +18,11 @@ public class Textua {
 		else{
 			ingelesaKargatu();
 		}
+		url = "<html><center><font size = 2><a href=\"\">https://github.com/hvadillo/Dragamina</a></font></html>";
 	}
 	
 	public static void euskeraKargatu(){
-		izenaSartu = "Sartu izea";
+		izenaSartu = "Sartu izea: ";
 		
 		menuJokoa = "Jokoa";
 		menuLaguntza = "Laguntza";
@@ -40,10 +43,16 @@ public class Textua {
 		
 		itxiTextua = "Ziur zaude DRAGAMINAtik irten nahi duzula?";
 		itxiTextuaIzenburu = "DRAGAMINA ITXI";
+		
+		guriburuzTextua = "<html><center><b><font size = +1>DRAGAMINA</font></b>"
+							+"<br><font size = 1>EUITI 2016</font></b>"
+							+"<br><br><b><font size = 4>Egileak:</font></b>"
+							+"<br><font size = 3>Hector Vadillo<br>Aimar Ugarte</font>"
+							+"<br><br><b><font size = 4>Kodea:</font></html>";
 	}
 	
 	public static void gaztelaniaKargatu(){
-		izenaSartu = "Tu nombre";
+		izenaSartu = "Tu nombre: ";
 		
 		menuJokoa = "Juego";
 		menuLaguntza = "Ayuda";
@@ -64,10 +73,16 @@ public class Textua {
 		
 		itxiTextua = "Estas seguro que quieres cerrar DRAGAMINA?";
 		itxiTextuaIzenburu = "CERRAR DRAGAMINA";
+		
+		guriburuzTextua = "<html><center><b><font size = +1>DRAGAMINA</font></b>"
+				+"<br><font size = 1>EUITI 2016</font></b>"
+				+"<br><br><b><font size = 4>Autores:</font></b>"
+				+"<br><font size = 3>Hector Vadillo<br>Aimar Ugarte</font>"
+				+"<br><br><b><font size = 4>Kodigo:</font></html>";
 	}
 	
 	public static void ingelesaKargatu(){
-		izenaSartu = "Your name";
+		izenaSartu = "Your name: ";
 		
 		menuJokoa = "Game";
 		menuLaguntza = "Help";
@@ -88,5 +103,11 @@ public class Textua {
 		
 		itxiTextua = "Are you sure you want to quit DRAGAMINA?";
 		itxiTextuaIzenburu = "QUIT DRAGAMINA";
+		
+		guriburuzTextua = "<html><center><b><font size = +1>DRAGAMINA</font></b>"
+				+"<br><font size = 1>EUITI 2016</font></b>"
+				+"<br><br><b><font size = 4>Authors:</font></b>"
+				+"<br><font size = 3>Hector Vadillo<br>Aimar Ugarte</font>"
+				+"<br><br><b><font size = 4>Kode:</font></html>";
 	}
 }
