@@ -4,6 +4,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.BorderLayout;
 import java.awt.Color;
+
 import javax.swing.*;
 
 import java.util.Observable;
@@ -40,7 +41,6 @@ public class Leihoa extends JFrame implements Observer{
 			    }
 			}
 		});
-	
 		Panela.getPanela().addObserver(this);
 	}
 	
@@ -59,7 +59,7 @@ public class Leihoa extends JFrame implements Observer{
 		setJMenuBar(null);
 		getContentPane().removeAll();
 		getContentPane().add(new ErabiltzailePanela(), BorderLayout.CENTER);
-		setSize(440, 130);
+		Dimentzioak.jokalariarenDimentzioak();
 		setLocationRelativeTo(null);
 		setVisible(true);
 	}
@@ -77,7 +77,7 @@ public class Leihoa extends JFrame implements Observer{
 	public void leihoaAldatu(int pZail){							//Leihoen tamaina zailtasunaren arabera	
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
 	
-		Dimentzioak.getDimentzioak().lehioarenDimentzioakAldatu(pZail);
+		Dimentzioak.lehioarenDimentzioakAldatu(pZail);
 		int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
 		KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
 		

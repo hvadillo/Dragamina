@@ -1,5 +1,7 @@
 package org.si.dragamina.interf;
 
+import java.awt.Dimension;
+
 public class Dimentzioak{
 
 	private static Dimentzioak nDimentzioak = null;
@@ -15,10 +17,10 @@ public class Dimentzioak{
 		return nDimentzioak;
 	}
 	
-	public void lehioarenDimentzioakAldatu(int pZail){
+	public static void lehioarenDimentzioakAldatu(int pZail){
 		if(System.getProperty("os.name").equals("Mac OS X")){			//MAC OS-erako dimentzioak
 			switch (pZail){
-				case 0:Leihoa.getLeihoa().setSize(200, 100);
+				case 0:System.out.println("aaaa");
 						break;
 				case 1:	Leihoa.getLeihoa().setSize(330, 309);
 						break;
@@ -29,12 +31,29 @@ public class Dimentzioak{
 		}
 		else{
 			switch (pZail){												//WINDOWS-erako dimentzioak
-			case 1:	Leihoa.getLeihoa().setSize(372, 357);
+			case 1:	Leihoa.getLeihoa().setSize(336, 322);
 					break;
-			case 2:	Leihoa.getLeihoa().setSize(547, 462);
+			case 2:	Leihoa.getLeihoa().setSize(501, 421);
 					break;
-			case 3:	Leihoa.getLeihoa().setSize(897, 532);
+			case 3:	Leihoa.getLeihoa().setSize(831, 487);
 			}
+		}
+	}
+	public static void jokalariarenDimentzioak(){
+		if(System.getProperty("os.name").equals("Mac OS X")){
+			Leihoa.getLeihoa().setSize(440, 130);
+		}
+		else{
+			Leihoa.getLeihoa().setSize(300, 135);
+		}
+	}
+	
+	public static Dimension guriBuruzDimentzioak(){
+		if(System.getProperty("os.name").equals("Mac OS X")){
+			return new Dimension(300, 160);
+		}
+		else{
+			return new Dimension(300, 220);
 		}
 	}
 	

@@ -21,6 +21,7 @@ public class TopLeihoa extends JDialog implements Observer{
 	private JTabbedPane erlaitzak;
 	
 	private TopLeihoa(){
+		setTitle(Textua.aukTopa);
 		TopPartidak.getTopPartidak().addObserver(this);
 		JPanel panela = new JPanel(new GridLayout(1, 1));
 		erlaitzak = new JTabbedPane();

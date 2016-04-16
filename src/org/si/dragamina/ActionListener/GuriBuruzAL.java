@@ -8,6 +8,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
+import org.si.dragamina.interf.Dimentzioak;
 import org.si.dragamina.interf.Leihoa;
 import org.si.dragamina.interf.Baliabideak.Textua;
 
@@ -36,7 +37,7 @@ public class GuriBuruzAL implements ActionListener{
 		guriBuruz.getContentPane().add(p);
 		guriBuruz.pack();
 		guriBuruz.setLocationRelativeTo(null);
-		guriBuruz.setSize(300, 160);
+		guriBuruz.setSize(Dimentzioak.guriBuruzDimentzioak());
 		guriBuruz.setResizable(false);
 		guriBuruz.setVisible(true);
 	}
