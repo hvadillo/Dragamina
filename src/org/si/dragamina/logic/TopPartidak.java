@@ -1,24 +1,23 @@
 package org.si.dragamina.logic;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Observable;
+import java.util.Scanner;
 
-public class TopPartidak {
+public class TopPartidak extends Observable{
 
 	private static TopPartidak ntTopPartidak = null;
 	private int tamaina;
 	private Partida[][] topak;
-	private File fitxategia;
+	private File fitxategia = new File("Ranking.txt");
 	
 	private TopPartidak(){
-		fitxategia = new File("Ranking.txt");
-		try {
-			if (!fitxategia.exists()){
-				{throw new Exception();}
-			}
-			fitxategia.createNewFile();
-		}catch (Exception e){
-			fitxategia = new File("Ranking.txt");
-		}
+		fitxategiaSortu(5);
 		tamaina = 10;
 		topak = new Partida[3][tamaina];		//3 top (zailtasunak) 10 partida bakoitzean
 	}
@@ -30,58 +29,93 @@ public class TopPartidak {
 		return ntTopPartidak;
 	}
 	
-	public void fitxategiaKargatu(){
-		
-	}
-	
-	private void fitxategiaGorde(){
+	private void fitxategiaSortu(int sailakerak){
 		try {
-			if (!fitxategia.exists()){
+			if(fitxategia.exists()){
 				{throw new Exception();}
 			}
 			fitxategia.createNewFile();
-		}catch (Exception e){
+		} catch (Exception e) {
 			fitxategia = new File("Ranking.txt");
+			if(sailakerak>0){
+				sailakerak--;
+				fitxategiaSortu(sailakerak);
+			}
+		}		
+	}
+	
+	public void fitxategiaKargatu(){
+		try {
+			Scanner f = new Scanner(new FileReader(fitxategia));
+			String lerroa;
+			int z = 0;
+			while(f.hasNext()){
+				lerroa = f.nextLine();
+				String[] items = lerroa.split("\\s*###\\s*");
+				for(int x=1; x<items.length; x++){
+					String[] jokItems = items[x].split("---");
+					topak[z][x-1] = new Partida(z,jokItems[0],jokItems[1], jokItems[2]);
+				}
+				z++;
+			}
+			f.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
-		
+	}
+	
+	private void fitxategiaGorde(){
+		String[] s = {"ERREZA", "NORMALA", "ZAILA"};
+		FileWriter fw;
+		try {
+			fitxategia.createNewFile();
+			fw = new FileWriter(fitxategia.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			for(int x=0; x<topak.length;x++){
+				bw.write(s[x]);
+				for(int y=0; y<3; y++){
+					try {
+						if(topak[x][y]==null){
+							{throw new Exception();}
+						}	
+						bw.write(" ### " + topak[x][y].getIzena() + "---" + topak[x][y].getPuntuak() + "---" + topak[x][y].getData());
+					} catch (Exception e) {}	
+				}
+				bw.newLine();
+			}
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
 	public void topaEguneratu(Partida pPart, int pZail, int pPunt){
 		pZail--;
-		int pos = hutzuneaTopatu(pZail);
+		int pos = txertatzekoPosizioa(pZail, pPunt);
 		if(pos!=-1){
-			topak[pZail][pos] = pPart;
+			txertatu(pPart, pos, pZail);
 		}
-		else{
-			pos = puntuGeihago(pZail, pPunt);
-			if(pos!=-1){
-				txertatu(pPart, pos, pZail);
-			}
-		}
+		setChanged();
+		notifyObservers();
 		fitxategiaGorde();
 	}
 	
-	private int hutzuneaTopatu(int pZail){
-		int x = 0;
-		while(x<topak[pZail].length){
-			if(topak[pZail][x]==null){
-				return x;
-			}
-			x++;
-		}
-		return -1;
-	}
-	
-	private int puntuGeihago(int pZail, int pPunt){
+	private int txertatzekoPosizioa(int pZail, int pPunt){
 		boolean topatua = false;
 		int x = 0;
-		while(!topatua && x<topak[pZail].length){
-			if(!topak[pZail][x].puntuGehiago(pPunt)){
-				topatua = true;
-				return x;
+		try{
+			if(topak[pZail][x]==null){
+				{throw new Exception();}
 			}
-		}
+			while(!topatua && x<topak[pZail].length){
+				if(!topak[pZail][x].puntuGehiago(pPunt)){
+					topatua = true;
+					return x;
+				}
+				x++;
+			}
+		}catch(Exception e){return x;}
 		return -1;
 	}
 	

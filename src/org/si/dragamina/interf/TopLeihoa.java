@@ -2,6 +2,8 @@ package org.si.dragamina.interf;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -12,15 +14,14 @@ import org.si.dragamina.interf.Baliabideak.Textua;
 import org.si.dragamina.logic.Partida;
 import org.si.dragamina.logic.TopPartidak;
 
-public class TopLeihoa extends JDialog{
+public class TopLeihoa extends JDialog implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private static TopLeihoa nTopLeihoa = null;
 	private JTabbedPane erlaitzak;
 	
-	
-	
 	private TopLeihoa(){
+		TopPartidak.getTopPartidak().addObserver(this);
 		JPanel panela = new JPanel(new GridLayout(1, 1));
 		erlaitzak = new JTabbedPane();
 		
@@ -80,5 +81,10 @@ public class TopLeihoa extends JDialog{
 		erlaitzak.addTab(Textua.aukErraza, topaLortu(0));
 		erlaitzak.addTab(Textua.aukNorlama, topaLortu(1));
 		erlaitzak.addTab(Textua.aukZaila, topaLortu(2));
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		informazioaEguneratu();
 	}
 }

@@ -19,13 +19,20 @@ public class Partida {
 		partidaData = dateFormat.format(new Date());
 	}
 	
+	public Partida(int pZail, String pIzena, String pPuntuak, String pData){
+		zailtasuna = pZail;
+		izena = pIzena;
+		puntuak = Integer.parseInt(pPuntuak);
+		partidaData = pData;
+	}
+	
 	public void partidaIrabazi(int pDenbora){
 		denbora = pDenbora;
 		puntuakKalkulatu();
 	}
 	
 	private void puntuakKalkulatu(){
-		puntuak = (int) (((double)klikak/(double)denbora) * 1000);
+		puntuak = (int) (((double)klikak/((double)denbora) * 1000) * zailtasuna);
 		TopPartidak.getTopPartidak().topaEguneratu(this, zailtasuna, puntuak);
 	}
 	

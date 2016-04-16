@@ -8,7 +8,8 @@ public class Panela extends Observable{
 	private boolean hasita;
 	private Integer zailtasuna;
 	private MatrizeGelaxka matrizea;
-	private Partida unekoJok;
+	private Partida unekoPartida;
+	private String unekoJokalaria;
 	
 	private Panela(){
 		TopPartidak.getTopPartidak().fitxategiaKargatu();
@@ -36,6 +37,7 @@ public class Panela extends Observable{
 		}	
 		int[] dim = dimentzioakKalkulatu(zailtasuna);
 		matrizea = new MatrizeGelaxka(dim[0],dim[1]);		//Matrizean gelak hutzik sortu, minak lehenengo klikarekin sortzen dira
+		partidaSortu(unekoJokalaria);
 		MinaKontagailua.getMinaKontagailua().hasieratu();
 		Denbora.getDenbora().hasieratu();
 	}
@@ -48,7 +50,7 @@ public class Panela extends Observable{
 		}
 		if(!matrizea.banderaDu(zut, err)){		//Banderarik ez badu
 			ireki(zut, err);					//Kasila ireki
-			unekoJok.klikGehitu();				//Klik bat gehitu jokalariari
+			unekoPartida.klikGehitu();				//Klik bat gehitu jokalariari
 		}
 	}
 	
@@ -66,8 +68,8 @@ public class Panela extends Observable{
 		matrizea.banderakErakutzi();			//Minak banderarekin pantailaratu
 		setChanged();
 		notifyObservers(true);					//Irabazi seinalea Leihoari
-		unekoJok.zailtasunaAldatu(zailtasuna);
-		unekoJok.partidaIrabazi(denb);
+		unekoPartida.zailtasunaAldatu(zailtasuna);
+		unekoPartida.partidaIrabazi(denb);
 	}
 	
 	public void partidaGaldu(){
@@ -99,12 +101,16 @@ public class Panela extends Observable{
 		return dim;
 	}
 	
-	public void jokalariaSortu(String pIzena){
+	public void unekoJokalariaAldatu(String pIzena){
 		zailtasuna = 0;
-		unekoJok = new Partida(pIzena);
+		unekoJokalaria = pIzena;
+	}
+	
+	private void partidaSortu(String pIzena){
+		unekoPartida = new Partida(unekoJokalaria);
 	}
 	
 	public String jokalariIzenaLortu(){
-		return unekoJok.getIzena();
+		return unekoJokalaria;
 	}
 }
