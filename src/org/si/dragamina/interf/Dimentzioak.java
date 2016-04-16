@@ -31,11 +31,11 @@ public class Dimentzioak{
 		}
 		else{
 			switch (pZail){												//WINDOWS-erako dimentzioak
-			case 1:	Leihoa.getLeihoa().setSize(336, 322);
+			case 1:	Leihoa.getLeihoa().setSize(336, 325);
 					break;
-			case 2:	Leihoa.getLeihoa().setSize(501, 421);
+			case 2:	Leihoa.getLeihoa().setSize(501, 424);
 					break;
-			case 3:	Leihoa.getLeihoa().setSize(831, 487);
+			case 3:	Leihoa.getLeihoa().setSize(831, 491);
 			}
 		}
 	}

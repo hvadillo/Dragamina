@@ -8,11 +8,9 @@ import org.si.dragamina.interf.Leihoa;
 public abstract class Main {
 	
 	public static void main(String[] args) {
+		
 		try {
-			UIManager.setLookAndFeel("[Aqua Look and Feel for MAC OS X - com.apple.laf.AquaLookAndFeel]");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -22,7 +20,10 @@ public abstract class Main {
 		} catch (UnsupportedLookAndFeelException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		Leihoa.getLeihoa().jokalariarenIzena();
 	}
 }
