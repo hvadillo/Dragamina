@@ -1,6 +1,7 @@
 package org.si.dragamina.interf;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class Dimentzioak{
 
@@ -29,13 +30,24 @@ public class Dimentzioak{
 				case 3:	Leihoa.getLeihoa().setSize(825, 474);
 			}
 		}
-		else{
-			switch (pZail){												//WINDOWS-erako dimentzioak
-			case 1:	Leihoa.getLeihoa().setSize(336, 325);
-					break;
-			case 2:	Leihoa.getLeihoa().setSize(501, 424);
-					break;
-			case 3:	Leihoa.getLeihoa().setSize(831, 491);
+		else{	
+			if(Toolkit.getDefaultToolkit().getScreenSize().height==1080 && Toolkit.getDefaultToolkit().getScreenSize().height==1080){
+				switch (pZail){												//WINDOWS-erako dimentzioak
+				case 1:	Leihoa.getLeihoa().setSize(336, 335);
+						break;
+				case 2:	Leihoa.getLeihoa().setSize(501, 434);
+						break;
+				case 3:	Leihoa.getLeihoa().setSize(831, 500);
+				}
+			}
+			else{
+				switch (pZail){												//WINDOWS-erako dimentzioak
+				case 1:	Leihoa.getLeihoa().setSize(336, 325);
+						break;
+				case 2:	Leihoa.getLeihoa().setSize(501, 424);
+						break;
+				case 3:	Leihoa.getLeihoa().setSize(831, 491);
+				}
 			}
 		}
 	}
@@ -44,7 +56,12 @@ public class Dimentzioak{
 			Leihoa.getLeihoa().setSize(440, 130);
 		}
 		else{
-			Leihoa.getLeihoa().setSize(300, 135);
+			if(Toolkit.getDefaultToolkit().getScreenSize().height==1080 && Toolkit.getDefaultToolkit().getScreenSize().height==1080){
+				Leihoa.getLeihoa().setSize(300, 150);
+			}
+			else{
+				Leihoa.getLeihoa().setSize(300, 135);
+			}
 		}
 	}
 	
