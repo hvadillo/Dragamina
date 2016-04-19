@@ -78,7 +78,7 @@ public class Leihoa extends JFrame implements Observer{
 		Smiley.getSmiley().setIcon(Irudiak.smiley[0]);				//Hasierako egoeran jarri aurpegia
 	
 		Dimentzioak.lehioarenDimentzioakAldatu(pZail);
-		int[] d = Dimentzioak.getDimentzioak().dimentzioakKalkulatu(pZail);
+		int[] d = Panela.getPanela().dimentzioakKalkulatu(pZail);
 		KasilenPanela.getKasilenPanela().kasilakSortu(d[1], d[0]);
 		
 		setLocationRelativeTo(null);

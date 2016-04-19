@@ -35,8 +35,7 @@ public class Panela extends Observable{
 			zailtasuna = pZail;
 			notifyObservers(zailtasuna);					//Leihoari dimentzioak aldatzeko seinalea
 		}	
-		int[] dim = dimentzioakKalkulatu(zailtasuna);
-		matrizea = new MatrizeGelaxka(dim[0],dim[1]);		//Matrizean gelak hutzik sortu, minak lehenengo klikarekin sortzen dira
+		matrizea = new MatrizeGelaxka(zailtasuna);		//Matrizean gelak hutzik sortu, minak lehenengo klikarekin sortzen dira
 		partidaSortu(unekoJokalaria);
 		MinaKontagailua.getMinaKontagailua().hasieratu();
 		Denbora.getDenbora().hasieratu();
@@ -85,7 +84,7 @@ public class Panela extends Observable{
 		return zailtasuna * d[0];
 	}
 	
-	private int[] dimentzioakKalkulatu(int pZ){
+	public int[] dimentzioakKalkulatu(int pZ){
 		int[] dim = new int[2];
 		switch (pZ) {
 			case 1: dim[0] = 7;
