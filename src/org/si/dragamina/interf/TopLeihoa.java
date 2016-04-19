@@ -13,6 +13,7 @@ import javax.swing.JTabbedPane;
 import org.si.dragamina.interf.Baliabideak.Textua;
 import org.si.dragamina.logic.Partida;
 import org.si.dragamina.logic.TopPartidak;
+import org.si.dragamina.salbuespenak.PartidarikEz;
 
 public class TopLeihoa extends JDialog implements Observer{
 
@@ -61,7 +62,7 @@ public class TopLeihoa extends JDialog implements Observer{
 		for(int x=0; x<p.length; x++){
 			try {
 				if(p[x]==null){
-					{throw new Exception();}
+					{throw new PartidarikEz();}
 				}	
 				JPanel jokalariarenPanela = new JPanel(new GridLayout(1, 4));
 				Integer pos = x+1;
@@ -71,7 +72,7 @@ public class TopLeihoa extends JDialog implements Observer{
 				jokalariarenPanela.add(new JLabel(punt.toString()));
 				jokalariarenPanela.add(new JLabel(p[x].getData()));
 				informazioa.add(jokalariarenPanela);
-			} catch (Exception e) {}	
+			} catch (PartidarikEz e) {}	
 		}
 		return informazioa;
 	}
