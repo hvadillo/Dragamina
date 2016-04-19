@@ -17,7 +17,9 @@ public class TopPartidak extends Observable{
 	private File fitxategia = new File("Ranking.txt");
 	
 	private TopPartidak(){
-		fitxategiaSortu(5);
+		try {
+			fitxategia.createNewFile();
+		} catch (IOException e) {}
 		tamaina = 10;
 		topak = new Partida[3][tamaina];		//3 top (zailtasunak) 10 partida bakoitzean
 	}
@@ -27,21 +29,6 @@ public class TopPartidak extends Observable{
 			ntTopPartidak = new TopPartidak();
 		}
 		return ntTopPartidak;
-	}
-	
-	private void fitxategiaSortu(int sailakerak){
-		try {
-			if(fitxategia.exists()){
-				{throw new Exception();}
-			}
-			fitxategia.createNewFile();
-		} catch (Exception e) {
-			fitxategia = new File("Ranking.txt");
-			if(sailakerak>0){
-				sailakerak--;
-				fitxategiaSortu(sailakerak);
-			}
-		}		
 	}
 	
 	public void fitxategiaKargatu(){
