@@ -21,7 +21,7 @@ public class KasilenPanela extends JPanel implements Observer{
 	private Kasila[][] botoiak;
 		
 	private KasilenPanela(){
-		setBackground(new Color(0,250,250));
+		setBackground(new Color(250,250,250));
 			
 		JPanel bereizgarri = new JPanel();								//botoien eta smiley-aren arteko tartea
 		bereizgarri.setBackground(new Color(250, 250, 250));

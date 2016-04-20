@@ -16,6 +16,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import org.si.dragamina.interf.Baliabideak.Textua;
 import org.si.dragamina.logic.Panela;
+import org.si.dragamina.salbuespenak.IzenEzEgokia;
 
 public class ErabiltzailePanela extends JPanel{
 
@@ -94,20 +95,27 @@ public class ErabiltzailePanela extends JPanel{
 	
 	private void okeyAkzioa(){
 		String izena = jokIzena.getText();
-		if(!izena.isEmpty()){
-			int autatuZai = 1;
-			if(batZail.isSelected()){
-				autatuZai = 1;
+		try{
+			if(izena.contains("---") || izena.contains("###")){
+				{throw new IzenEzEgokia(jokIzena);}
 			}
-			else if(biZail.isSelected()){
-				autatuZai = 2;
+			if(!izena.isEmpty()){
+				int autatuZai = 1;
+				if(batZail.isSelected()){
+					autatuZai = 1;
+				}
+				else if(biZail.isSelected()){
+					autatuZai = 2;
+				}
+				else if(hiruZail.isSelected()){
+					autatuZai = 3;
+				}
+				Panela.getPanela().unekoJokalariaAldatu(jokIzena.getText()); 			 //Jokalariaren izena pasatue
+				Leihoa.getLeihoa().panelakEraiki(izena);
+				Panela.getPanela().partidaBerria(autatuZai);
 			}
-			else if(hiruZail.isSelected()){
-				autatuZai = 3;
-			}
-			Panela.getPanela().unekoJokalariaAldatu(jokIzena.getText()); 			 //Jokalariaren izena pasatue
-			Leihoa.getLeihoa().panelakEraiki(izena);
-			Panela.getPanela().partidaBerria(autatuZai);
-		}
+			}catch (IzenEzEgokia e){
+				e.karaktereEzEgokiakEzabatu();
+			}	
 	}
 }

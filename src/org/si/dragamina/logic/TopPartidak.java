@@ -38,10 +38,10 @@ public class TopPartidak extends Observable{
 			int z = 0;
 			while(f.hasNext()){
 				lerroa = f.nextLine();
-				String[] items = lerroa.split("\\s*###\\s*");
+				String[] items = lerroa.split(" ### ");
 				for(int x=1; x<items.length; x++){
 					String[] jokItems = items[x].split("---");
-					topak[z][x-1] = new Partida(z,jokItems[0],jokItems[1], jokItems[2]);
+					topak[z][x-1] = new Partida(z,jokItems[0],jokItems[1], jokItems[2]);	
 				}
 				z++;
 			}
