@@ -14,7 +14,7 @@ public class MatrizeGelaxka{
 	private int err;
 	private int kasilaItxiak;						//Minak ez diren zenbak kasila geratzen diren
 	
-	protected MatrizeGelaxka(int pZail){
+	public MatrizeGelaxka(int pZail){
 		gureBuilder = new ProduktuBuilder(pZail);
 		gelaxkak = new Gelaxka[zut][err];
 		minak = new ArrayList<Gelaxka>();
@@ -22,36 +22,36 @@ public class MatrizeGelaxka{
 		gelaxkak = gureBuilder.GelaHutsakSortu();
 	}
 	
-	protected void matrizeaSortu(int irekiZut, int irekiErr){
+	public void matrizeaSortu(int irekiZut, int irekiErr){
 		gelaxkak = gureBuilder.matrizeaSortu(irekiZut, irekiErr);
 		minak = gureBuilder.getMinenArraya();
 		banderak = gureBuilder.getBanderenArraya();
 		kasilaItxiak = gureBuilder.getKasilaItxiak();
 	}
 	
-	protected void banderakErakutzi(){
+	public void banderakErakutzi(){
 		for(int x=0; x<minak.size(); x++){
 			minak.get(x).egoeraAldatu(egoera.BANDERA);
 		}
 	}
 	
-	protected void galdu(){
+	public void galdu(){
 		for(int x=0; x<minak.size(); x++){
-			if(minak.get(x).e.equals(egoera.ITXITA)){
+			if(minak.get(x).itxitaDago()){
 				minak.get(x).egoeraAldatu(egoera.MINA);
 			}
 		}
 		for(int x=0; x<banderak.size(); x++){
-			if(banderak.get(x).e.equals(egoera.BANDERA) && !(banderak.get(x) instanceof GelaMina)){
+			if(banderak.get(x).banderaDu() && !(banderak.get(x) instanceof GelaMina)){
 				banderak.get(x).egoeraAldatu(egoera.EZBANDERA);
 			}
 		}
 	}
 	
-	protected void gelaIreki(int pX, int pY){
+	public void gelaIreki(int pX, int pY){
 		if(gureBuilder.matrizeBarruan(pX,pY)){								//Gela matrize barruan dagoela zihurtatu
-			if(!gelaxkak[pX][pY].e.equals(egoera.ZABALDUA)){	//Gela dagoeneko zabalik dagoen konprobatu
-				if(gelaxkak[pX][pY].e.equals(egoera.BANDERA)){
+			if(gelaxkak[pX][pY].itxitaDago()){	//Gela dagoeneko zabalik dagoen konprobatu
+				if(gelaxkak[pX][pY].banderaDu()){
 					MinaKontagailua.getMinaKontagailua().gehitu();
 				}
 				gelaxkak[pX][pY].gelaIreki();
@@ -68,7 +68,7 @@ public class MatrizeGelaxka{
 		}
 	}
 	
-	protected void eskuinKlika(int pX, int pY){
+	public void eskuinKlika(int pX, int pY){
 		int s = gelaxkak[pX][pY].eskuinKlik();
 		if(s==1){			//bandera jarri
 			banderak.add(gelaxkak[pX][pY]);
@@ -78,8 +78,8 @@ public class MatrizeGelaxka{
 		}
 	}
 	
-	protected boolean banderaDu(int pX, int pY){
-		if(gelaxkak[pX][pY].e.equals(egoera.BANDERA)){
+	public boolean banderaDu(int pX, int pY){
+		if(gelaxkak[pX][pY].banderaDu()){
 			return true;
 		}
 		else return false;

@@ -7,9 +7,9 @@ import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 public abstract class Gelaxka extends Observable{
 	
-	protected int x;
-	protected int y;
-	protected egoera e;
+	private int x;
+	private int y;
+	private egoera e;
 	
 	public Gelaxka(int pX, int pY){
 		addObserver(KasilenPanela.getKasilenPanela());
@@ -21,6 +21,28 @@ public abstract class Gelaxka extends Observable{
 	protected abstract void gelaIreki();
 	
 	protected abstract void eguneratu();
+	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	
+	protected egoera getEgoera(){
+		return e;
+	}
+	
+	public boolean itxitaDago(){
+		if(e.equals(egoera.ZABALDUA)) return false;
+		else return true;
+	}
+	
+	public boolean banderaDu(){
+		if(e.equals(egoera.BANDERA)) return true;
+		else return false;
+	}
 	
 	protected void egoeraAldatu(egoera pEgo){
 		e = pEgo;

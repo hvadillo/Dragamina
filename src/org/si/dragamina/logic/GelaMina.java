@@ -10,11 +10,11 @@ public class GelaMina extends Gelaxka {
 
 	@Override
 	protected void gelaIreki() {
-		if(e == egoera.ITXITA || e == egoera.GALDERA || e == egoera.BANDERA){
-			e = egoera.ZABALDUA;
+		if(getEgoera() == egoera.ITXITA || getEgoera() == egoera.GALDERA || getEgoera() == egoera.BANDERA){
+			egoeraAldatu(egoera.ZABALDUA);
 			int[] pos = new int[2]; 
-			pos[0] = x;
-			pos[1] = y;
+			pos[0] = getX();
+			pos[1] = getY();
 			setChanged();
 			notifyObservers(pos);
 			Panela.getPanela().partidaGaldu();

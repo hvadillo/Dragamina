@@ -13,11 +13,11 @@ public class GelaZenbakia extends Gelaxka{
 	
 	@Override
 	protected void gelaIreki() {
-		if(e == egoera.ITXITA || e == egoera.GALDERA || e == egoera.BANDERA){
-			e = egoera.ZABALDUA;
+		if(getEgoera() == egoera.ITXITA || getEgoera() == egoera.GALDERA || getEgoera() == egoera.BANDERA){
+			egoeraAldatu(egoera.ZABALDUA);
 			int[] pos = new int[3]; 
-			pos[0] = x;
-			pos[1] = y;
+			pos[0] = getX();
+			pos[1] = getY();
 			pos[2] = minaInguruan;
 			setChanged();
 			notifyObservers(pos);

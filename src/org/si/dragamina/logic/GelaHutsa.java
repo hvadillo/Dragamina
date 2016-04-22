@@ -10,16 +10,18 @@ public class GelaHutsa extends Gelaxka {
 
 	@Override
 	protected void gelaIreki() {
-		if(e == egoera.ITXITA || e == egoera.GALDERA || e == egoera.BANDERA){
-			e = egoera.ZABALDUA;
+		if(getEgoera() == egoera.ITXITA || getEgoera() == egoera.GALDERA || getEgoera() == egoera.BANDERA){
+			egoeraAldatu(egoera.ZABALDUA);
 			gelaHutsakIreki();
 		}
 	}
 	
 	private void gelaHutsakIreki(){
-		int[] pos = new int[2]; 
-		pos[0] = x;
-		pos[1] = y;
+		int x = getX();
+		int y = getY();
+		
+		int[] pos = {x,y};
+		
 		setChanged();
 		notifyObservers(pos);
 													//Ondoan dituen gela guztiak zabaldu	

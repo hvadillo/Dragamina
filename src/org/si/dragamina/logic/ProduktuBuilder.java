@@ -40,9 +40,9 @@ public class ProduktuBuilder {
 		kasilaItxiak = (zut * err) - minaKopurua();
 		minakSortu(irekiErr,irekiZut);
 		for(int x=0;x<banderak.size(); x++){
-			if(!banderak.get(x).equals(gelaxkak[banderak.get(x).x][banderak.get(x).y])){ 		//Kasila aldatu bada
-				if(!gelaxkak[banderak.get(x).x][banderak.get(x).y].e.equals(egoera.ZABALDUA)){	//Konprobatu kasila berria zabaldu den
-					gelaxkak[banderak.get(x).x][banderak.get(x).y].egoeraAldatu(egoera.BANDERA);//Zabaldu ez bada bandera jarri
+			if(!banderak.get(x).equals(gelaxkak[banderak.get(x).getX()][banderak.get(x).getY()])){ 		//Kasila aldatu bada
+				if(gelaxkak[banderak.get(x).getX()][banderak.get(x).getY()].itxitaDago()){				//Konprobatu kasila berria zabaldu den
+					gelaxkak[banderak.get(x).getX()][banderak.get(x).getY()].egoeraAldatu(egoera.BANDERA);//Zabaldu ez bada bandera jarri
 				}
 				else{
 					banderak.remove(x);															////Zabaldu bada banderetatik kendu
