@@ -1,6 +1,7 @@
 package org.si.dragamina.ActionListener;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Scrollbar;
 import java.awt.event.ActionEvent;
@@ -29,7 +30,7 @@ public class ArgibideaAL implements ActionListener{
 		textua.setEditable(false);
 		
 		JScrollPane scroll = new JScrollPane(textua);
-		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroll.setBounds(0, 0, 450, 500); 
 		
 		p.add(scroll);
 		
@@ -38,7 +39,8 @@ public class ArgibideaAL implements ActionListener{
 		//argibidea.getContentPane().add(scroll, BorderLayout.EAST);
 		argibidea.pack();
 		argibidea.setLocationRelativeTo(null);
-		argibidea.setSize(450, 500);
+		argibidea.setSize(scroll.getSize());
+		argibidea.setMinimumSize(new Dimension(300, 300));
 		argibidea.setResizable(false);
 		argibidea.setVisible(true);
 	}
