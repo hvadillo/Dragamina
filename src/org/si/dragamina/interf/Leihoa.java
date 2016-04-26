@@ -22,6 +22,7 @@ public class Leihoa extends JFrame implements Observer{
 	public Leihoa() {
 		Irudiak.kargatu();
 		Textua.kargatu();
+		
 		Kronometroa.getKronometroa();
 		
 		setTitle("DRAGAMINA");

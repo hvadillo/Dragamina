@@ -36,7 +36,7 @@ public class GuriBuruzAL implements ActionListener{
 		
 		guriBuruz.getContentPane().add(p);
 		guriBuruz.pack();
-		guriBuruz.setLocationRelativeTo(null);
+		guriBuruz.setLocationRelativeTo(Leihoa.getLeihoa());
 		guriBuruz.setSize(Dimentzioak.guriBuruzDimentzioak());
 		guriBuruz.setResizable(false);
 		guriBuruz.setVisible(true);

@@ -2,6 +2,7 @@ package org.si.dragamina.logic;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+
 import org.si.dragamina.interf.Leihoa;
 
 public abstract class Main {
@@ -10,18 +11,22 @@ public abstract class Main {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		
+		
+		long startTime = System.nanoTime();
+		
 		Leihoa.getLeihoa().jokalariarenIzena();
+		
+		long endTime = System.nanoTime();
+		long duration = (endTime - startTime);
+		System.out.println("Ejekuzio denbora " + duration/1000000+"mseg");
 	}
 }

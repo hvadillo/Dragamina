@@ -48,7 +48,6 @@ public class Menua extends JMenuBar{
 		mntmZaila.addActionListener(new ZailaAL());
 		mntmTop = new JMenuItem(Textua.aukTopa);
 		mntmTop.addActionListener(new TopaAL());
-		//mntmTop.setEnabled(false);
 		mntmAldatu = new JMenuItem(Textua.aukJokAldatu);
 		mntmAldatu.addActionListener(new AldatuAL());
 		mntmIrten = new JMenuItem(Textua.aukIrten);

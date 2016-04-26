@@ -19,9 +19,9 @@ public class Dimentzioak{
 	}
 	
 	public static void lehioarenDimentzioakAldatu(int pZail){
-		if(System.getProperty("os.name").equals("Mac OS X")){			//MAC OS-erako dimentzioak
+		if(System.getProperty("os.name").equals("Mac OS X")){			//MAC OSX-erako dimentzioak
 			switch (pZail){
-				case 0:System.out.println("aaaa");
+				case 0:	System.out.println("Hau ez");
 						break;
 				case 1:	Leihoa.getLeihoa().setSize(330, 309);
 						break;
@@ -31,8 +31,8 @@ public class Dimentzioak{
 			}
 		}
 		else{	
-			if(Toolkit.getDefaultToolkit().getScreenSize().height==1080 && Toolkit.getDefaultToolkit().getScreenSize().height==1080){
-				switch (pZail){												//WINDOWS-erako dimentzioak
+			if(Toolkit.getDefaultToolkit().getScreenSize().height==1080 && Toolkit.getDefaultToolkit().getScreenSize().width==1920){
+				switch (pZail){												//WINDOWS-erako dimentzioak 1920x1080
 				case 1:	Leihoa.getLeihoa().setSize(336, 335);
 						break;
 				case 2:	Leihoa.getLeihoa().setSize(501, 434);
@@ -53,26 +53,33 @@ public class Dimentzioak{
 	}
 	public static void jokalariarenDimentzioak(){
 		if(System.getProperty("os.name").equals("Mac OS X")){
-			Leihoa.getLeihoa().setSize(440, 130);
+			Leihoa.getLeihoa().setSize(440, 130);			//MAC-OSX dimentzioak
 		}
 		else{
-			if(Toolkit.getDefaultToolkit().getScreenSize().height==1080 && Toolkit.getDefaultToolkit().getScreenSize().height==1080){
-				Leihoa.getLeihoa().setSize(300, 150);
+			if(Toolkit.getDefaultToolkit().getScreenSize().height==1080 && Toolkit.getDefaultToolkit().getScreenSize().width==1920){
+				Leihoa.getLeihoa().setSize(300, 150);		//WINDOWS-erako dimentzioak 1920x1080
 			}
 			else{
-				Leihoa.getLeihoa().setSize(300, 135);
+				Leihoa.getLeihoa().setSize(300, 135);		//WINDOWS-erako dimentzioak
 			}
 		}
 	}
 	
 	public static Dimension guriBuruzDimentzioak(){
 		if(System.getProperty("os.name").equals("Mac OS X")){
-			return new Dimension(300, 160);
+			return new Dimension(300, 170);
 		}
 		else{
-			return new Dimension(300, 220);
+			return new Dimension(300, 250);
 		}
 	}
 
-	
+	public static Dimension ArgibideakDimentzioak(){
+		if(System.getProperty("os.name").equals("Mac OS X")){
+			return new Dimension(550, 600);
+		}
+		else{
+			return new Dimension(500, 600);
+		}
+	}
 }
