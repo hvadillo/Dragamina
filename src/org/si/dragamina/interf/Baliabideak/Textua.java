@@ -56,6 +56,8 @@ public class Textua {
 							+"<br><br><b><font size = 4>Egileak:</font></b>"
 							+"<br><font size = 3>Hector Vadillo<br>Aimar Ugarte</font>"
 							+"<br><br><b><font size = 4>Kodea:</font></html>";
+		
+		argibideaTextua = "a";
 	}
 	
 	public static void gaztelaniaKargatu(){
