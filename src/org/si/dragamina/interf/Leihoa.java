@@ -37,8 +37,9 @@ public class Leihoa extends JFrame implements Observer{
 			        Textua.itxiTextua, Textua.itxiTextuaIzenburu,
 			        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, Irudiak.smiley[4]);
 			    if (confirmed == JOptionPane.YES_OPTION) {
-			      dispose();
-			      TopLeihoa.getTopLeihoa().dispose();
+			    	//TopLeihoa.getTopLeihoa().dispose();
+			    	//dispose();
+			    	System.exit(0);
 			    }
 			}
 		});

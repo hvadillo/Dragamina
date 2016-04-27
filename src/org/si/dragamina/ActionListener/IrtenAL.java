@@ -10,8 +10,9 @@ public class IrtenAL implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Leihoa.getLeihoa().dispose();
-		TopLeihoa.getTopLeihoa().dispose();
+		//Leihoa.getLeihoa().dispose();
+		//TopLeihoa.getTopLeihoa().dispose();
+		System.exit(0);
 	}
 	
 }

@@ -3,8 +3,6 @@ package org.si.dragamina.logic;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
-
 public class ProduktuBuilder {
 	
 	private Gelaxka[][] gelaxkak;
@@ -42,7 +40,7 @@ public class ProduktuBuilder {
 		for(int x=0;x<banderak.size(); x++){
 			if(!banderak.get(x).equals(gelaxkak[banderak.get(x).getX()][banderak.get(x).getY()])){ 		//Kasila aldatu bada
 				if(gelaxkak[banderak.get(x).getX()][banderak.get(x).getY()].itxitaDago()){				//Konprobatu kasila berria zabaldu den
-					gelaxkak[banderak.get(x).getX()][banderak.get(x).getY()].egoeraAldatu(egoera.BANDERA);//Zabaldu ez bada bandera jarri
+					gelaxkak[banderak.get(x).getX()][banderak.get(x).getY()].egoeraAldatu(Egoera.BANDERA);//Zabaldu ez bada bandera jarri
 				}
 				else{
 					banderak.remove(x);															////Zabaldu bada banderetatik kendu

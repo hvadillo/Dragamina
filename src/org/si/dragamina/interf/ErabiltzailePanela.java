@@ -37,7 +37,7 @@ public class ErabiltzailePanela extends JPanel{
 		JPanel okP = new JPanel();
 		
 		izenaLabel = new JLabel(Textua.izenaSartu);
-		jokIzena = new JTextField("a");
+		jokIzena = new JTextField();
 		jokIzena.setPreferredSize(new Dimension(150,20));
 		jokIzena.addKeyListener(new KeyListener() {
 			@Override

@@ -1,7 +1,5 @@
 package org.si.dragamina.logic;
 
-import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
-
 import java.util.ArrayList;
 
 public class MatrizeGelaxka{
@@ -31,19 +29,19 @@ public class MatrizeGelaxka{
 	
 	public void banderakErakutzi(){
 		for(int x=0; x<minak.size(); x++){
-			minak.get(x).egoeraAldatu(egoera.BANDERA);
+			minak.get(x).egoeraAldatu(Egoera.BANDERA);
 		}
 	}
 	
 	public void galdu(){
 		for(int x=0; x<minak.size(); x++){
 			if(minak.get(x).itxitaDago()){
-				minak.get(x).egoeraAldatu(egoera.MINA);
+				minak.get(x).egoeraAldatu(Egoera.MINA);
 			}
 		}
 		for(int x=0; x<banderak.size(); x++){
 			if(banderak.get(x).banderaDu() && !(banderak.get(x) instanceof GelaMina)){
-				banderak.get(x).egoeraAldatu(egoera.EZBANDERA);
+				banderak.get(x).egoeraAldatu(Egoera.EZBANDERA);
 			}
 		}
 	}

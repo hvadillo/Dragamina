@@ -9,10 +9,10 @@ import java.util.Observer;
 import javax.swing.*;
 
 import org.si.dragamina.interf.Baliabideak.Irudiak;
+import org.si.dragamina.logic.Egoera;
 import org.si.dragamina.logic.GelaHutsa;
 import org.si.dragamina.logic.GelaMina;
 import org.si.dragamina.logic.GelaZenbakia;
-import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
 
 public class KasilenPanela extends JPanel implements Observer{
 	
@@ -81,7 +81,7 @@ public class KasilenPanela extends JPanel implements Observer{
 		}
 		else if(arg instanceof Object[]){
 			Object[] obj = (Object[]) arg;
-			egoera e = (egoera) obj[0];
+			Egoera e = (Egoera) obj[0];
 			int x = (Integer) obj[1];
 			int y = (Integer)obj[2];
 			switch (e) {

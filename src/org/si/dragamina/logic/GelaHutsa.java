@@ -1,7 +1,5 @@
 package org.si.dragamina.logic;
 
-import org.si.dragamina.logic.GelaxkaEgoerak.egoera;
-
 public class GelaHutsa extends Gelaxka {
 
 	public GelaHutsa(int pX, int pY){
@@ -10,8 +8,8 @@ public class GelaHutsa extends Gelaxka {
 
 	@Override
 	protected void gelaIreki() {
-		if(getEgoera() == egoera.ITXITA || getEgoera() == egoera.GALDERA || getEgoera() == egoera.BANDERA){
-			egoeraAldatu(egoera.ZABALDUA);
+		if(getEgoera() == Egoera.ITXITA || getEgoera() == Egoera.GALDERA || getEgoera() == Egoera.BANDERA){
+			egoeraAldatu(Egoera.ZABALDUA);
 			gelaHutsakIreki();
 		}
 	}
