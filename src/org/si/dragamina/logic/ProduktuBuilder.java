@@ -15,7 +15,7 @@ public class ProduktuBuilder {
 	
 	protected ProduktuBuilder(int pZail){
 		zailtasuna = pZail;
-		int[] d = dimentzioakKalkulatu(zailtasuna);
+		int[] d = Panela.getPanela().dimentzioakKalkulatu(zailtasuna);
 		err = d[0];
 		zut = d[1];
 		gelaxkak = new Gelaxka[zut][err];
@@ -112,6 +112,10 @@ public class ProduktuBuilder {
 		return barruan;
 	}
 	
+	protected void banderaGehitu(Gelaxka g){
+		banderak.add(g);
+	}
+	
 	protected ArrayList<Gelaxka> getMinenArraya(){
 		return minak;
 	}
@@ -128,19 +132,5 @@ public class ProduktuBuilder {
 		return zailtasuna * err;
 	}
 	
-	private int[] dimentzioakKalkulatu(int pZ){
-		int[] dim = new int[2];
-		switch (pZ) {
-			case 1: dim[0] = 7;
-					dim[1] = 10;
-					break;
-			case 2: dim[0] = 10;
-					dim[1] = 15;
-					break;
-			case 3: dim[0] = 12;
-					dim[1] = 25;
-					break;
-		}
-		return dim;
-	}
+	
 }

@@ -8,7 +8,7 @@ import org.si.dragamina.interf.Leihoa;
 public abstract class Main {
 	
 	public static void main(String[] args) {
-		try {
+		try {											//PROGRAMAREN ESTILO GRAFIKOA ALDATU
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (InstantiationException e) {
 			e.printStackTrace();
@@ -20,13 +20,6 @@ public abstract class Main {
 			e.printStackTrace();
 		} 
 		
-		
-		long startTime = System.nanoTime();
-		
 		Leihoa.getLeihoa().jokalariarenIzena();
-		
-		long endTime = System.nanoTime();
-		long duration = (endTime - startTime);
-		System.out.println("Ejekuzio denbora " + duration/1000000+"mseg");
 	}
 }

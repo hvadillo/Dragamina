@@ -23,7 +23,7 @@ public class MatrizeGelaxka{
 	public void matrizeaSortu(int irekiZut, int irekiErr){
 		gelaxkak = gureBuilder.matrizeaSortu(irekiZut, irekiErr);
 		minak = gureBuilder.getMinenArraya();
-		banderak = gureBuilder.getBanderenArraya();
+		
 		kasilaItxiak = gureBuilder.getKasilaItxiak();
 	}
 	
@@ -47,8 +47,8 @@ public class MatrizeGelaxka{
 	}
 	
 	public void gelaIreki(int pX, int pY){
-		if(gureBuilder.matrizeBarruan(pX,pY)){								//Gela matrize barruan dagoela zihurtatu
-			if(gelaxkak[pX][pY].itxitaDago()){	//Gela dagoeneko zabalik dagoen konprobatu
+		if(gureBuilder.matrizeBarruan(pX,pY)){					//Gela matrize barruan dagoela zihurtatu
+			if(gelaxkak[pX][pY].itxitaDago()){					//Gela dagoeneko zabalik dagoen konprobatu
 				if(gelaxkak[pX][pY].banderaDu()){
 					MinaKontagailua.getMinaKontagailua().gehitu();
 				}

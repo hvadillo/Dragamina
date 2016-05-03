@@ -5,7 +5,7 @@ import java.util.Observable;
 public class MinaKontagailua extends Observable{
 
 	private static MinaKontagailua nMinaKontagailua = null;
-	private int minakFaltan = 5;
+	private int minakFaltan;
 	
 	private MinaKontagailua(){
 		minakFaltan = Panela.getPanela().minaKopurua();

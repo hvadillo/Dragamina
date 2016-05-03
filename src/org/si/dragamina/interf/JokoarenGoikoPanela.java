@@ -12,7 +12,7 @@ public class JokoarenGoikoPanela extends JPanel{
 	private static final long serialVersionUID = 1L;
 
 	public JokoarenGoikoPanela(){
-		setLayout(new GridLayout(1,3,0,0));
+		setLayout(new GridLayout(1,3));
 		setBackground(new Color(250, 250, 250));
 		
 		JPanel gPanela1 = new JPanel();									//Kontadorerako-rako panela

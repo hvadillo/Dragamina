@@ -27,16 +27,17 @@ public class Panela extends Observable{
 	public void partidaBerria(int pZail){
 		hasita = false;
 		setChanged();
-		if(pZail==zailtasuna || pZail==0){
-			Integer v = 0;									//0 bada leihoa ez aldatu, kasilak itxi
-			notifyObservers(v);								//Leihoari dimentzioak aldatzeko seinalea
+		if(pZail==zailtasuna || pZail==0){					//0 bada leihoa ez aldatu, kasilak itxi
+			zailtasuna = pZail;
+			notifyObservers(0);								//Leihoari dimentzioak aldatzeko seinalea
 		}
 		else{
 			zailtasuna = pZail;
 			notifyObservers(zailtasuna);					//Leihoari dimentzioak aldatzeko seinalea
 		}	
 		matrizea = new MatrizeGelaxka(zailtasuna);		//Matrizean gelak hutzik sortu, minak lehenengo klikarekin sortzen dira
-		partidaSortu(unekoJokalaria);
+		unekoPartida = new Partida(unekoJokalaria);		//Uneko partida sortu eta jokalariarenIzenaGorde
+		
 		MinaKontagailua.getMinaKontagailua().hasieratu();
 		Denbora.getDenbora().hasieratu();
 	}
@@ -49,12 +50,14 @@ public class Panela extends Observable{
 		}
 		if(!matrizea.banderaDu(zut, err)){		//Banderarik ez badu
 			ireki(zut, err);					//Kasila ireki
-			unekoPartida.klikGehitu();				//Klik bat gehitu jokalariari
+			unekoPartida.klikGehitu();			//Klik bat gehitu jokalariari
 		}
 	}
 	
 	public void eskuinKlika(int pX, int pY){
-		matrizea.eskuinKlika(pX, pY);
+		if(hasita){
+			matrizea.eskuinKlika(pX, pY);
+		}
 	}
 	
 	public void ireki(int pX, int pY){			//zuzenean irekitzeko (Gelak zabaltzean bakarrik zuzen)
@@ -76,7 +79,6 @@ public class Panela extends Observable{
 		matrizea.galdu();						//Minak non dauden pantailaratu
 		setChanged();
 		notifyObservers(false);					//Galdu seinalea Leihoari
-		
 	}
 	
 	public int minaKopurua(){
@@ -103,10 +105,6 @@ public class Panela extends Observable{
 	public void unekoJokalariaAldatu(String pIzena){
 		zailtasuna = 0;
 		unekoJokalaria = pIzena;
-	}
-	
-	private void partidaSortu(String pIzena){
-		unekoPartida = new Partida(unekoJokalaria);
 	}
 	
 	public String jokalariIzenaLortu(){
