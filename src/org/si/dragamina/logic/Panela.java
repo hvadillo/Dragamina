@@ -28,7 +28,6 @@ public class Panela extends Observable{
 		hasita = false;
 		setChanged();
 		if(pZail==zailtasuna || pZail==0){					//0 bada leihoa ez aldatu, kasilak itxi
-			zailtasuna = pZail;
 			notifyObservers(0);								//Leihoari dimentzioak aldatzeko seinalea
 		}
 		else{
