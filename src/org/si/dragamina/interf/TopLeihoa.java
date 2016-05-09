@@ -19,17 +19,17 @@ public class TopLeihoa extends JDialog implements Observer{
 
 	private static final long serialVersionUID = 1L;
 	private static TopLeihoa nTopLeihoa = null;
-	private JTabbedPane erlaitzak;
+	private JTabbedPane tab;
 	
 	private TopLeihoa(){
 		setTitle(Textua.aukTopa);
 		TopPartidak.getTopPartidak().addObserver(this);
 		JPanel panela = new JPanel(new GridLayout(1, 1));
-		erlaitzak = new JTabbedPane();
+		tab = new JTabbedPane();
 		
 		informazioaEguneratu();
 	        
-	    panela.add(erlaitzak);
+	    panela.add(tab);
         add(panela);
 		
 		pack();
@@ -78,11 +78,11 @@ public class TopLeihoa extends JDialog implements Observer{
 	}
 	
 	public void informazioaEguneratu(){
-		erlaitzak.removeAll();
+		tab.removeAll();
 			
-		erlaitzak.addTab(Textua.aukErraza, topaLortu(0));
-		erlaitzak.addTab(Textua.aukNorlama, topaLortu(1));
-		erlaitzak.addTab(Textua.aukZaila, topaLortu(2));
+		tab.addTab(Textua.aukErraza, topaLortu(0));
+		tab.addTab(Textua.aukNorlama, topaLortu(1));
+		tab.addTab(Textua.aukZaila, topaLortu(2));
 	}
 
 	@Override

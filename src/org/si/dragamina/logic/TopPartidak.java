@@ -1,9 +1,7 @@
 package org.si.dragamina.logic;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Observable;
@@ -17,9 +15,13 @@ public class TopPartidak extends Observable{
 	private File fitxategia = new File("Ranking.txt");
 	
 	private TopPartidak(){
-		try {
-			fitxategia.createNewFile();
-		} catch (IOException e) {}
+		try{
+			if(fitxategia.createNewFile()){
+				sortuHasierakoFitxategia();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		tamaina = 10;
 		topak = new Partida[3][tamaina];		//3 top (zailtasunak) 10 partida bakoitzean
 	}
@@ -33,7 +35,14 @@ public class TopPartidak extends Observable{
 	
 	public void fitxategiaKargatu(){
 		try {
-			Scanner f = new Scanner(new FileReader(fitxategia));
+			try {
+				if(fitxategia.createNewFile()){
+					sortuHasierakoFitxategia();
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Scanner f = new Scanner(fitxategia);
 			String lerroa;
 			int z = 0;
 			while(f.hasNext()){
@@ -55,26 +64,26 @@ public class TopPartidak extends Observable{
 		String[] s = {"ERREZA", "NORMALA", "ZAILA"};
 		FileWriter fw;
 		try {
-			fitxategia.createNewFile();
-			fw = new FileWriter(fitxategia.getAbsoluteFile());
-			BufferedWriter bw = new BufferedWriter(fw);
+			if(fitxategia.createNewFile()){
+				sortuHasierakoFitxategia();
+			}
+			fw = new FileWriter(fitxategia);
 			for(int x=0; x<topak.length;x++){
-				bw.write(s[x]);
-				for(int y=0; y<3; y++){
+				fw.write(s[x]);
+				for(int y=0; y<topak[x].length; y++){
 					try {
 						if(topak[x][y]==null){
 							{throw new Exception();}
 						}	
-						bw.write(" ### " + topak[x][y].getIzena() + "---" + topak[x][y].getPuntuak() + "---" + topak[x][y].getData());
+						fw.write(" ### " + topak[x][y].getIzena() + "---" + topak[x][y].getPuntuak() + "---" + topak[x][y].getData());
 					} catch (Exception e) {}	
 				}
-				bw.newLine();
+				fw.write("\n");	
 			}
-			bw.close();
+			fw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void topaEguneratu(Partida pPart, int pZail, int pPunt){
@@ -83,9 +92,9 @@ public class TopPartidak extends Observable{
 		if(pos!=-1){
 			txertatu(pPart, pos, pZail);
 		}
+		fitxategiaGorde();
 		setChanged();
 		notifyObservers();
-		fitxategiaGorde();
 	}
 	
 	private int txertatzekoPosizioa(int pZail, int pPunt){
@@ -113,6 +122,19 @@ public class TopPartidak extends Observable{
 			pLaguntzaile = topak[pZail][x];
 			topak[pZail][x] = pHunekoa;
 			pHunekoa = pLaguntzaile;
+		}
+	}
+	
+	private void sortuHasierakoFitxategia(){
+		FileWriter fw;
+		try {
+			fw = new FileWriter(fitxategia);
+			fw.write("ERREZA ### Robert Donner---1600---1990-05-22 ### Aimar Ugarte---1500---1996-04-08 ### Hector Vadillo---1400---1996-04-04\n"
+					+"NORMALA ### Robert Donner---1800---1990-05-22 ### Aimar Ugarte---1700---1996-04-08 ### Hector Vadillo---1600---1996-04-04\n"
+					+"ZAILA ### Robert Donner---2000---1990-05-22 ### Aimar Ugarte---1900---1996-04-08 ### Hector Vadillo---1800---1996-04-04");
+			fw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
