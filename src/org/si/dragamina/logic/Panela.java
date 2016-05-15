@@ -48,8 +48,8 @@ public class Panela extends Observable{
 			hasita = true;		
 		}
 		if(!matrizea.banderaDu(zut, err)){		//Banderarik ez badu
-			ireki(zut, err);					//Kasila ireki
 			unekoPartida.klikGehitu();			//Klik bat gehitu jokalariari
+			ireki(zut, err);					//Kasila ireki
 		}
 	}
 	
