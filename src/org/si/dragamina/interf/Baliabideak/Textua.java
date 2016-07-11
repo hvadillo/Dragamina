@@ -13,12 +13,12 @@ public class Textua {
 	public static String url;
 	
 	public static void kargatu(){
-		if(System.getProperty("user.language").equals("eu") || System.getProperty("user.language").equals("es")){
+		if(System.getProperty("user.language").equals("eu")){
 			euskeraKargatu();
 		}
-		/*else if(System.getProperty("user.language").equals("es")){
+		else if(System.getProperty("user.language").equals("es")){
 			gaztelaniaKargatu();
-		}*/
+		}
 		else{
 			ingelesaKargatu();
 		}
