@@ -27,6 +27,11 @@ public class MatrizeGelaxka{
 		kasilaItxiak = gureBuilder.getKasilaItxiak();
 	}
 	
+	public void hasiBainoLehenagokoBanderaGehitu(int pZut, int pErr){
+		gureBuilder.banderaGehitu(gelaxkak[pZut][pErr]);
+		gelaxkak[pZut][pErr].eskuinKlik();
+	}
+	
 	public void banderakErakutzi(){
 		for(int x=0; x<minak.size(); x++){
 			minak.get(x).egoeraAldatu(Egoera.BANDERA);

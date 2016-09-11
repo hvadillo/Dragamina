@@ -57,6 +57,9 @@ public class Panela extends Observable{
 		if(hasita){
 			matrizea.eskuinKlika(pX, pY);
 		}
+		else{
+			matrizea.hasiBainoLehenagokoBanderaGehitu(pX, pY);
+		}
 	}
 	
 	public void ireki(int pX, int pY){			//zuzenean irekitzeko (Gelak zabaltzean bakarrik zuzen)
