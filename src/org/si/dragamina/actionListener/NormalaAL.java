@@ -1,15 +1,15 @@
-package org.si.dragamina.ActionListener;
+package org.si.dragamina.actionListener;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import org.si.dragamina.logic.Panela;
 
-public class ErrazaAL implements ActionListener{
+public class NormalaAL implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		Panela.getPanela().partidaBerria(1);
+		Panela.getPanela().partidaBerria(2);
 	}
 
 }

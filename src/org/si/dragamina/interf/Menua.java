@@ -6,17 +6,17 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import org.si.dragamina.ActionListener.AldatuAL;
-import org.si.dragamina.ActionListener.ArgibideaAL;
-import org.si.dragamina.ActionListener.ErrazaAL;
-import org.si.dragamina.ActionListener.EuskeraAL;
-import org.si.dragamina.ActionListener.GaztelaniaAL;
-import org.si.dragamina.ActionListener.GuriBuruzAL;
-import org.si.dragamina.ActionListener.IngelesaAL;
-import org.si.dragamina.ActionListener.IrtenAL;
-import org.si.dragamina.ActionListener.NormalaAL;
-import org.si.dragamina.ActionListener.TopaAL;
-import org.si.dragamina.ActionListener.ZailaAL;
+import org.si.dragamina.actionListener.AldatuAL;
+import org.si.dragamina.actionListener.ArgibideaAL;
+import org.si.dragamina.actionListener.ErrazaAL;
+import org.si.dragamina.actionListener.EuskeraAL;
+import org.si.dragamina.actionListener.GaztelaniaAL;
+import org.si.dragamina.actionListener.GuriBuruzAL;
+import org.si.dragamina.actionListener.IngelesaAL;
+import org.si.dragamina.actionListener.IrtenAL;
+import org.si.dragamina.actionListener.NormalaAL;
+import org.si.dragamina.actionListener.TopaAL;
+import org.si.dragamina.actionListener.ZailaAL;
 import org.si.dragamina.interf.Baliabideak.Textua;
 
 public class Menua extends JMenuBar{

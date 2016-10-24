@@ -1,4 +1,4 @@
-package org.si.dragamina.ActionListener;
+package org.si.dragamina.actionListener;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

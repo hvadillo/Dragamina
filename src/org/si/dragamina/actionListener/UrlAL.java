@@ -1,4 +1,4 @@
-package org.si.dragamina.ActionListener;
+package org.si.dragamina.actionListener;
 
 import java.awt.Desktop;
 import java.awt.event.MouseAdapter;
